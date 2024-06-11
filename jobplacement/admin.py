@@ -20,9 +20,9 @@ class AdminSeminar(admin.ModelAdmin):
     list_display = ['seminar_id', 'title', 'theme', 'date_of_event']
     model = SeminarForm
 
-class AdminStudent(admin.ModelAdmin):
-    list_display = ['studID', 'lrn', 'email', 'firstname', 'lastname', 'middlename', 'yearlvl', 'sex', 'contact']
-    model = StudentUser
+# class AdminStudent(admin.ModelAdmin):
+#     list_display = ['studID', 'lrn', 'emailadd', 'firstname', 'lastname', 'middlename', 'yearlvl', 'sex', 'contact']
+#     model = StudentUser
 
 class AdminSemAttendance(admin.ModelAdmin):
     list_display = ['sem_at_id', 'student_id', 'seminar_id', 'attended', 'ispending']
@@ -43,7 +43,7 @@ class AdminRequirements(admin.ModelAdmin):
                     ]
 
 admin.site.register(JobPlacementAdminUser, AdminChange)
-admin.site.register(StudentUser, AdminStudent)
+# admin.site.register(StudentUser, AdminStudent)
 admin.site.register(Seminar, AdminSeminar)
 admin.site.register(SeminarAttendance, AdminSemAttendance)
 admin.site.register(OJTCompany, AdminOjt)

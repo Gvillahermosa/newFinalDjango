@@ -11,6 +11,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import Permission, Group
 
 from .managers import AdminUserManager, StudentUserManager
+from studentLife_system.models import studentInfo as StudentUser
 # Create your models here.
  
 class JobPlacementAdminUser(AbstractBaseUser, PermissionsMixin):
@@ -46,78 +47,6 @@ class JobPlacementAdminUser(AbstractBaseUser, PermissionsMixin):
         related_name="admin_user_permissions"  # Specify a related_name to resolve the clash
     )
 
-class StudentUser(AbstractBaseUser, PermissionsMixin):
-    BSIT = "Bachelor of Science Information and Technology"
-    BEED = "Bachelor of Elementary Education"
-    BSED = "Bachelor of Secondary Education"
-    BIT_COMTECH = "Bachelor of Industrial Technology Major in Computech"
-    BIE = "Bachelor of Industrial Engineering"
-    FORESTRY = "Bachelor of Science and Forestry"
-    PSYCH = "Bachelor of Science"
-    BAEL = "Bachelor of English Literature"
-    CRIM = "Bachelor of Science Criminology"
-    HM = "Bachelor of Science Hospitality and Management"
-    TOURISM = "Bachelor of Science Hospitality and Tourism"
-    CAS = "Bachelor of Crafts Arts and Science"
-    ES = "Bachelor of Environmental Science"
-
-    program_choices = [
-            (BSIT, 'Bachelor of Science Information and Technology'),
-            (BEED, 'Bachelor of Elementary Education'),
-            (BSED, 'Bachelor of Secondary Education'),
-            (BIT_COMTECH, 'Bachelor of Industrial Technology Major in Computech'),
-            (BIE, 'Bachelor of Industrial Engineering'),
-            (FORESTRY, 'Bachelor of Science and Forestry'),
-            (PSYCH, 'Bachelor of Science'),
-            (BAEL, 'Bachelor of English Literature'),
-            (CRIM, 'Bachelor of Science Criminology'),
-            (HM, 'Bachelor of Science Hospitality and Management'),
-            (TOURISM, 'Bachelor of Science Hospitality and Tourism'),
-            (CAS, 'Bachelor of Crafts Arts and Science'),
-            (ES, 'Bachelor of Environmental Science'),
-    ]
-
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    date_joined = models.DateTimeField(default=timezone.now)
-    email = models.EmailField(_("email address"), unique=True)
-    studID = models.PositiveIntegerField(primary_key=True)
-    lrn = models.CharField(max_length=15, null=True, blank=True)
-    firstname = models.CharField(max_length=50, blank=False, null=False)
-    lastname = models.CharField(max_length=50, blank=False, null=False)
-    middlename = models.CharField(max_length=50, null=True, blank=True)
-    yearlvl = models.PositiveIntegerField(default=1, null=False)
-    sex = models.CharField(max_length=1, default="M", null=False)
-    contact = models.CharField(max_length=50, null=True)
-    program = models.CharField(max_length=100, choices=program_choices, default=BSIT)
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
-
-    objects = StudentUserManager()
-
-    groups = models.ManyToManyField(
-        Group,
-        verbose_name=_("groups"),
-        blank=True,
-        related_name="student_user_groups"
-    )
-    
-    user_permissions = models.ManyToManyField(
-        Permission,
-        verbose_name=_("user permissions"),
-        blank=True,
-        related_name="student_user_permissions"
-    )
-
-    class Meta:
-        ordering = ['lastname', 'firstname']
-
-    def __str__(self):
-        return self.email
-    
-    def fullname(self):
-        return f"{self.firstname} {self.lastname}"
 # open ojt from companies
 class OJTCompany(models.Model):
     DAY = "Day Shift"
@@ -256,3 +185,76 @@ class TransactionReport(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.action} at {self.date_created.strftime('%Y-%m-%d %H:%M:%S')}"
+
+# class StudentUser(AbstractBaseUser, PermissionsMixin):
+#     BSIT = "Bachelor of Science Information and Technology"
+#     BEED = "Bachelor of Elementary Education"
+#     BSED = "Bachelor of Secondary Education"
+#     BIT_COMTECH = "Bachelor of Industrial Technology Major in Computech"
+#     BIE = "Bachelor of Industrial Engineering"
+#     FORESTRY = "Bachelor of Science and Forestry"
+#     PSYCH = "Bachelor of Science"
+#     BAEL = "Bachelor of English Literature"
+#     CRIM = "Bachelor of Science Criminology"
+#     HM = "Bachelor of Science Hospitality and Management"
+#     TOURISM = "Bachelor of Science Hospitality and Tourism"
+#     CAS = "Bachelor of Crafts Arts and Science"
+#     ES = "Bachelor of Environmental Science"
+
+#     program_choices = [
+#             (BSIT, 'Bachelor of Science Information and Technology'),
+#             (BEED, 'Bachelor of Elementary Education'),
+#             (BSED, 'Bachelor of Secondary Education'),
+#             (BIT_COMTECH, 'Bachelor of Industrial Technology Major in Computech'),
+#             (BIE, 'Bachelor of Industrial Engineering'),
+#             (FORESTRY, 'Bachelor of Science and Forestry'),
+#             (PSYCH, 'Bachelor of Science'),
+#             (BAEL, 'Bachelor of English Literature'),
+#             (CRIM, 'Bachelor of Science Criminology'),
+#             (HM, 'Bachelor of Science Hospitality and Management'),
+#             (TOURISM, 'Bachelor of Science Hospitality and Tourism'),
+#             (CAS, 'Bachelor of Crafts Arts and Science'),
+#             (ES, 'Bachelor of Environmental Science'),
+#     ]
+
+#     is_staff = models.BooleanField(default=False)
+#     is_active = models.BooleanField(default=True)
+#     date_joined = models.DateTimeField(default=timezone.now)
+#     email = models.EmailField(_("email address"), unique=True)
+#     studID = models.PositiveIntegerField(primary_key=True)
+#     lrn = models.CharField(max_length=15, null=True, blank=True)
+#     firstname = models.CharField(max_length=50, blank=False, null=False)
+#     lastname = models.CharField(max_length=50, blank=False, null=False)
+#     middlename = models.CharField(max_length=50, null=True, blank=True)
+#     yearlvl = models.PositiveIntegerField(default=1, null=False)
+#     sex = models.CharField(max_length=1, default="M", null=False)
+#     contact = models.CharField(max_length=50, null=True)
+#     program = models.CharField(max_length=100, choices=program_choices, default=BSIT)
+
+#     USERNAME_FIELD = 'email'
+#     REQUIRED_FIELDS = []
+
+#     objects = StudentUserManager()
+
+#     groups = models.ManyToManyField(
+#         Group,
+#         verbose_name=_("groups"),
+#         blank=True,
+#         related_name="student_user_groups"
+#     )
+    
+#     user_permissions = models.ManyToManyField(
+#         Permission,
+#         verbose_name=_("user permissions"),
+#         blank=True,
+#         related_name="student_user_permissions"
+#     )
+
+#     class Meta:
+#         ordering = ['lastname', 'firstname']
+
+#     def __str__(self):
+#         return self.email
+    
+#     def fullname(self):
+#         return f"{self.firstname} {self.lastname}"

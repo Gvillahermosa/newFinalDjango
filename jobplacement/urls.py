@@ -3,11 +3,10 @@ from .views import search_suggestions, company_suggestions
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from custom_user.views import index as cu_index
 app_name='jobplacement'
 
 urlpatterns = [
-    # 
     path('jobplacement/', views.mainpage, name="home"),
     # OJT HIRING THINGS
     path('jobplacement/ojthiring/admin', views.ojt_hiring, name="ojt_hiring"),
@@ -43,11 +42,12 @@ urlpatterns = [
     path('jobplacement/non_acad', views.non_acad_page, name="non_acad"),
     
     # DELETABLE PATHS
-    path('jobplacement/login/', views.student_login, name="student_login"),
+    path('jobplacement/login/', cu_index, name="student_login"),
+    # path('jobplacement/signup/', views.student_signup_view, name="student_signup"),
     path('jobplacement/login/admin/', views.admin_login, name="admin_login"),
-    path('jobplacement/signup/', views.student_signup_view, name="student_signup"),
     path('jobplacement/signup/admin', views.admin_signup_view, name="admin_signup"),
     path('jobplacement/logout', views.logout_user, name="logout_user"),
+
     # ---------------------- STUDENTS PATHS ----------------------------------
     # homescreen sa login og admin    
     path('jobplacement/homepage/admin_student', views.admin_student, name='admin_student'),

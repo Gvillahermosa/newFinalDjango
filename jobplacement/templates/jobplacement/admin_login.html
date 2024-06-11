@@ -2,7 +2,7 @@
 
 {% block headcontent %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'jobplacement/styles/admin_login.css' %}?249">
+    <link rel="stylesheet" href="{% static 'jobplacement/styles/admin_login.css' %}?1206">
 {% endblock headcontent %}
 
 {% block bodycontent %}
@@ -28,9 +28,10 @@
             <a href="{% url 'jobplacement:admin_signup' %}">Admin Signup</a>
         {% else %}
             {% if form %}
-            <form action="{% url 'jobplacement:admin_signup' %}" method="POST" id='admin_signup_form'>
+            <form id="signup_form" action="{% url 'jobplacement:admin_signup' %}" method="POST" id='admin_signup_form'>
                 {% csrf_token %}
                 <div class="container">
+                    <h1>Admin Signup</h1>
                     {{ form.as_div }}
                     <!-- <label for="email">Email:</label>
                     <input type="email" name="{{ form.email.name}}">
