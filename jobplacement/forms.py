@@ -67,37 +67,37 @@ class AdminUserChangeForm(UserChangeForm):
         model = JobPlacementAdminUser
         fields = ("email", 'firstname', 'lastname', 'middlename')
 
-class StudentUserChangeForm(UserChangeForm):
-    class Meta:
-        model=StudentUser
-        fields = ('email', 'firstname', 'lastname', 'middlename')
+# class StudentUserChangeForm(UserChangeForm):
+#     class Meta:
+#         model=StudentUser
+#         fields = ('email', 'firstname', 'lastname', 'middlename')
 
 class AdminSignUpForm(UserCreationForm):
     class Meta:
         model = JobPlacementAdminUser
         fields = ('email', 'firstname', 'lastname', 'password1', 'password2')
 
-class StudentSignUpForm(UserCreationForm):
-    class Meta:
-        model = StudentUser
-        fields = (
-            'email', 'password1', 'password2', 'studID', 'lrn',
-            'firstname', 'lastname', 'middlename', 'yearlvl', 'sex', 'contact'
-        )
+# class StudentSignUpForm(UserCreationForm):
+#     class Meta:
+#         model = StudentUser
+#         fields = (
+#             'email', 'password1', 'password2', 'studID', 'lrn',
+#             'firstname', 'lastname', 'middlename', 'yearlvl', 'sex', 'contact'
+#         )
 
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
-        if commit:
-            user.save()
-        return user    
+    # def save(self, commit=True):
+    #     user = super().save(commit=False)
+    #     user.set_password(self.cleaned_data["password1"])
+    #     if commit:
+    #         user.save()
+    #     return user    
     
     # LOGIN FORMS
 class AdminLoginForm(AuthenticationForm):
     pass
 
-class StudentLoginForm(AuthenticationForm):
-    pass
+# class StudentLoginForm(AuthenticationForm):
+#     pass
 
 class SeminarForm(ModelForm):
     class Meta:

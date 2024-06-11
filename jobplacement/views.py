@@ -16,7 +16,7 @@ from .models import ( SeminarAttendance, TransactionReport, StudentUser,
                      OJTRequirements,
                     )
 from .forms import ( SeminarForm, SeminarAttendanceForm, TransactionForm, 
-                    AdminLoginForm, StudentLoginForm, AdminSignUpForm, StudentSignUpForm,
+                    AdminLoginForm,  AdminSignUpForm,  # StudentSignUpForm, StudentLoginForm,
                     OjtHiringForm, OJTStudentForm, EmailAuthenticationForm, 
                     OJTRequirementsForm, StatusWidget, ScrapperFile
                     )
@@ -52,46 +52,48 @@ def get_user_backend(user):
 #deleteable
 from django.contrib.auth.hashers import check_password
 
-@login_required(login_url='jobplacement:admin_login')
-def student_signup_view(request):
-    if not (request.user.is_staff or request.user.is_superuser):
-        messages.info(request, 'Must be a superuser to access page')
-        return redirect('jobplacement:admin_login')
 
-    
-    page = 'student_signup'
-    if request.method == 'POST':
-        form = StudentSignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            backend = get_user_backend(user)
-            return redirect('jobplacement:home') 
-        else:
-            messages.error(request, 'There was an error with your sign-up.')
-    else:
-        form = StudentSignUpForm()
-    return render(request, 'jobplacement/student_login.html', {'form': form, 'page': page})
+# GI COMMENT KAY DILI NA JOBPLACEMENT GA HANDLE SA STUDENT LOGIN/SIGN UP
 
-def student_login(request):
-    page = 'student_login'
-    form = EmailAuthenticationForm()
+# @login_required(login_url='jobplacement:admin_login')
+# def student_signup_view(request):
+#     if not (request.user.is_staff or request.user.is_superuser):
+#         messages.info(request, 'Must be a superuser to access page')
+#         return redirect('jobplacement:admin_login')
 
-    if request.method == 'POST':
-        form = EmailAuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            email = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(request, username=email, password=password)
-            if user is not None and isinstance(user, StudentUser):
-                login(request, user)
-                return redirect('jobplacement:home')  # Student dashboard URL
-            else:
-                messages.error(request, 'Invalid email or password')
-        else:
-            messages.error(request, 'Invalid email or password')
-    else:
-        form = EmailAuthenticationForm()
-    return render(request, 'jobplacement/student_login.html', {'form': form, 'page': page})
+#     page = 'student_signup'
+#     if request.method == 'POST':
+#         form = StudentSignUpForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             backend = get_user_backend(user)
+#             return redirect('jobplacement:home') 
+#         else:
+#             messages.error(request, 'There was an error with your sign-up.')
+#     else:
+#         form = StudentSignUpForm()
+#     return render(request, 'jobplacement/student_login.html', {'form': form, 'page': page})
+
+# def student_login(request):
+#     page = 'student_login'
+#     form = EmailAuthenticationForm()
+
+#     if request.method == 'POST':
+#         form = EmailAuthenticationForm(request, data=request.POST)
+#         if form.is_valid():
+#             email = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(request, username=email, password=password)
+#             if user is not None and isinstance(user, StudentUser):
+#                 login(request, user)
+#                 return redirect('jobplacement:home')  # Student dashboard URL
+#             else:
+#                 messages.error(request, 'Invalid email or password')
+#         else:
+#             messages.error(request, 'Invalid email or password')
+#     else:
+#         form = EmailAuthenticationForm()
+#     return render(request, 'jobplacement/student_login.html', {'form': form, 'page': page})
 
 # Create your views here.
 
@@ -129,7 +131,6 @@ def admin_signup_view(request):
 
 # end of deletables\
 
-# homepage bai
 def admin_student(request):
     return render(request, 'jobplacement/admin_and_student.html', {})
 
@@ -145,7 +146,7 @@ def admin_login(request):
             if user is not None and user.is_staff:
                 backend = get_user_backend(user)
                 login(request, user, backend=backend)
-                return redirect('jobplacement:home')  # Change this to your admin dashboard URL
+                return redirect('jobplacement:home')
             else:
                 messages.error(request, 'Invalid email or password')
         else:
@@ -160,10 +161,7 @@ def logout_user(request):
 
 # @login_required(login_url='jobplacement:admin_student')
 def mainpage(request):
-    seminars = Seminar.objects.all()
-
-    context = {'seminars':seminars}
-    return render(request, 'jobplacement/main.html', context)
+    return redirect('jobplacement:ojt_hiring')
 
 #   OJT HIRING THINGS
 @login_required(login_url='jobplacement:admin_student')
@@ -351,7 +349,7 @@ def ojt_requirements_submit(request):
 
     if request.method == 'POST': # handles ojt requirement submission
         if request.user.is_authenticated and isinstance(request.user, StudentUser):
-            print(request.user.email, "as Student")
+            print(request.user.emailadd, "as Student")
             try:
                 existing_requirement = OJTRequirements.objects.get(student_id=request.user, is_valid=True)
                 # updates exisiting requirement

@@ -20,7 +20,7 @@ class AdminUserBackend(BaseBackend):
 class StudentUserBackend(BaseBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):
         try:
-            user = StudentUser.objects.get(email=username)
+            user = StudentUser.objects.get(emailadd=username)
             if user.check_password(password):
                 return user
         except StudentUser.DoesNotExist:

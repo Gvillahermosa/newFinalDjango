@@ -10,7 +10,7 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
         /> -->
-        <link rel="stylesheet" href="{% static 'styles/index.css'%}?225">
+        <link rel="stylesheet" href="{% static 'styles/index.css'%}?1206">
         <script src="{% static 'scripts/jquery.js' %}"></script>
         {% block headcontent %}
 
@@ -63,9 +63,11 @@
                             {% if request.user.is_superuser %}
                             <li><a href="{% url 'jobplacement:admin_signup' %}">Admin Signup</a></li>
                             {% endif %}
+                        {% comment %}
                             {% if request.user.is_staff %}
                             <li><a href="{% url 'jobplacement:student_signup' %}">Student Signup</a></li>
-                            {% endif %}
+                            {% endif %} 
+                        {% endcomment %}
                             <!-- <li><a href="{% url 'jobplacement:admin_login' %}">Admin Login</a></li> -->
                             {% if request.user.is_authenticated %}
                                 <li><a href="{% url 'jobplacement:logout_user' %}">Logout</a></li>
@@ -189,7 +191,7 @@
         
         
 
-       <script src="{% static 'scripts/main.js'%}"></script>
+       <script src="{% static 'scripts/main.js'%}?001"></script>
        <script src="{% static 'scripts/message.js'%}"></script>
     </body>
     
