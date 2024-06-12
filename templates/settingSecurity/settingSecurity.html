@@ -1,0 +1,41 @@
+{% extends 'adminUser/adminmain.html' %}
+{% load static %}
+
+{% block bodycontent %}
+<link rel="stylesheet" href="{% static 'settingSecurity/settingSecurity.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Freeman&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900&display=swap" rel="stylesheet">
+
+<div class="body-content">
+    <div class="sub-title">
+        <h3>SETTINGS & SECURITY</h3>
+        <p class="hometext">Home </p><p class="certxt"> > SettingS & Security</p>
+    </div>
+    <div class="settingContents">
+        <h2>Upload Students</h2>
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == "success" %}
+                    <div class="messages success-message">
+                        <div class="alert alert-success" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% elif message.tags == "error" %}
+                    <div class="messages error-message">
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <form class="form" method="POST" action="{% url 'studentLife_system:upload_student_data' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" id="file" name="excel_file" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</div>
+{% endblock bodycontent %}

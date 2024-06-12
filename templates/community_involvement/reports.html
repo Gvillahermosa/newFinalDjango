@@ -1,0 +1,80 @@
+{% extends 'community_involvement/adminbase.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/community_involvement/projects.css">
+<link rel="stylesheet" href="/static/community_involvement/reports.css">
+
+{% endblock%}
+
+{% block content %}
+
+<div class="header">
+    <h1>Transaction Reports <br> <span style="font-size: 1.5rem;">(Donations)</span> </h1>
+</div>
+
+<div>
+    <form class="form" method="POST" action="{% url 'studentLife_system:reports-find' %}">
+        {% csrf_token %}
+        <div>
+            <label for="">Monthly: </label>
+            <select name="month" id="" required>
+                <option value="" selected disabled>Select</option>
+                <option value="01">January</option>
+                <option value="02">Febuary</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+        <div>
+            <label for="">Yearly: </label>
+            <select name="year" id="" required>
+                <option value="" selected disabled>Select</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+            </select>
+        </div>
+
+        <button type="submit">Search</button>
+        <a href="{% url 'studentLife_system:reports-all' %}">All</a>
+    </form>
+</div>
+<div class="data">
+    <img src="/static/community_involvement/img/ctulogo.jpg" alt="">
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Donated</th>
+                    <th>Name</th>
+                    <th>Mode</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for donates in loadDonations %}
+                {% if donates.status == None or donates.status == "Declined" %}
+                {% else %}
+                <tr>
+                    <td>{{ donates.donated }}</td>
+                    <td>{{ donates.name }}</td>
+                    <td>{{ donates.donation_type }}</td>
+                    <td>{{ donates.date }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

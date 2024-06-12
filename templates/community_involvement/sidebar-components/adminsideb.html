@@ -1,0 +1,110 @@
+<nav class="side-nav">
+    <ul>
+
+        <li><a href="#" class="studentlife-btn">OFFICE OF STUDENT LIFE 
+            <span class="fas fa-caret-down first"></span>
+        </a>
+            <ul class="studentlife">
+                <li><a href="/equipmenttrackerAdmin">Equipment Tracker(Admin)</a></li>
+                <li><a href="/requested-gmc">Good Moral Certificate Issuance(Admin)</a></li>
+                <li><a href="/upload">PPMP Tracker(Admin)</a></li>
+                <li><a href="/monthlyCalendarAdmin">Monthly Calendar of Activites(Admin)</a></li>
+                <li><a href="/transactionreport">Transaction Report(Admin)</a></li>
+            </ul>
+        </li>
+        <li><a href="#" class="scholar-btn">SCHOLARSHIP
+            <span class="fas fa-caret-down second"></span>
+        </a>
+        <ul class="scholar-show">
+            <li><a href="#">Submission of Requirements Tracker(Admin)</a></li>
+            <li><a href="#">Scholars Profile and Validation(Admin)</a></li>
+            <li><a href="#">Grade Submission with GPA Computation(Admin)</a></li>
+            <li><a href="#">Mentorship Program(Admin)</a></li>
+            <li><a href="#">Admin Cost Liquidation Tracker(Admin)</a></li>
+            <li><a href="#">CHED Reports Submission(Admin)</a></li>
+            <li><a href="#">Transaction Reports(Admin)</a></li>
+        </ul>
+        </li>
+        <li><a href="#" class="jobplace-btn">JOB PLACEMENT
+            <span class="fas fa-caret-down third"></span>    
+        </a>
+        <ul class="jobplace-show">
+            <li><a href="#">OJT Hiring</a></li>
+            <li><a href="#">Career Guidance Tracker(Admin)</a></li>
+            <li><a href="#">OJT Requirements Tracker(Admin)</a></li>
+            <li><a href="#">Non-Academic Award Issuance(Admin)</a></li>
+            <li><a href="#">Transaction Reports(Admin)</a></li>
+        </ul>
+        </li>
+        <li><a href="#" class="student_disc-btn">STUDENT DISCIPLINE
+           <span class="fas fa-caret-down fourth"></span>
+        </a>
+        <ul class="student_disc-show">
+            <li><a href="#">Case Profile(Admin)</a></li>
+            <li><a href="#">Hours Rendered for Community Service Tracker(Admin)</a></li>
+            <li><a href="#">Good Moral Certificate Issuance(Admin)</a></li>
+            <li><a href="#">Transaction Reports(Admin)</a></li>
+            
+        </ul>
+        </li>
+        <li><a href="#" class="guide-btn">GUIDANCE
+           <span class="fas fa-caret-down fifth"></span>
+        </a>
+        <ul class="guide-show">
+            <li><a href="{% url 'studentLife_system:Counseling App With Scheduler Admin View'%}">Counseling App with Scheduler(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:Intake Interview' %}">Intake Interview(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:Exit Interview Admin View'%}">Exit Interview(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:OJT Assessment Admin View'%}">OJT Assessments/Psychological Issuance(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:guidance_transaction' %}">Transaction Reports(Admin)</a></li>
+        </ul>
+        </li>
+        <li><a href="#" class="alumni-btn">ALUMNI
+            <span class="fas fa-caret-down sixth"></span>
+         </a>
+         <ul class="alumni-show">
+             <li><a href="{% url 'studentLife_system:admin_idRequest' %}">Alumni ID Requests</a></li>
+             <li><a href="{% url 'studentLife_system:admin_gradTracer' %}">Graduate Tracer</a></li>
+             <li><a href="{% url 'studentLife_system:admin_events' %}">Alumni Reunion and Events</a></li>
+             <li><a href="{% url 'studentLife_system:admin_jobfairs' %}">Job Fairs</a></li>
+             <li><a href="{% url 'studentLife_system:admin_yearbook' %}">Digital Yearbook</a></li>
+             <li><a href="{% url 'studentLife_system:transaction_alumni' %}">Transaction Reports(Admin)</a></li>
+         </ul>
+         </li>
+         <li><a href="#" class="community-btn">COMMUNITY INVOLVEMENT
+            <span class="fas fa-caret-down seventh"></span>
+         </a>
+         <ul class="community-show">
+             
+        <li><a href="{% url 'studentLife_system:program-form' %}">Events(Admin)</a></li>
+        <li><a href="{% url 'studentLife_system:project-form' %}">Crowd Funding Project(Admin)</a></li>
+        <li><a href="{% url 'studentLife_system:donation-validate' %}">Donation Validates(Admin)</a></li>
+        <li><a href="{% url 'studentLife_system:donation_dashboard' %}">Donations(Admin)</a></li>
+        <li><a href="{% url 'studentLife_system:reports' %}">Transaction Reports(Admin)</a></li>
+             
+         </ul>
+         </li>
+         <li><a href="#" class="student_org-btn">STUDENT ORGANIZATION
+            <span class="fas fa-caret-down eight"></span>
+         </a>
+         <ul class="student_org-show">
+             <li><a href="{% url 'studentLife_system:logins' %}">Org Profile</a></li>
+         </ul>
+         </li>
+        <li><a href="#" class="medical-btn">MEDICAL
+           <span class="fas fa-caret-down ninth"></span>
+        </a>
+        <ul class="medical-show">
+            <li><a href="{% url 'medicalv2:patient_profile'%}">Patient Profile(Admin)</a></li>
+            <li><a href="{% url 'medicalv2:viewrequest'%}">View Requests(Admin)</a></li>
+            <li><a href="{% url 'medicalv2:emergency_asst'%}">Emergency Health Assistance(Admin)</a></li>
+            <li><a href="{% url 'medicalv2:pwdlist'%}">PWD Profile(Admin)</a></li>
+            <li><a href="{% url 'medicalv2:dentalrequest'%}">Dental Services(Admin)</a></li>
+            <li><a href="{% url 'medicalv2:prescription'%}">Prescription Issuance(Admin)</a></li>
+            <li><a href="{% url 'medicalv2:transactions'%}">Transaction Reports(Admin)</a></li>
+            <br><br><br>
+        </ul>
+        </li>
+    </ul>
+    </div>
+    </div>
+</nav>

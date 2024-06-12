@@ -1,0 +1,496 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+body{
+	max-height: 100vh;
+	max-width: 100vw;
+	display: flex;
+}
+.background-container{
+	height: 100vh;
+	width: 52%;
+	margin: 0px;
+	overflow: hidden;
+}
+
+/*.background-container:before{
+
+}*/
+/* .background-container::after{
+	content: '';
+	display: block;
+	background-color: #F9B36D;
+	height: 100vh;
+	width: 50%;
+	position: absolute;
+	top: 0px;
+	opacity: 0.6;
+} */
+#libraryPicture{
+	height: 100%;
+	width: 100%;
+}
+#CtuLogo{
+	position: absolute;
+	top: 15%;
+	left: 14%;	
+	z-index: 1;
+	height: 250px;
+}
+#welcome_msg{
+	position: absolute;
+	top: 50%;
+	left: 10%;	
+	z-index: 1;
+	font-size: 90px;
+	font-family: Impact;
+	color: white;
+	text-shadow: 2px 5px 5px #222;
+}
+.form-container {
+    height: 100vh;
+    width: 48%;
+    background-color: #4682B4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	flex-direction: column;
+    position: relative; /* Added for z-index to work */
+	overflow: hidden;
+}
+.form-container::before {
+    content: "";
+    position: absolute;
+    border-style: solid;
+	left: -9.9vw;
+    border-width: 100vh 10vw 0px 0px; /* Adjust the values to change trapezoid size */
+    border-color: transparent #4682B4 transparent ; /* Adjust colors */
+} 
+#diagonal-border{
+    position: absolute;
+    border-style: solid;
+	left: 42%;
+    border-width: 100vh 10vw 0px 0px; /* Adjust the values to change trapezoid size */
+    border-color: transparent #4682B4 transparent ; /* Adjust colors */
+}
+.login-form-container{
+	padding: 1em;
+	width: 25em;
+	background-color: white;
+	display: block;
+	position: absolute;
+	justify-content: center;
+	z-index: 1;
+	border-radius: 10px;
+}
+.signup-form-container{
+	padding: 1em;
+	width: 25em;
+	background-color: white;
+	display: block;
+	position: absolute;
+	justify-content: center;
+	z-index: 1;
+	border-radius: 10px;
+}
+#sign-up, #sign-in{
+	color: rgb(9, 99, 172);
+	cursor: pointer;
+}
+#sign-up:hover, #sign-in:hover{
+	text-decoration: underline;
+}
+table{
+	width: 100%;
+}
+td{
+	padding: 20px 0px 0px 0px;
+}
+
+button{
+	width: 100%;
+	border-radius: .5em;
+	height: 3.5em;
+	background-color: #FF9934;
+	cursor: pointer;
+}
+.dropdown{
+	width: 100%;
+}
+input, .dropdown{
+	width: 100%;
+	display: block;
+	border: none;
+	border-bottom: 1px solid #999;
+	padding: 6px 30px;
+	font-family: Poppins;
+	height: 100%;
+	font-size: 15px;
+	box-sizing: border-box; }
+	input::-webkit-input-placeholder {
+	color: #999; }
+	input::-moz-placeholder {
+	color: #999; }
+	input:-ms-input-placeholder {
+	color: #999; }
+	input:-moz-placeholder {
+	color: #999; }
+	input:focus {
+	border-bottom: 1px solid #222; }
+	input:focus::-webkit-input-placeholder {
+	color: #222; }
+	input:focus::-moz-placeholder {
+	color: #222; }
+	input:focus:-ms-input-placeholder {
+	color: #222; }
+	input:focus:-moz-placeholder {
+	color: #222; }	
+	input, select, textarea {
+	outline: none;
+	appearance: unset !important;
+	-moz-appearance: unset !important;
+	-webkit-appearance: unset !important;
+	-o-appearance: unset !important;
+	-ms-appearance: unset !important; }
+
+	input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	appearance: none !important;
+	-moz-appearance: none !important;
+	-webkit-appearance: none !important;
+	-o-appearance: none !important;
+	-ms-appearance: none !important;
+	margin: 0; }
+
+	input:focus, select:focus, textarea:focus {
+	outline: none;
+	box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	-o-box-shadow: none !important;
+	-ms-box-shadow: none !important; }
+/* label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  color: #222; } */
+label {
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 7px;
+}
+@keyframes fade-in {
+	from {left: 100%;}
+	to {left: 20%;}
+  }
+@keyframes fade-out {
+	from {left: 20%;}
+	to {left: 100%;}
+  }
+.fade-in {
+    animation: fade-in 0.5s forwards;
+}
+.fade-out {
+    animation: fade-out 0.5s forwards;
+}
+
+/* Small Tablets */
+@media (min-width: 768px) and (max-width: 992px) {
+	/* Tablet-specific styles */
+	#CtuLogo{
+		position: absolute;
+		top: 25%;
+		left: 14%;	
+		z-index: 1;
+		height: 200px;
+	}
+	#welcome_msg{
+		position: absolute;
+		top: 50%;
+		left: 10%;	
+		z-index: 1;
+		font-size: 65px;
+		font-family: Impact;
+		color: white;
+		text-shadow: 2px 5px 5px #222;
+	}
+	.login-form-container{
+		padding: 1em;
+		width: 20em;
+		background-color: white;
+		display: block;
+		position: absolute;
+		justify-content: center;
+		z-index: 1;
+		border-radius: 10px;
+	}
+	.signup-form-container{
+		padding: 1em;
+		width: 25em;
+		background-color: white;
+		display: block;
+		position: absolute;
+		justify-content: center;
+		z-index: 1;
+		border-radius: 10px;
+	}
+	#sign-up, #sign-in{
+		color: rgb(9, 99, 172);
+		cursor: pointer;
+	}
+	#sign-up:hover, #sign-in:hover{
+		text-decoration: underline;
+	}
+	table{
+		width: 100%;
+	}
+	td{
+		padding: 20px 0px 0px 0px;
+	}
+	
+	button{
+		width: 100%;
+		border-radius: .5em;
+		height: 3.5em;
+		background-color: #FF9934;
+		cursor: pointer;
+	}
+	input {
+		width: 100%;
+		display: block;
+		border: none;
+		border-bottom: 1px solid #999;
+		padding: 6px 30px;
+		font-family: Poppins;
+		height: 100%;
+		font-size: 15px;
+		box-sizing: border-box; }
+		input::-webkit-input-placeholder {
+		color: #999; }
+		input::-moz-placeholder {
+		color: #999; }
+		input:-ms-input-placeholder {
+		color: #999; }
+		input:-moz-placeholder {
+		color: #999; }
+		input:focus {
+		border-bottom: 1px solid #222; }
+		input:focus::-webkit-input-placeholder {
+		color: #222; }
+		input:focus::-moz-placeholder {
+		color: #222; }
+		input:focus:-ms-input-placeholder {
+		color: #222; }
+		input:focus:-moz-placeholder {
+		color: #222; }	
+		input, select, textarea {
+		outline: none;
+		appearance: unset !important;
+		-moz-appearance: unset !important;
+		-webkit-appearance: unset !important;
+		-o-appearance: unset !important;
+		-ms-appearance: unset !important; }
+	
+		input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+		appearance: none !important;
+		-moz-appearance: none !important;
+		-webkit-appearance: none !important;
+		-o-appearance: none !important;
+		-ms-appearance: none !important;
+		margin: 0; }
+	
+		input:focus, select:focus, textarea:focus {
+		outline: none;
+		box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-o-box-shadow: none !important;
+		-ms-box-shadow: none !important; }
+	/* label {
+	  position: absolute;
+	  left: 0;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  -moz-transform: translateY(-50%);
+	  -webkit-transform: translateY(-50%);
+	  -o-transform: translateY(-50%);
+	  -ms-transform: translateY(-50%);
+	  color: #222; } */
+	label {
+		position: absolute;
+		margin-top: 5px;
+		margin-left: 7px;
+	}
+  }
+  
+  /* Large Tablets */
+  @media (min-width: 992px) and (max-width: 1200px) {
+	/* Tablet-specific styles */
+  }
+
+  /* Small Phones */
+@media (max-width: 576px) {
+	/* Mobile-specific styles */
+	.form-container {
+		height: 100vh;
+		width: 100%;
+		background-color: #4682B4;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		position: relative; /* Added for z-index to work */
+		overflow: hidden;
+	}
+	.background-container{
+		display: display;
+		height: 100vh;
+		width: 0%;
+		margin: 0px;
+		overflow: hidden;
+	}
+	#CtuLogo{
+		position: absolute;
+		top: 10%;
+		margin: 0px auto;	
+		z-index: 2;
+		height: 150px;
+	}
+	#welcome_msg{
+		position: absolute;
+		display: none;
+		top: 50%;
+		left: 10%;	
+		z-index: 1;
+		font-size: 65px;
+		font-family: Impact;
+		color: white;
+		text-shadow: 2px 5px 5px #222;
+	}
+	.login-form-container{
+		padding: 1em;
+		width: 20em;
+		background-color: white;
+		display: block;
+		position: absolute;
+		justify-content: center;
+		z-index: 1;
+		border-radius: 10px;
+	}
+	.signup-form-container{
+		padding: 1em;
+		width: 25em;
+		background-color: white;
+		display: block;
+		position: absolute;
+		justify-content: center;
+		z-index: 1;
+		border-radius: 10px;
+	}
+	#sign-up, #sign-in{
+		color: rgb(9, 99, 172);
+		cursor: pointer;
+	}
+	#sign-up:hover, #sign-in:hover{
+		text-decoration: underline;
+	}
+	table{
+		width: 100%;
+	}
+	td{
+		padding: 20px 0px 0px 0px;
+	}
+	
+	button{
+		width: 100%;
+		border-radius: .5em;
+		height: 3.5em;
+		background-color: #FF9934;
+		cursor: pointer;
+	}
+	input {
+		width: 100%;
+		display: block;
+		border: none;
+		border-bottom: 1px solid #999;
+		padding: 6px 30px;
+		font-family: Poppins;
+		height: 100%;
+		font-size: 15px;
+		box-sizing: border-box; }
+		input::-webkit-input-placeholder {
+		color: #999; }
+		input::-moz-placeholder {
+		color: #999; }
+		input:-ms-input-placeholder {
+		color: #999; }
+		input:-moz-placeholder {
+		color: #999; }
+		input:focus {
+		border-bottom: 1px solid #222; }
+		input:focus::-webkit-input-placeholder {
+		color: #222; }
+		input:focus::-moz-placeholder {
+		color: #222; }
+		input:focus:-ms-input-placeholder {
+		color: #222; }
+		input:focus:-moz-placeholder {
+		color: #222; }	
+		input, select, textarea {
+		outline: none;
+		appearance: unset !important;
+		-moz-appearance: unset !important;
+		-webkit-appearance: unset !important;
+		-o-appearance: unset !important;
+		-ms-appearance: unset !important; }
+	
+		input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+		appearance: none !important;
+		-moz-appearance: none !important;
+		-webkit-appearance: none !important;
+		-o-appearance: none !important;
+		-ms-appearance: none !important;
+		margin: 0; }
+	
+		input:focus, select:focus, textarea:focus {
+		outline: none;
+		box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-o-box-shadow: none !important;
+		-ms-box-shadow: none !important; }
+	/* label {
+	  position: absolute;
+	  left: 0;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  -moz-transform: translateY(-50%);
+	  -webkit-transform: translateY(-50%);
+	  -o-transform: translateY(-50%);
+	  -ms-transform: translateY(-50%);
+	  color: #222; } */
+	label {
+		position: absolute;
+		margin-top: 5px;
+		margin-left: 7px;
+	}
+
+
+  }
+  
+  /* Large Phones */
+  @media (min-width: 576px) and (max-width: 768px) {
+	/* Mobile-specific styles */
+  }

@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" type="x-icon" href="/static/images/CTU_logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/community_involvement/boxicons/css/boxicons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% if title %}
+    <title>Community Involvement - {{ title }}</title>
+    {% else %}
+    <title>Community Involvement</title>
+    {% endif %}
+
+    <link rel="stylesheet" href="/static/community_involvement/style.css">
+
+    {% block css %}
+    {% endblock %}
+</head>
+
+{% if url == "home" %}
+
+<body style="overflow-y: hidden" class="base">
+
+    {% else %}
+
+    <body class="base">
+        {% endif %}
+        <div>
+            {% include 'community_involvement/navbar.html' %}
+            {% include 'community_involvement/sidebar.html' %}
+
+        </div>
+
+        <div>
+            {% block content %}
+
+            {% if url == "home" %}
+            {% include 'community_involvement/home.html' %}
+            {% endif %}
+
+            {% endblock %}
+        </div>
+    </body>
+    <script src="/static/community_involvement/jquery.js"></script>
+    <script src="/static/community_involvement/main.js"></script>
+    <script src="/static/community_involvement/popup-donate.js"></script>
+
+</html>

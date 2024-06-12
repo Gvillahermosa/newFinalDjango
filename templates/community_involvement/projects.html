@@ -1,0 +1,50 @@
+{% extends 'community_involvement/base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/community_involvement/projects.css">
+<link rel="stylesheet" href="/static/community_involvement/popup.css">
+
+{% endblock%}
+
+{% block content %}
+
+<div class="header">
+    <h1>CrowdFunding Projects</h1>
+</div>
+
+{% for project in loadProjects %}
+
+
+<div class="project">
+    <div class="content">
+        <div class="header-content-main">
+            <div class="header-content">
+                <img class="ctu-logo" src="/static/community_involvement/img/ctu-logo.png" alt="">
+                <div>
+                    <h4 style="font-weight: bolder;">Cebu Techonological University - Argao Campus</h4>
+                    <p>{{ project.date_time }}</p>
+                </div>
+                {% if user %}
+                <a href="{% url 'studentLife_system:archive_project' project.id %}">
+                    <img src="/static/community_involvement/img/archive.png" alt="">
+                </a>
+                {% else %}
+
+                {% endif %}
+            </div>
+            <div class="caption">
+                <h4>{{ project.title }}</h4>
+                <p>{{ project.caption }}</p>
+            </div>
+            <div class="image">
+                <img src="{{ project.image_upload.url }}" alt="">
+            </div>
+
+        </div>
+        {% include 'community_involvement/popup-donations.html' %}
+
+    </div>
+
+    {% endfor %}
+
+    {% endblock %}

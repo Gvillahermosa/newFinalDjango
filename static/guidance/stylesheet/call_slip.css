@@ -1,0 +1,101 @@
+
+.certificate {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width:355.6mm;
+    max-height: 217.9mm;
+    padding: 10mm;
+    background-color: white;
+}
+
+.Republique,.cebu {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.logo_content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transform: scale(0.8);
+}
+
+.logo1,
+.logo2 {
+    width: 100px;
+    height: auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header p {
+    font-size: 12px;
+    /*margin: 5px 0;*/
+}   
+
+hr {
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+.content p{
+    text-indent: 20px;
+}
+.beggining-statement{
+    text-indent: 0px !important;
+}
+
+.title {
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content {
+    margin-bottom: 40px;
+}
+
+.content p {
+    margin: 10px 0;
+}
+#table_call{
+    font-size: 10px;
+    width: 100%;
+    border-collapse: collapse;
+}
+#table_call th, #table_call td{
+    border: 1px solid black;
+}
+.nameColumn{
+    width: 20%;
+}
+.contactColumn{
+    width: 15%;
+}
+#table_call td{
+    height: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+.signature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.signature p {
+    margin: 5px 0;
+}
+
+.names {
+    text-decoration: underline;
+    text-align: center;
+
+}
+
+.guidance p {
+    text-align: center;
+}

@@ -1,0 +1,78 @@
+
+
+
+
+{% extends "guidance/admin/main.html" %}
+{% load static %}
+{% block title %}Counseling App With Scheduler{% endblock %}
+{% block headcontent %}
+<link rel="stylesheet" type="text/css" href="{% static 'guidance/stylesheet/transaction.css'%}">
+{% endblock %}
+{% block bodycontent %}
+
+    <div class="container">
+        {{form.errors}}
+        <h3>GUIDANCE</h3>
+        <span><label id="dir-gray">Home</label><label id="dir-orange"> > Transaction Reports</label></span>
+        
+        <div class="form-container">
+            <form>
+                {% csrf_token %}
+                <h2>Transaction Report List</h2>
+                <span id="search_id">
+                    <div class="sort_container">
+                        <label>Sort By:</label>
+                        <select id="frequency" name="frequency">
+                            <option value="daily" selected>Daily</opttion>
+                            <option value="monthly">Monthly</option>
+                            <option value="all">All</option>
+                        </select>
+                    </div>
+                    <div class="sort_container">
+                        <label>Select Specific Date:</label>
+                        <input type="date" id="searchSpecificDate">
+                    </div>
+                    <div class="sort_container">
+                        <label>Transaction From:</label>
+                        <select id="transactionFrom" name="transactionFrom">
+                            <option value="all" selected>All</opttion>
+                            <option value="individual">Individual Profile</option>
+                            <option value="counseling">Counseling Schedule</option>
+                            <option value="intake">Intake Interview</option>
+                            <option value="exit">Exit Interview</option>
+                            <option value="ojt">OJT Assessments</option>
+                        </select>
+                    </div>
+                    <div class="sort_container">
+                        <br>
+                        <button class="OrangeButton" id="aplySort">Apply</button>
+                    </div>
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li class="{{ message.tags }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </span>
+            </form>
+            <table id="transaction_table">
+                <thead>
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Transaction Type</th>
+                        <th>Transaction Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in form %}
+                    <tr>
+                        <td>{{ transaction.transactionId }}</td>
+                        <td>{{ transaction.transactionType }}</td>
+                        <td>{{ transaction.transactionDate }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="{% static 'guidance/scripts/transaction.js'%}"></script>
+{% endblock %}

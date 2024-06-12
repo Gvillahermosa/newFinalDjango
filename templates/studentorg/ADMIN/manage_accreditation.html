@@ -1,0 +1,355 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Organization (Admin)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/org.css' %}">
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        a {
+            color: black;
+        }
+        td{
+            color: black;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #f2f2f2;
+            color: black;
+        }
+
+        .maincontain {
+            width: 100%;
+            margin-bottom: 20px;
+            overflow-y: auto;
+            max-height: calc(100vh - 100px); /* Adjust this value as needed */
+        }
+
+        .subcontain {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 50px;
+            background-color: #f9f9f9;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .approve {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .decline {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .cen {
+            text-align: center;
+        }
+
+        .button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="nav-container">
+        <div class="orange-bar">
+            <img src="{% static 'css/CTU_logo.png' %}" class="logo">
+            <img src="{% static 'css/barSort.png' %}" class="bars">
+        </div>
+
+        <nav class="side-nav">
+            <ul>
+                <li>
+                    <a href="#" class="studentlife-btn">
+                        OFFICE OF STUDENT LIFE
+                        <span class="fas fa-caret-down first"></span>
+                    </a>
+                    <ul class="studentlife">
+                        <li><a href="#">Equipment</a></li>
+                        <li><a href="#">Good Moral Certificate Issuance</a></li>
+                        <li><a href="#">PPMP Tracker</a></li>
+                        <li><a href="#">Monthly Calendar of Activites</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="scholar-btn">
+                        SCHOLARSHIP
+                        <span class="fas fa-caret-down second"></span>
+                    </a>
+                    <ul class="scholar-show">
+                        <li><a href="#">Submission of Requirements Tracker</a></li>
+                        <li><a href="#">Scholars Profile and Validation</a></li>
+                        <li><a href="#">Grade Submission with GPA Computation</a></li>
+                        <li><a href="#">Mentorship Program</a></li>
+                        <li><a href="#">Admin Cost Liquidation Tracker</a></li>
+                        <li><a href="#">CHED Reports Submission</a></li>
+                        <li><a href="#">Transaction Reports</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="jobplace-btn">
+                        JOB PLACEMENT
+                        <span class="fas fa-caret-down third"></span>
+                    </a>
+                    <ul class="jobplace-show">
+                        <li><a href="#">OJT Hiring</a></li>
+                        <li><a href="#">Career Guidance Tracker</a></li>
+                        <li><a href="#">OJT Requirements Tracker</a></li>
+                        <li><a href="#">Non-Academic Award Issuance</a></li>
+                        <li><a href="#">Transaction Reports</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="student_disc-btn">
+                        STUDENT DISCIPLINE
+                        <span class="fas fa-caret-down fourth"></span>
+                    </a>
+                    <ul class="student_disc-show">
+                        <li><a href="#">Case Profile</a></li>
+                        <li><a href="#">Hours Rendered for Community Service Tracker</a></li>
+                        <li><a href="#">Good Moral Certificate Issuance</a></li>
+                        <li><a href="#">Transaction Reports</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="guide-btn">
+                        GUIDANCE
+                        <span class="fas fa-caret-down fifth"></span>
+                    </a>
+                    <ul class="guide-show">
+                        <li><a href="#">Individual Profile with Guidance Concern</a></li>
+                        <li><a href="#">Counseling App with Scheduler</a></li>
+                        <li><a href="#">Intake Interview</a></li>
+                        <li><a href="#">Exit Interview</a></li>
+                        <li><a href="#">OJT Assessments/Psychological Issuance</a></li>
+                        <li><a href="#">Transaction Reports</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="alumni-btn">
+                        ALUMNI
+                        <span class="fas fa-caret-down sixth"></span>
+                    </a>
+                    <ul class="alumni-show">
+                        <li><a href="#">Alumni ID Requests</a></li>
+                        <li><a href="#">Graduate Tracer</a></li>
+                        <li><a href="#">Alumni Reunion and Events</a></li>
+                        <li><a href="#">Job Fairs</a></li>
+                        <li><a href="#">Digital Yearbook</a></li>
+                        <li><a href="#">Transaction Reports</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="community-btn">
+                        COMMUNITY INVOLVEMENT
+                        <span class="fas fa-caret-down seventh"></span>
+                    </a>
+                    <ul class="community-show">
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">CrowdFunding Projects</a></li>
+                        <li><a href="#">Donatio App</a></li>
+                        <li><a href="#">Transaction Reports</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="/home" class="student_org-btn">
+                        STUDENT ORGANIZATION
+                        <span class="fas fa-caret-down eight"></span>
+                    </a>
+                    <ul class="student_org-show">
+                        <li><a href="#" class="active">Org Profile</a></li>
+                        <li><a href="#">Projects and Accomplishments</a></li>
+                        <li><a href="#">Financial Statements Reports</a></li>
+                        <li><a href="#">Accreditation Application</a></li>
+                        <li><a href="#">Transaction Reports</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="medical-btn">
+                        MEDICAL
+                        <span class="fas fa-caret-down ninth"></span>
+                    </a>
+                    <ul class="medical-show">
+                        <li><a href="#">Patient Profile</a></li>
+                        <li><a href="#">Student Medical Requirements Tracker</a></li>
+                        <li><a href="#">Emergency Health Assistance</a></li>
+                        <li><a href="#">PWD Profile</a></li>
+                        <li><a href="#">Dental Services</a></li>
+                        <li><a href="#">Medical Clearance Issuance</a></li>
+                        <li><a href="#">Prescription Issuance</a></li>
+                        <li><a href="#">Transaction Reports</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="pcontainer">
+        <div class="headert">
+            <h1>Student Organization(Admin)</h1>
+        </div>
+        <p class="pages"><a href="{% url 'studentLife_system:logins' %}">Back To Logins</a> > <a href="{% url 'studentLife_system:admin_manage_accreditations' %}">Manage Applications</a></p>
+
+        <div class="tabs" style="margin-top:0px;">
+            <div class="tabs">
+                <a href="/admin_manageofficer" class="tab">Manage Officer</a>
+                <a href="/admin_manageadviser" class="tab">Manage Adviser</a>
+                <a href="/admin_manageproject" class="tab">Manage Projects</a>
+                <a href="/admin_managefinancial" class="tab">Manage Financial</a>           
+                <a href="/admin_manage_accreditations" class="tab active">Manage Applications</a>
+                <a href="/admin_transactionreport" class="tab">Manage Transactions </a>
+            </div>
+        </div>
+
+        <div class="maincontain">
+            {% for accreditation in accreditations %}
+            <div class="subcontain">
+                <div class="form-group">
+                    <h1 class="hd"><strong>Application ID: {{ accreditation.accreditation_id }}</strong></h1>
+                    <div class="bot hd" style="padding-top:10px;">
+                        <div>
+                            
+                        </div>
+                        <div>
+                            <strong>Organization: {{ accreditation.organization }}</strong>
+                        </div>
+                        <div>
+                            <strong>Status: {{ accreditation.status }}</strong>
+                        </div>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Document</th>
+                            <th>Files</th>
+                        </tr>
+                        <tr>
+                            <td>Letter of Intent</td>
+                            <td>{% if accreditation.letter_of_intent %}<a href="{{ accreditation.letter_of_intent.url }}" target="_blank">View Letter</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>List of Officers</td>
+                            <td>{% if accreditation.list_of_officers %}<a href="{{ accreditation.list_of_officers.url }}" target="_blank">View List</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>Certificate of Registration</td>
+                            <td>{% if accreditation.certificate_of_registration %}<a href="{{ accreditation.certificate_of_registration.url }}" target="_blank">View Certificate</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>List of Members</td>
+                            <td>{% if accreditation.list_of_members %}<a href="{{ accreditation.list_of_members.url }}" target="_blank">View Members</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>Accomplishment Report</td>
+                            <td>{% if accreditation.accomplishment_report %}<a href="{{ accreditation.accomplishment_report.url }}" target="_blank">View Report</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>Calendar of Activities</td>
+                            <td>{% if accreditation.calendar_of_activities %}<a href="{{ accreditation.calendar_of_activities.url }}" target="_blank">View Activities</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>Financial Statement</td>
+                            <td>{% if accreditation.financial_statement %}<a href="{{ accreditation.financial_statement.url }}" target="_blank">View Statement</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>Bank Passbook</td>
+                            <td>{% if accreditation.bank_passbook %}<a href="{{ accreditation.bank_passbook.url }}" target="_blank">View Passbook</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>Inventory of Properties</td>
+                            <td>{% if accreditation.inventory_of_properties %}<a href="{{ accreditation.inventory_of_properties.url }}" target="_blank">View Inventory</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>Organization Bylaws</td>
+                            <td>{% if accreditation.organization_bylaws %}<a href="{{ accreditation.organization_bylaws.url }}" target="_blank">View ByLaws</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>Faculty Adviser Appointment</td>
+                            <td>{% if accreditation.faculty_adviser_appointment %}<a href="{{ accreditation.faculty_adviser_appointment.url }}" target="_blank">View Appointment</a>{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>Other Documents</td>
+                            <td>{% if accreditation.other_documents %}<a href="{{ accreditation.other_documents.url }}" target="_blank">View Other Documents</a>{% endif %}</td>
+                        </tr>        
+                    </table>
+
+                    <form method="POST" action="{% url 'studentLife_system:admin_manage_accreditations' %}">
+                        {% csrf_token %}
+                        <div class="buttons">
+                            <input type="hidden" name="accreditation_id" value="{{ accreditation.accreditation_id }}">
+                            {% if accreditation.status == 'pending' %}
+                                <button type="submit" name="action" value="approve" class="approve">Approve</button>
+                                <button type="submit" name="action" value="decline" class="decline">Decline</button>
+                            {% endif %}
+                            {% if accreditation.status == 'approved' %}
+                                <a href="{% if accreditation.organization == 'FSTLP' %}{% url 'studentLife_system:FSTLP_certification' %}{% elif accreditation.organization == 'SI++' %}{% url 'studentLife_system:SI_certification' %}{% elif accreditation.organization == 'THE EQUATIONERS' %}{% url 'studentLife_system:THEEQUATIONERS_certification' %}{% elif accreditation.organization == 'SSG' %}{% url 'studentLife_system:SSG_certification' %}{% elif accreditation.organization == 'TECHNOCRATS' %}{% url 'studentLife_system:TECHNOCRATS_certification' %}{% endif %}" class="button cen" style="width:100%;">Print Certification</a>
+                            {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

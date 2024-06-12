@@ -1,0 +1,88 @@
+{% extends 'studentLife/main.html' %}
+{% load static %}
+
+{% block bodycontent %}
+<link rel="stylesheet" href="{% static 'studentlife/requestgmc.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Freeman&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900&display=swap" rel="stylesheet">
+
+<div class="body-content">
+    <div class="sub-title">
+        <h3>OFFICE OF STUDENT LIFE</h3>
+        <p class="hometext">Home </p><p class="certxt"> > Good Moral Certificate Issuance</p>
+    </div>
+    <div class="gmc-form">
+        <h2>Request Good Moral Certificate</h2>
+        {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == "success" %}
+                <div class="messages success-message">
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                </div>
+            {% elif message.tags == "error" %}
+                <div class="messages error-message">
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+
+        {% if student %}
+        <table id="trackerTable">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Course/Program</th>
+                    <th>Year Level</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ student.firstname }}</td>
+                    <td>{{ student.lastname }}</td>
+                    <td>{{ student.degree }}</td>
+                    <td>{{ student.yearlvl }}</td>
+                    <td>{{ student.sex }}</td>
+                    <td>{{ student.emailadd }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Form for requesting GMC -->
+        <form id="requestForm" action="{% url 'studentLife_system:requestgmc' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="student_id" value="{{ student.studID }}">
+            <div class="title-txt">
+                <p>Reason for Request:</p>
+                <input list="options" id="comboBox" name="comboBox">
+                <datalist id="options" class="menu">
+                    <option value="Transfer">
+                    <option value="Scholarship">
+                    <option value="Employment Applications">
+                    <option value="Educational Admissions">
+                    <option value="Professional Licensing">
+                    <option value="Visa Applications">
+                    <option value="SPES application">
+                </datalist>
+                <input type="hidden" name="reason" id="reason">
+                <button type="submit" class="requestBtn" name="requestBtn">REQUEST</button>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+</div>
+<script src="{% static 'studentlife/requestgmc.js' %}"></script>
+<script>
+    document.querySelector(".requestBtn").addEventListener("click", function() {
+        var selectedReason = document.getElementById("comboBox").value;
+        document.getElementById("reason").value = selectedReason;
+    });
+</script>
+{% endblock bodycontent %}

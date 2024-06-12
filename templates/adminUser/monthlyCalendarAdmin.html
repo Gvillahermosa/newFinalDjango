@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'studentlife/monthlyCalendar.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'studentlife/css/bootstrapAdmin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'studentlife/fullcalendar/lib/main.min.css'%}">
+    <script src="{% static 'studentlife/studentlife/js/jquery-3.6.0.min.js'%}"></script>
+    <script src="{% static 'studentlife/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'studentlife/fullcalendar/lib/main.min.js'%}"></script>
+    <link rel="shortcut icon" type="x-icon" href="{% static 'studentlife/images/CTU_logo.png' %}">
+        <title>STUDENT LIFE INFORMATION SYSTEM</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+        />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="orange-bar">
+        <img src="{% static 'studentlife/images/CTU_logo.png' %}" class="logo">
+        <img src="{% static 'studentlife/images/barSort.png' %}" class="bars">
+    </div>
+    <div class="left-side">
+    <nav class="side-nav">
+    <ul>
+    
+        <li><a href="#" class="studentlife-btn">OFFICE OF STUDENT LIFE 
+            <span class="fas fa-caret-down first"></span>
+        </a>
+            <ul class="studentlife">
+                <li><a href="/equipmenttrackerAdmin">Equipment(Admin)</a></li>
+                <li><a href="/requested-gmc">Good Moral Certificate Issuance(Admin)</a></li>
+                <li><a href="/upload">PPMP Tracker(Admin)</a></li>
+                <li><a href="/monthlyCalendar">Monthly Calendar of Activites(Admin)</a></li>
+            </ul>
+        </li>
+        <li><a href="#" class="scholar-btn">SCHOLARSHIP
+            <span class="fas fa-caret-down second"></span>
+        </a>
+        <ul class="scholar-show">
+            <li><a href="#">Submission of Requirements Tracker(Admin)</a></li>
+            <li><a href="#">Scholars Profile and Validation(Admin)</a></li>
+            <li><a href="#">Grade Submission with GPA Computation(Admin)</a></li>
+            <li><a href="#">Mentorship Program(Admin)</a></li>
+            <li><a href="#">Admin Cost Liquidation Tracker(Admin)</a></li>
+            <li><a href="#">CHED Reports Submission(Admin)</a></li>
+            <li><a href="#">Transaction Reports(Admin)</a></li>
+        </ul>
+        </li>
+        <li><a href="#" class="jobplace-btn">JOB PLACEMENT
+            <span class="fas fa-caret-down third"></span>    
+        </a>
+        <ul class="jobplace-show">
+            <li><a href="#">OJT Hiring(Admin)</a></li>
+            <li><a href="#">Career Guidance Tracker(Admin)</a></li>
+            <li><a href="#">OJT Requirements Tracker(Admin)</a></li>
+            <li><a href="#">Non-Academic Award Issuance(Admin)</a></li>
+            <li><a href="#">Transaction Reports(Admin)</a></li>
+        </ul>
+        </li>
+        <li><a href="#" class="student_disc-btn">STUDENT DISCIPLINE
+           <span class="fas fa-caret-down fourth"></span>
+        </a>
+        <ul class="student_disc-show">
+            <li><a href="#">Case Profile(Admin)</a></li>
+            <li><a href="#">Hours Rendered for Community Service Tracker(Admin)</a></li>
+            <li><a href="#">Good Moral Certificate Issuance(Admin)</a></li>
+            <li><a href="#">Transaction Reports(Admin)</a></li>
+            
+        </ul>
+        </li>
+        <li><a href="#" class="guide-btn">GUIDANCE
+           <span class="fas fa-caret-down fifth"></span>
+        </a>
+        <ul class="guide-show">
+            <li><a href="{% url 'studentLife_system:Counseling App With Scheduler Admin View'%}">Counseling App with Scheduler(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:Intake Interview' %}">Intake Interview(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:Exit Interview Admin View'%}">Exit Interview(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:OJT Assessment Admin View'%}">OJT Assessments/Psychological Issuance(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:guidance_transaction' %}">Transaction Reports(Admin)</a></li>
+        </ul>
+        </li>
+        <li><a href="#" class="alumni-btn">ALUMNI
+           <span class="fas fa-caret-down sixth"></span>
+        </a>
+        <ul class="alumni-show">
+            <ul class="alumni-show">
+                <li><a href="{% url 'studentLife_system:admin_idRequest' %}">Alumni ID Requests</a></li>
+                <li><a href="{% url 'studentLife_system:admin_gradTracer' %}">Graduate Tracer</a></li>
+                <li><a href="{% url 'studentLife_system:admin_events' %}">Alumni Reunion and Events</a></li>
+                <li><a href="{% url 'studentLife_system:admin_jobfairs' %}">Job Fairs</a></li>
+                <li><a href="{% url 'studentLife_system:admin_yearbook' %}">Digital Yearbook</a></li>
+                <li><a href="{% url 'studentLife_system:transaction_alumni' %}">Transaction Reports(Admin)</a></li>
+            </ul>
+        </ul>
+        </li>
+
+        <li><a href="#" class="community-btn">COMMUNITY INVOLVEMENT
+               <span class="fas fa-caret-down seventh"></span>
+            </a>
+            <ul class="community-show">
+                
+            <li><a href="{% url 'studentLife_system:program-form' %}">Events(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:project-form' %}">Crowd Funding Project(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:donation-validate' %}">Donation Validates(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:donation_dashboard' %}">Donations(Admin)</a></li>
+            <li><a href="{% url 'studentLife_system:reports' %}">Transaction Reports(Admin)</a></li>
+                
+            </ul>
+            </li>
+            <li><a href="#" class="student_org-btn">STUDENT ORGANIZATION
+               <span class="fas fa-caret-down eight"></span>
+            </a>
+            <ul class="student_org-show">
+                <li><a href="{% url 'studentLife_system:logins' %}">Org Profile</a></li>
+            </ul>
+            </li>
+           <li><a href="#" class="medical-btn">MEDICAL
+              <span class="fas fa-caret-down ninth"></span>
+           </a>
+           <ul class="medical-show">
+               <li><a href="{% url 'medicalv2:patient_profile'%}">Patient Profile(Admin)</a></li>
+               <li><a href="{% url 'medicalv2:viewrequest'%}">View Requests(Admin)</a></li>
+               <li><a href="{% url 'medicalv2:emergency_asst'%}">Emergency Health Assistance(Admin)</a></li>
+               <li><a href="{% url 'medicalv2:pwdlist'%}">PWD Profile(Admin)</a></li>
+               <li><a href="{% url 'medicalv2:dentalrequest'%}">Dental Services(Admin)</a></li>
+               <li><a href="{% url 'medicalv2:prescription'%}">Prescription Issuance(Admin)</a></li>
+               <li><a href="{% url 'medicalv2:transactions'%}">Transaction Reports(Admin)</a></li>
+               <br><br><br>
+        </ul>
+        </li>
+    </ul>
+    </div>
+</div>
+    <div class="search-container">
+        <div class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <input type="text" placeholder="Search...">
+        <p class="login">
+            <div class="dropdown">
+                <a href="#" class="dropdown-link" id="username">Welcome Admin</a>
+                <div class="dropdown-content">
+                    <a href="#">Help & Support</a>
+                    <a href="{% url 'studentLife_system:upload_student_data'%}">Settings and Security</a>
+                    <a href="{% url 'custom_user:logout' %}">Logout</a>
+                </div>
+            </div>
+        </p>
+    </div>
+</nav>
+  
+  
+  
+
+<body class="bg-light">
+    <div class="sub-title">
+        <h3>OFFICE OF STUDENT LIFE (Admin)</h3>
+        <p class="hometext">Admin </p><p class="certxt"> > Monthly Calendar of Activites</p>
+    </div>
+    <!--Input event-->
+    <div class="col-md-3">
+        <div class="cardt rounded-0 shadow">
+            <div class="card-header bg-gradient bg-primary text-light">
+                <h5 class="card-title">Schedule Form</h5>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form action="{% url 'studentLife_system:save_schedule' %}" method="post" id="schedule-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" id="schedule_id">
+                        <div class="form-group mb-2">
+                            <label for="title" class="control-label">Title</label>
+                            <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="description" class="control-label">Description</label>
+                            <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required></textarea>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="start_datetime" class="control-label">Start</label>
+                            <input type="datetime-local" class="form-control form-control-sm rounded-0" name="start_datetime" id="start_datetime" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="end_datetime" class="control-label">End</label>
+                            <input type="datetime-local" class="form-control form-control-sm rounded-0" name="end_datetime" id="end_datetime" required>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-sm rounded-0" type="submit"><i class="fa fa-save"></i> Save</button>
+                            <button class="btn btn-default border btn-sm rounded-0" type="reset"><i class="fa fa-reset"></i> Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Event Details Modal -->
+<div class="modal fade" tabindex="-1" data-bs-backdrop="static" id="event-details-modal">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-0">
+        <div class="modal-header rounded-0">
+            <h5 class="modal-title">Schedule Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body rounded-0">
+            <div class="container-fluid">
+                <dl>
+                    <dt class="text-muted">Title</dt>
+                    <dd id="title" class="fw-bold fs-4"></dd>
+                    <dt class="text-muted">Description</dt>
+                    <dd id="description" class=""></dd>
+                    <dt class="text-muted">Start</dt>
+                    <dd id="start" class=""></dd>
+                    <dt class="text-muted">End</dt>
+                    <dd id="end" class=""></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="modal-footer rounded-0">
+            <div class="text-end">
+                <button type="button" class="btn btn-primary btn-sm rounded-0" id="edit" data-id="">Edit</button>
+                <button type="button" class="btn btn-danger btn-sm rounded-0" id="delete" data-id="">Delete</button>
+                <button type="button" class="btn btn-secondary btn-sm rounded-0" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <!--Calendar-->
+    <div class="container py-5" id="page-container">
+        <div class="row">
+            <div class="col-md-9">
+                <div id="calendar"></div>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+</body>
+<script>
+    var scheds = JSON.parse('{{ sched_json|escapejs }}');
+</script>
+
+<script src="{% static 'studentlife/js/script.js' %}"></script>
+<script src="{% static 'studentlife/newmain.js' %}"></script>
+</body>
+</html>

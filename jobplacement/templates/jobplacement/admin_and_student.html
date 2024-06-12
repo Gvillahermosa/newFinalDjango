@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'jobplacement/styles/admin_and_student.css'%}?319">
+</head>
+<body>
+    <div class="background-container">
+		<img src="{% static 'jobplacement/imgs/signinBackground.jpg'%}" id="libraryPicture">
+		<img src="{% static 'jobplacement/imgs/CTU_Logo.png'%}" id="CtuLogo">
+		<span id="welcome_msg">WELCOME</span>
+	</div>
+	<div class="form-container">
+        <h1>LOGIN AS</h1>
+
+		<form class="login-form-container" method="POST">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td><a class="login_btn" href="{% url 'jobplacement:student_login' %}">STUDENT LOGIN</a>
+                    </td>
+                </tr>
+				<tr>
+                    <td><a class="login_btn" href="{% url 'jobplacement:admin_login' %}">ADMIN LOGIN</a>
+                    </td>
+				</tr>
+				<tr>
+					<td><span></span></td>
+				</tr>
+			</table>
+		</form>
+		<br/>
+    	</div>
+</body>
+</html>

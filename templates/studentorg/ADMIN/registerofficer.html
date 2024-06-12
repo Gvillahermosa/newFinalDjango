@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Officer Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" href="{% static '/css/org.css' %}">
+    <link rel="stylesheet" href="{% static '/css/general.css' %}">
+    <link rel="stylesheet" href="{% static '/css/logins.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <div class="logincontainer">
+        <div class="maincontain">
+            <div class="subcontain">
+                <div class="form-column">
+                    <div class="f1">
+                        <img src="{% static 'css/CTU_logo.png' %}" class="logoimg">
+                        <h1>Register Officer</h1>
+                    </div>
+                    <form method="post" class="top" action="{% url 'studentLife_system:register_officer' %}">
+                        {% csrf_token %}
+                        <label for="student_id">Student ID:</label><br>
+                        <input type="number" id="student_id" name="student_id" required><br><br>
+                        
+                        <label for="organization">Organization:</label>
+                        <select id="organization" name="organization" class="bot" required>
+                            <option value="FSTLP">FSTLP</option>
+                            <option value="SI++">SI++</option>
+                            <option value="SSG">SSG</option>
+                            <option value="THE EQUATIONERS">THE EQUATIONERS</option>
+                            <option value="TECHNOCRATS">TECHNOCRATS</option>
+                        </select>
+
+                        <label for="course">Course:</label>
+                        <select id="course" name="course" required>
+                            <option value=""></option>
+                            <option value="BSIT">BSIT</option>
+                            <option value="BSIE">BSIE</option>
+                            <option value="BIT-CT">BIT-COMPTECH</option>
+                            <option value="BIT-GARMENTS">BIT-GARMENTS</option>
+                            <option value="BIT-AUTOMOTIVE">BIT-AUTOMOTIVE</option>
+                            <option value="BIT-DRAFTING">BIT-DRAFTING</option>
+                            <option value="BIT-ELECTRONICS">BIT-ELECTRONICS</option>
+                            <option value="BEED">BEED</option>
+                            <option value="BSED-MATH">BSED-MATH</option>
+                            <option value="BTLED">BTLED</option>
+                            <option value="BSF">BSF</option>
+                            <option value="BSA">BSA</option>
+                            <option value="BAL">BAL</option>
+                            <option value="BAEL">BAEL</option>
+                            <option value="BS-PSYCHOLOGY">BS-PSYCHOLOGY</option>
+                            <option value="BSHM">BSHM</option>
+                            <option value="BSTM">BSTM</option>
+                        </select>
+
+                        <label for="username">Username:</label><br>
+                        <input type="text" id="username" name="username" maxlength="100" required><br><br>
+
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="password" name="password" maxlength="128" required><br><br>
+
+                        <input type="submit" value="Submit" class="button" style="width:100%;">
+                        <a href="{% url 'studentLife_system:logins' %}" class="button" style="width: 100%; margin:0px; margin-top:10px; text-align: center;">Go Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const organizationSelect = document.getElementById('organization');
+            const courseSelect = document.getElementById('course');
+
+            const courses = {
+                'all': [
+                    { value: 'BSIT', text: 'BSIT' },
+                    { value: 'BSIE', text: 'BSIE' },
+                    { value: 'BIT-COMPTECH', text: 'BIT-COMPTECH' },
+                    { value: 'BIT-GARMENTS', text: 'BIT-GARMENTS' },
+                    { value: 'BIT-AUTOMOTIVE', text: 'BIT-AUTOMOTIVE' },
+                    { value: 'BIT-DRAFTING', text: 'BIT-DRAFTING' },
+                    { value: 'BIT-ELECTRONICS', text: 'BIT-ELECTRONICS' },
+                    { value: 'BEED', text: 'BEED' },
+                    { value: 'BSED-MATH', text: 'BSED-MATH' },
+                    { value: 'BTLED', text: 'BTLED' },
+                    { value: 'BSF', text: 'BSF' },
+                    { value: 'BSA', text: 'BSA' },
+                    { value: 'BAL', text: 'BAL' },
+                    { value: 'BAEL', text: 'BAEL' },
+                    { value: 'BS-PSYCHOLOGY', text: 'BS-PSYCHOLOGY' },
+                    { value: 'BSHM', text: 'BSHM' },
+                    { value: 'BSTM', text: 'BSTM' },
+                ],
+                'TECHNOCRATS': [
+                    { value: 'BIT-COMPTECH', text: 'BIT-COMPTECH' },
+                    { value: 'BIT-GARMENTS', text: 'BIT-GARMENTS' },
+                    { value: 'BIT-AUTOMOTIVE', text: 'BIT-AUTOMOTIVE' },
+                    { value: 'BIT-DRAFTING', text: 'BIT-DRAFTING' },
+                    { value: 'BIT-ELECTRONICS', text: 'BIT-ELECTRONICS' }
+                ],
+                'SI++': [
+                    { value: 'BSIT', text: 'BSIT' }
+                ],
+                'THE EQUATIONERS': [
+                    { value: 'BSIE', text: 'BSIE' }
+                ]
+            };
+
+            function populateCourses(organization) {
+                courseSelect.innerHTML = '';
+                let selectedCourses = courses['all'];
+
+                if (organization === 'TECHNOCRATS') {
+                    selectedCourses = courses['TECHNOCRATS'];
+                } else if (organization === 'SI++') {
+                    selectedCourses = courses['SI++'];
+                } else if (organization === 'THE EQUATIONERS') {
+                    selectedCourses = courses['THE EQUATIONERS'];
+                }
+
+                selectedCourses.forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course.value;
+                    option.text = course.text;
+                    courseSelect.appendChild(option);
+                });
+            }
+
+            organizationSelect.addEventListener('change', function() {
+                populateCourses(organizationSelect.value);
+            });
+
+            populateCourses(organizationSelect.value);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+@media print {
+    /* Adjust font size for table headers */
+    table th {
+        font-size: 8px;
+    }
+    /* Adjust font size for table cells */
+    table td {
+        font-size: 8px;
+    }
+    /* Adjust padding for table headers and cells */
+    table th,
+    table td {
+        padding: 2px;
+    }
+}

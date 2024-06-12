@@ -1,0 +1,50 @@
+{% extends 'community_involvement/base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/community_involvement/programs.css">
+{% endblock%}
+
+{% block content %}
+
+<div class="header">
+    <h1>Events</h1>
+</div>
+
+{% for program in loadPrograms %}
+
+{% if archive %}
+<h1>No Data</h1>
+{% else %}
+
+<div class="program">
+    <div class="content">
+        <div class="header-content-main">
+            <div class="header-content">
+                <img class="ctu-logo" src="/static/community_involvement/img/ctu-logo.png" alt="">
+                <div>
+                    <h4 style="font-weight: bolder;">Cebu Techonological University - Argao Campus</h4>
+                    <p>{{ program.date_time }}</p>
+                </div>
+                {% if user %}
+                <a href="{% url 'studentLife_system:archive_program' program.id %}">
+                    <img src="/static/community_involvement/img/archive.png" alt="">
+                </a>
+                {% else %}
+
+                {% endif %}
+            </div>
+
+            <div class="caption">
+                <h4>{{ program.title }}</h4>
+                <p>{{ program.caption }}</p>
+            </div>
+            <div class="image">
+                <img src="{{ program.image_upload.url }}" alt="">
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    {% endblock %}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search and Update Project</title>
+</head>
+<body>
+
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="search">Enter Project ID: </label>
+            <input type="text" id="search" name="search" placeholder="Search by Project ID">
+            <button type="submit" name="search_btn" class="btn-primary">Search</button>
+        </form>
+    </div>
+
+    {% if project %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="project_id" value="{{ project.project_id }}">
+        
+        <div class="form-group">
+            <label for="id_objective">Objective:</label>
+            {{ form.objective }}
+        </div>
+        <div class="form-group">
+            <label for="id_activities">Activities/Program Strategies:</label>
+            {{ form.activities }}
+        </div>
+        <div class="form-group">
+            <label for="id_org">Organizations:</label>
+            {{ form.org }}
+        </div>
+        <div class="form-group">
+            <label for="id_target">Target:</label>
+            {{ form.target }}
+        </div>
+        <div class="form-group">
+            <label for="id_involved_officer">Involved Officer:</label>
+            {{ form.involved_officer }}
+        </div>
+        <div class="form-group">
+            <label for="id_p_budget">Proposed Budget:</label>
+            {{ form.p_budget }}
+        </div>
+        <div class="form-group">
+            <label for="id_expected_output">Expected Output:</label>
+            {{ form.expected_output }}
+        </div>
+        <div class="form-group">
+            <label for="id_actual_accomplishment">Actual Accomplishment:</label>
+            {{ form.actual_accomplishment }}
+        </div>
+        <div class="form-group">
+            <label for="id_remarks">Remarks:</label>
+            {{ form.remarks }}
+        </div>
+
+        <div class="buttons">
+            <button type="submit" name="update" class="btn-primary">Update</button>
+            <a href="{% url 'studentLife_system:FSTLP_viewproject' project.project_id %}" class="btn-primary">View Project</a>
+        </div>
+    </form>
+    {% endif %}
+
+    <a href="{% url 'studentLife_system:FSTLP_projects' %}">Back to Projects</a>
+
+</body>
+</html>

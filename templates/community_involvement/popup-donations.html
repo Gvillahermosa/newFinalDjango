@@ -1,0 +1,383 @@
+<div>
+    <div class="btn-align">
+        <button value="{{ project.title }}" class="show-donate">Donate</button>
+
+    </div>
+    <div class="donate-popup none">
+
+        <div class="donation" action="{% url 'studentLife_system:projects' %}" method="POST">
+            <div class="close-popup">
+                <i class="fa-solid fa-circle-xmark close"></i>
+            </div>
+            <h4 style="text-align: center;">Mode of Donation</h4>
+            <div class="mode">
+                <div class="flex gcash_mode">
+                    <input type="radio" name="mode" value="mode1" id="mode" checked="checked">
+                    <label for="">GCash</label>
+                </div>
+                <div class="flex bank_mode">
+                    <input type="radio" name="mode" value="mode2" id="mode">
+                    <label for="">Bank</label>
+                </div>
+                <div class="flex volunteer_mode">
+                    <input type="radio" name="mode" value="mode3" id="mode">
+                    <label for="">Volunteer</label>
+                </div>
+            </div>
+
+            <!-- GCash (Mode1) -->
+            <div>
+                <div class="gcash">
+                    {% if user %}
+                    {% for qrcode in qrCodeID %}
+                    <form class="mode1" action="{% url 'studentLife_system:gcash_mode_admin' qrcode.qr_id %}"
+                        method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h1>Gcash Qr Code Upload</h1>
+
+                        <div class="gcash-img-admin">
+                            <label for="file-input">
+                                <img src="/static/community_involvement/img/upload.png" />
+                            </label>
+                            <input type="file" accept="image/*" name="images" id="file-input"
+                                onchange="loadImage(event)" style="display: none;" required>
+                            <div>
+                                <img id="output" />
+                            </div>
+                            <button type="submit">Submit</button>
+                            <button type="button" class="closeBtn">Cancel</button>
+                        </div>
+                    </form>
+                    {% endfor %}
+                    {% else %}
+                    <form class="mode1" action="{% url 'studentLife_system:gcash-mode' %}" method="POST"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="gcash-form">
+                            <h1>Gcash Details</h1>
+                            <input class="title" name="title" type="hidden" value="">
+                            <input id="gcash_name" name="name" type="text" placeholder="Enter Name" required>
+                            <input id="gcash_number" name="gcash_number" type="number" placeholder="Enter GCash Number"
+                                required>
+                            <select name="amount" class="amount_gcash" required>
+                                <option value="" selected disabled>Select Amount</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="150">150</option>
+                                <option value="200">200</option>
+                                <option value="500">500</option>
+                                <option value="1000">1000</option>
+                                <option value="5000">5000</option>
+                            </select>
+                            <button type="button" class="nextGcash">Next</button>
+                        </div>
+
+                        <div class="gcash-img">
+                            <h1>Scan to Donate</h1>
+                            {% for qrcode in qrCodeID %}
+                            <img src="{{ qrcode.gcash.url }}" alt="">
+                            {% endfor %}
+
+                            <label for="">Take screenshot of your reciept.</label>
+                            <input type="file" accept="image/*" name="images" id="file-input"
+                                onchange="loadImage(event)" required>
+                            <button type="submit">Submit</button>
+                            <button type="button" class="closeBtn">Cancel</button>
+                        </div>
+                    </form>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <!-- Bank (Mode2) -->
+            <div>
+                {% if user %}
+                {% for qrcode in qrCodeID %}
+                <form class="mode2" action="{% url 'studentLife_system:bank_mode_admin' qrcode.qr_id %}" method="POST"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h1>Banks Qr Code Upload</h1>
+                    <div class="bank-img-admin">
+                        <select name="banks" class="bank_card" required>
+                            <option value="" selected disabled>Select Bank</option>
+                            <option value="BPI">BPI</option>
+                            <option value="BDO">BDO</option>
+                            <option value="LANDBACK">LANDBACK</option>
+                            <option value="PNB">PNB</option>
+                            <option value="METRO BANK">METRO BANK</option>
+                            <option value="UNION BANK">UNION BANK</option>
+                            <option value="CHINA BANK">CHINA BANK</option>
+                        </select>
+                        <label for="file-banks">
+                            <img src="/static/community_involvement/img/upload.png" />
+                        </label>
+                        <input type="file" accept="image/*" name="images" id="file-banks"
+                            onchange="loadImageBanks(event)" style="display: none;" required>
+                        <div>
+                            <div>
+                                <img id="outputBanks" />
+                            </div>
+                            <button type="submit">Submit</button>
+                            <button type="button" class="closeBtn">Cancel</button>
+                        </div>
+                </form>
+                {% endfor %}
+                {% else %}
+                <form class="mode2" action="{% url 'studentLife_system:bank-mode' %}" method="POST"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h1>Bank Details</h1>
+                    <div class="bank-form">
+                        <input class="title" name="title" type="hidden" value="">
+                        <input id="bank_name" name="name" type="text" placeholder="Enter Name" required>
+                        <select name="banks" class="bank_card" required>
+                            <option value="" selected disabled>Select Bank</option>
+                            <option value="BPI">BPI</option>
+                            <option value="BDO">BDO</option>
+                            <option value="LANDBACK">LANDBACK</option>
+                            <option value="PNB">PNB</option>
+                            <option value="METRO BANK">METRO BANK</option>
+                            <option value="UNION BANK">UNION BANK</option>
+                            <option value="CHINA BANK">CHINA BANK</option>
+                        </select>
+                        <input id="bank_number" name="bank_number" type="number" placeholder="Enter Account Number"
+                            required>
+                        <select name="amount" class="bank_amount" required>
+                            <option value="" selected disabled>Select Amount</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="150">150</option>
+                            <option value="200">200</option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                            <option value="5000">5000</option>
+                        </select>
+                        <button type="button" class="nextBank">Next</button>
+                    </div>
+                    <div class="bank-img">
+                        {% for qrcode in qrCodeID %}
+                        <div id="qr_bank">
+                            <img src="">
+                        </div>
+                        {% endfor %}
+                        <label for="">Take screenshot of your reciept.</label>
+                        <input type="file" accept="image/*" name="images" onchange="loadImage(event)" required>
+                        <button type="submit">Submit</button>
+                        <button type="button" class="closeBtn">Cancel</button>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+
+            <!-- Volunteer (Mode3) -->
+            <div>
+                <form class="mode3" action="{% url 'studentLife_system:volunteer-mode' %}" method="POST"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h1>Volunteer Details</h1>
+                    <div class="volunteer-form">
+                        <input class="title" name="title" type="hidden" value="">
+                        <input name="name" id="volunteer_name" type="text" placeholder="Enter Name" required>
+                        <input name="contact_number" id="contact_number" type="number" placeholder="Enter Phone Number"
+                            required>
+                        <select name="what_kind" class="what_kind" required>
+                            <option value="" selected disabled>Select what kind of donation</option>
+                            <option value="RELIEF GOODS">RELIEF GOODS</option>
+                            <option value="BELONGINGS">BELONGINGS</option>
+                            <option value="MONEY">MONEY</option>
+                            <option value="EQUIPMENTS">EQUIPMENTS</option>
+                            <option value="SERVICE">SERVICE</option>
+                        </select>
+                        <select style="display: none;" class="recepient" name="recepient_name" id="">
+                            <option value="Hon. Wilmer B. Pantinople">Hon. Wilmer B. Pantinople</option>
+                            <option value="Hon. Zykki Belle Ogario">Hon. Zykki Belle Ogario</option>
+                        </select>
+                        <input style="display: none;" class="volunteer_amount" name="volunteer_amount" type="number"
+                            placeholder="Enter amount">
+                        <select style="display: none;" name="recepient_things" class="recepient_things">
+                            <option value="" selected disabled>Recepient</option>
+                            <option value="SSG OFFICE">SSG OFFICE</option>
+                            <option value="SAO OFFICE">SAO OFFICE</option>
+                        </select>
+                        <label style="display: none;" class="confirmation_label" for="">Send your confirmation photo
+                            below.</label>
+                        <input style="display: none;" class="confirmation_photo" type="file" accept="image/*"
+                            name="images" id="file-input" onchange="loadImage(event)">
+                        <input style="display: none;" name="date_sched" class="date_sched" type="date">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+{% for qrcode in qrCodeID %}
+<script src="/static/community_involvement/jquery.js"></script>
+<script>
+
+    $('.bank_card').on('change', function (e) {
+        e.preventDefault()
+
+        bank_card = $(this).find(":selected").val()
+
+        if (bank_card == "BPI") {
+
+            $('#qr_bank img').attr("src", "{{qrcode.bpi.url}}");
+
+        }
+        if (bank_card == "BDO") {
+
+            $('#qr_bank img').attr("src", "{{qrcode.bdo.url}}");
+
+        }
+        if (bank_card == "LANDBANK") {
+
+            $('#qr_bank img').attr("src", "{{qrcode.landbank.url}}");
+
+        }
+        if (bank_card == "PNB") {
+
+            $('#qr_bank img').attr("src", "{{qrcode.pnb.url}}");
+
+        }
+        if (bank_card == "METRO BANK") {
+
+            $('#qr_bank img').attr("src", "{{qrcode.metro.url}}");
+
+        }
+        if (bank_card == "UNION BANK") {
+
+            $('#qr_bank img').attr("src", "{{qrcode.union.url}}");
+
+        }
+        if (bank_card == "CHINA BANK") {
+
+            $('#qr_bank img').attr("src", "{{qrcode.china.url}}");
+
+        }
+
+    });
+
+</script>
+{% endfor %}
+
+<script>
+    var loadImage = function (event) {
+        var images = document.getElementById('output');
+        images.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+    var loadImageBanks = function (event) {
+        var images = document.getElementById('outputBanks');
+        images.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+    // var loadImageVolunteer = function (event) {
+    //     var images = document.getElementById('outputBanks');
+    //     images.src = URL.createObjectURL(event.target.files[0]);
+    // };
+
+
+    // Volunteer
+    let volunteer_amount = 0
+
+    $('.volunteer_amount').on('change', function () {
+        volunteer_amount = $(this).find(":selected").val()
+        console.log(volunteer_amount)
+    });
+
+    let contact_number = document.querySelectorAll('#contact_number');
+    let volunteer_name = document.querySelectorAll('#volunteer_name');
+
+    let contact_num = 0
+    let volunteer_n = ""
+
+    $.each(contact_number, function (index, element) {
+        element.addEventListener('keyup', () => {
+            contact_num = element.value
+            console.log(contact_num)
+        })
+    })
+
+    $.each(volunteer_name, function (index, element) {
+        element.addEventListener('keyup', () => {
+            volunteer_n = element.value
+            console.log(volunteer_n)
+        })
+    })
+
+    $('.what_kind').on('change', function (e) {
+        e.preventDefault()
+
+        what_kind = $(this).find(":selected").val()
+        console.log(what_kind)
+
+        if (what_kind == "RELIEF GOODS") {
+            $('.recepient').css("display", "none");
+            $('.confirmation_label').css("display", "block");
+            $('.confirmation_photo').css("display", "block");
+            $('.date_sched').css("display", "none");
+            $('.volunteer_amount').css("display", "none");
+            $('.recepient_things').css("display", "block");
+
+        }
+
+        if (what_kind == "SERVICE") {
+            $('.recepient').css("display", "none");
+            $('.confirmation_label').css("display", "none");
+            $('.confirmation_photo').css("display", "none");
+            $('.recepient_things').css("display", "none");
+            $('.volunteer_amount').css("display", "none");
+            $('.date_sched').css("display", "block");
+        }
+
+        if (what_kind == "WORK") {
+            $('.recepient').css("display", "none");
+            $('.confirmation_label').css("display", "none");
+            $('.confirmation_photo').css("display", "none");
+            $('.recepient_things').css("display", "none");
+            $('.volunteer_amount').css("display", "none");
+            $('.date_sched').css("display", "block");
+        }
+
+        if (what_kind == "BELONGINGS") {
+            $('.recepient').css("display", "none");
+            $('.confirmation_label').css("display", "block");
+            $('.confirmation_photo').css("display", "block");
+            $('.recepient_things').css("display", "block");
+            $('.volunteer_amount').css("display", "none");
+            $('.date_sched').css("display", "none");
+        }
+
+        if (what_kind == "MONEY") {
+            $('.recepient').css("display", "block");
+            $('.confirmation_label').css("display", "block");
+            $('.confirmation_photo').css("display", "block");
+            $('.recepient_things').css("display", "none");
+            $('.volunteer_amount').css("display", "block");
+            $('.date_sched').css("display", "none");
+        }
+
+        if (what_kind == "EQUIPMENTS") {
+            $('.recepient').css("display", "none");
+            $('.confirmation_label').css("display", "block");
+            $('.confirmation_photo').css("display", "block");
+            $('.recepient_things').css("display", "block");
+            $('.volunteer_amount').css("display", "none");
+            $('.date_sched').css("display", "none");
+        }
+
+    });
+
+
+</script>

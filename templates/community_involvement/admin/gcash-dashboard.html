@@ -1,0 +1,45 @@
+{% extends 'community_involvement/adminbase.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/community_involvement/projects.css">
+<link rel="stylesheet" href="/static/community_involvement/donation.css">
+{% endblock%}
+
+{% block content %}
+<div class="header">
+    <h1>Donation Gcash</h1>
+</div>
+
+<div class="back">
+    <a href="{% url 'studentLife_system:donation_dashboard' %}"><i class='bx bx-arrow-back'></i>Back</a>
+</div>
+
+<div class="data">
+
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Donated</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for donates in loadGcashDonations %}
+                <tr>
+                    <td>{{ donates.donated }}</td>
+                    <td>{{ donates.name }}</td>
+                    <td>{{ donates.amount }}</td>
+                    <td>{{ donates.date }}</td>
+                    <td class="view"><a target="_blank" href="/media/{{ donates.image_details }}">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

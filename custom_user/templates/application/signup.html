@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <link rel="shortcut icon" type="x-icon" href="{% static 'studentlife/images/CTU_logo.png' %}">
+    <title>STUDENT LIFE INFORMATION SYSTEM</title>
+	<link rel="stylesheet" href="{% static 'application/styles/fonts/material-icon/css/material-design-iconic-font.min.css'%}">
+    <link rel="stylesheet" href="{% static 'application/styles/signin.css'%}">
+</head>
+<body>
+    <div class="background-container">
+		<img src="{% static 'application/images/signinBackground.jpg'%}" id="libraryPicture">
+		<img src="{% static 'application/images/CTU_Logo.png'%}" id="CtuLogo">
+		<span id="welcome_msg">WELCOME</span>
+	</div>
+	<div id="diagonal-border"></div>
+	<div class="form-container">
+        {% if error_message %}
+            <script>
+                alert("{{ error_message }}");
+            </script>
+        {% endif %}
+        {% if success_message %}
+            <script>
+                alert("{{ success_message }}");
+            </script>
+        {% endif %}
+		<form class="signup-form-container" action="{% url "custom_user:register" %}" method="post">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td><label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>{{form.student_id}}</td>
+				</tr>
+				<tr>
+					<td><label for="email"><i class="zmdi zmdi-email"></i></label>{{form.email}}</td>
+				</tr>
+				<tr>
+					<td><label for="pass"><i class="zmdi zmdi-lock"></i></label>{{form.password1}}</td>
+				</tr>
+				<tr>
+					<td><label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>{{form.password2}}</td>
+				</tr>
+				<tr>
+					<td>Already have an account? <a href="{% url "custom_user:login" %}" id="sign-in" >Sign in</a></td>
+				</tr>
+				<tr>
+					<td align="center">
+                        {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                            {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% comment %} {% for message in messages %}
+						<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+						<span> {{message}} </span>
+						{% endfor %} {% endcomment %}
+					</td>
+				</tr>
+				<tr>
+					<td><button>Sign Up</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	{% comment %} <script>
+		document.addEventListener("DOMContentLoaded", function() {
+			const signUpButton = document.getElementById("sign-up");
+			const signInButton = document.getElementById("sign-in");
+			const loginForm = document.querySelector(".login-form-container");
+			const signUpForm = document.querySelector(".signup-form-container");
+		
+			signUpButton.addEventListener("click", function() {
+				loginForm.classList.remove("fade-in");
+				loginForm.classList.add("fade-out");
+		
+				signUpForm.classList.remove("fade-out");
+				signUpForm.classList.add("fade-in");
+			});
+		
+			signInButton.addEventListener("click", function() {
+				signUpForm.classList.remove("fade-in");
+				signUpForm.classList.add("fade-out");
+		
+				loginForm.classList.remove("fade-out");
+				loginForm.classList.add("fade-in");
+			});
+		});
+		
+	</script> {% endcomment %}
+</body>
+</html>

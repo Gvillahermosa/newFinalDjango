@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transaction Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .button,
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+            font-size: 12px;
+            color: white;
+            background-color: #FF8000;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .certificate-container {
+            margin: 20px auto;
+            width: 80%;
+            border: 2px solid #000;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-content img {
+            width: 100px;
+            height: auto;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        .header-text {
+            flex-grow: 1;
+            margin-left: 20px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .header-text .content1,
+        .header-text .content2,
+        .header-text .content3,
+        .header-text .content4 {
+            margin: 5px 0;
+        }
+
+        .line {
+            width: 100%;
+            border-top: 3px solid #000;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            word-break: break-all;
+            max-width: 300px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .summary {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .footerImg {
+            margin-top: 25px;
+            width: 650px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bottomline {
+            width: 700px;
+            border-top: 1px solid #000;
+            color: black;
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media print {
+            .button,
+            .back-button,
+            .print-button,
+            form {
+                display: none;
+            }
+
+            .certificate-container {
+                border: none;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .header-content img {
+                margin-left: 0;
+                margin-right: 0;
+                width: 80px;
+            }
+
+            .header-text {
+                margin: 0;
+            }
+
+            .line {
+                margin: 10px 0;
+            }
+
+            table {
+                margin-top: 10px;
+                font-size: 12px;
+            }
+
+            th,
+            td {
+                padding: 5px;
+                max-width: none;
+            }
+
+            .footerImg {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .bottomline {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: right; margin-bottom: 10px;">
+    </div>
+
+    <header class="certificate-container">
+        <div class="header-content">
+            <img src="{% static 'css/CTU_logo.png' %}" alt="CTU Logo" class="logo1">
+            <div class="header-text">
+                <div class="content1">REPUBLIC OF THE PHILIPPINES</div>
+                <div class="content2">CEBU TECHNOLOGICAL UNIVERSITY</div>
+                <div class="content3">ARGAO CAMPUS</div>
+                <div class="content4">Ed Kintanar Street, Lamacan, Argao, Cebu</div>
+                <div class="content4">Website: <a href="https://www.argao.ctu.edu.ph">https://www.argao.ctu.edu.ph</a>
+                    <br>E-mail:<a href="mailto:cdargao@ctu.edu.ph">cdargao@ctu.edu.ph</a>
+                </div>
+                <div class="content4">Phone No.: (032) 401-0737 local 1700</div>
+            </div>
+            <img src="{% static 'css/BagongPilipinaslogo.png' %}" alt="Bagong Pilipinas Logo" class="logo2">
+        </div>
+        <div class="line"></div>
+
+        <div class="bruh">
+            <h1>Transaction Report</h1>
+
+            <form method="get">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" value="{{ start_date }}">
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" name="end_date" value="{{ end_date }}">
+                <label for="organization">Organization:</label>
+                <select id="organization" name="organization">
+                    <option value="">All</option>
+                    <option value="SSG" {% if organization == 'SSG' %}selected{% endif %}>SSG</option>
+                    <option value="FSTLP" {% if organization == 'FSTLP' %}selected{% endif %}>FSTLP</option>
+                    <option value="SI++" {% if organization == 'SI++' %}selected{% endif %}>SI++</option>
+                    <option value="THE EQUATIONERS" {% if organization == 'THE EQUATIONERS' %}selected{% endif %}>THE EQUATIONERS</option>
+                    <option value="TECHNOCRATS" {% if organization == 'TECHNOCRATS' %}selected{% endif %}>TECHNOCRATS</option>
+                </select>
+                <label for="report_type">Report Type:</label>
+                <select id="report_type" name="report_type">
+                    <option value="all">All</option>
+                    <option value="projects" {% if report_type == 'projects' %}selected{% endif %}>Projects</option>
+                    <option value="financial_statements" {% if report_type == 'financial_statements' %}selected{% endif %}>Financial Statements</option>
+                    <option value="accreditations" {% if report_type == 'accreditations' %}selected{% endif %}>Accreditations</option>
+                </select>
+                <button type="submit" class="button">Filter</button>
+                <a class="button" href="/admin_manageofficer">Back</a>
+                <button class="print-button button" onclick="printTransactionReport()">Print Report</button>
+            </form>
+        </div>
+
+        {% if report_type == 'projects' or report_type == 'all' %}
+        <h2>Projects</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Organization</th>
+                    <th>Objective</th>
+                    <th>Target</th>
+                    <th>Budget</th>
+                    <th>Transaction Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                <tr>
+                    <td>{{ project.org }}</td>
+                    <td>{{ project.objective }}</td>
+                    <td>{{ project.target }}</td>
+                    <td>{{ project.p_budget }}</td>
+                    <td>{{ project.date_saved }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3"><strong>Total</strong></td>
+                    <td>{{ total_budget }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endif %}
+
+        {% if report_type == 'financial_statements' or report_type == 'all' %}
+        <h2>Financial Statements</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Organization</th>
+                    <th>Purpose</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for statement in financial_statements %}
+                <tr>
+                    <td>{{ statement.org }}</td>
+                    <td>{{ statement.purpose }}</td>
+                    <td>{{ statement.amount }}</td>
+                    <td>{{ statement.date }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2"><strong>Total</strong></td>
+                    <td>{{ total_amount_financial_statements }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endif %}
+
+        {% if report_type == 'accreditations' or report_type == 'all' %}
+        <h2>Accreditations</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Organization</th>
+                    <th>Status</th>
+                    <th>Transaction Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for accreditation in accreditations %}
+                <tr>
+                    <td>{{ accreditation.organization }}</td>
+                    <td>{{ accreditation.status }}</td>
+                    <td>{{ accreditation.date_saved }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        <div class="bottomline"></div>
+        <img class="footerImg" src="{% static 'css/footer.png' %}" alt="Footer Image">
+
+        <script>
+            function printTransactionReport() {
+                // Hide the print button and back button before printing
+                document.querySelector('.bruh').style.display = 'none';
+                // Print the page
+                window.print();
+                // Show the print button and back button after printing
+                document.querySelector('.bruh').style.display = 'block';
+            }
+        </script>
+</body>
+
+</html>

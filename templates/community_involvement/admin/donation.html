@@ -1,0 +1,25 @@
+{% extends 'community_involvement/adminbase.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/community_involvement/projects.css">
+<link rel="stylesheet" href="/static/community_involvement/donation-dashboard.css">
+
+
+{% endblock%}
+
+{% block content %}
+<div class="header">
+    <h1>Select Donation</h1>
+</div>
+<div class="buttons">
+    <div>
+        <a href="{% url 'studentLife_system:gcash_dashboard' %}">GCash</a>
+    </div>
+    <div>
+        <a href="{% url 'studentLife_system:banks_dashboard' %}">Banks</a>
+    </div>
+    <div>
+        <a href="{% url 'studentLife_system:volunteer_dashboard' %}">Volunteer</a>
+    </div>
+</div>
+{% endblock %}

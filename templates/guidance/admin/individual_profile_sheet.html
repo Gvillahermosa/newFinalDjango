@@ -1,0 +1,1763 @@
+{% extends "guidance/admin/main.html" %}
+{% load static %}
+{% block headcontent %}
+<link rel="stylesheet" type="text/css" href="{% static 'guidance/stylesheet/individual.css'%}">
+<script src="{% static 'guidance/scripts/html2pdf.js'%}"></script>
+{% endblock %}
+{% block bodycontent %}
+{% csrf_token %}
+<div class="page-container" id="page-container">
+    <div class="pages page1" style="display: flex; position:relative;left:50%;margin-left:-306px;top:0px;width:612px;height:936px; ">
+        <div style="position:absolute;left:0px;top:0px">
+        <img class="backgroundimg" src="{% static 'guidance/assets/Individual-Profile-Sheet-college_files/background-1.jpg' %}" width=612 height=936></div>
+        <div style="position:absolute;left:268.44px;top:112.62px" class="cls_002"><span class="cls_002">Student Affairs Office</span></div>
+        <div style="position:absolute;left:450.48px;top:120.64px" class="cls_004"><span class="cls_004">SAO - GO Form 5B</span></div>
+        <div style="position:absolute;left:239.40px;top:124.74px" class="cls_003"><span class="cls_003">GUIDANCE SERVICES CENTER</span></div>
+        <div style="position:absolute;left:450.48px;top:129.76px" class="cls_004"><span class="cls_004">November 2017</span></div>
+        <div style="position:absolute;left:450.48px;top:139.00px" class="cls_004"><span class="cls_004">Revision: 1</span></div>
+        <div style="position:absolute;left:485.76px;top:173.34px" class="cls_002"><span class="cls_002">Page 1 of 4 pages</span></div>
+        <div style="position:absolute;left:228.12px;top:185.33px" class="cls_005"><span class="cls_005">INDIVIDUAL PROFILE SHEET</span></div>
+        <div style="position:absolute;left:58.84px;top:143.06px" class="cls_006"><img src="{{form.individualProfileId.studentPhoto.url}}" alt="2x2" style="height: 126px; width: 132px;"></div>
+        <div style="position:absolute;left:57.60px;top:285.54px" class="cls_002"><span class="cls_002">Family Name:&nbsp&nbsp{{form.individualProfileId.studentId.lastname|toTitle}}</span></div>
+        <div style="position:absolute;left:242.64px;top:285.54px" class="cls_002"><span class="cls_002">First Name:&nbsp&nbsp{{form.individualProfileId.studentId.firstname|toTitle}}</span></div>
+        <div style="position:absolute;left:384.12px;top:285.54px" class="cls_002"><span class="cls_002">Middle Name:&nbsp&nbsp{{form.individualProfileId.studentId.middlename|toTitle}}</span></div>
+        <div style="position:absolute;left:57.60px;top:301.74px" class="cls_002"><span class="cls_002">Nickname:&nbsp&nbsp{{form.individualProfileId.nickName}}</span></div>
+        <div style="position:absolute;left:237.60px;top:301.74px" class="cls_002"><span class="cls_002">Course, Year &amp; Section:&nbsp{{form.individualProfileId.studentId.degree|extract_initials}} {{form.individualProfileId.yearlvl}} {{form.individualProfileId.section}}</span></div>
+        <div style="position:absolute;left:460.08px;top:301.74px" class="cls_002"><span class="cls_002">Major:<span style="font-size: clamp(6px, 8px, 10px);;">{{form.individualProfileId.major}}</span></span></div>
+        <div style="position:absolute;left:57.60px;top:318.06px" class="cls_002"><span class="cls_002">Student I.D. No.&nbsp&nbsp{{form.individualProfileId.studentId.studID}}</span></div>
+        <div style="position:absolute;left:309.60px;top:318.06px" class="cls_002"><span class="cls_002">Date Filled:&nbsp&nbsp{{form.individualProfileId.dateFilled}}</span></div>
+        <div style="position:absolute;left:57.60px;top:338.09px" class="cls_007"><span class="cls_007">Please put a check</span><span class="cls_008"> [</span><span class="cls_009">✓</span><span class="cls_008">]</span><span class="cls_007"> mark</span></div>
+        <div style="position:absolute;left:57.60px;top:355.14px" class="cls_002">
+            {% if form.individualProfileId.studentType == 'newStudent'%}
+                <span class="cls_002">[✓] New Student</span>
+            {% else %}
+                <span class="cls_002">[ ] New Student</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:147.72px;top:355.14px" class="cls_002">
+            {% if form.individualProfileId.studentType == 'returnee'%}
+                <span class="cls_002">[✓] Returnee</span>
+            {% else %}
+                <span class="cls_002">[ ] Returnee</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:224.40px;top:355.14px" class="cls_002">
+            {% if form.individualProfileId.studentType == 'shifter'%}
+                <span class="cls_002">[✓] Shifter</span>
+            {% else %}
+                <span class="cls_002">[ ] Shifter</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:290.40px;top:355.14px" class="cls_002">
+            {% if form.individualProfileId.studentType == 'transferee'%}
+                <span class="cls_002">[✓] Transferee</span>
+            {% else %}
+                <span class="cls_002">[ ] Transferee</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:371.40px;top:355.14px" class="cls_002">
+            {% if form.individualProfileId.studentType == 'alspasses'%}
+                <span class="cls_002">[✓] ALS Passer</span>
+            {% else %}
+                <span class="cls_002">[ ] ALS Passer</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:457.92px;top:355.14px" class="cls_002">
+            {% if form.individualProfileId.studentType == 'foreignstudent'%}
+                <span class="cls_002">[✓] Foreign Student</span>
+            {% else %}
+                <span class="cls_002">[ ] Foreign Student</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:373.74px" class="cls_002"><span class="cls_002">If New Student:</span></div>
+        <div style="position:absolute;left:135.24px;top:373.74px" class="cls_002">
+            {% if form.individualProfileId.studentType == 'newStudent'%}
+                {% if form.individualProfileId.curriculumtype == 'oldsecondary'%}
+                    <span class="cls_002">[✓] Old Secondary Curriculum Graduate</span>
+                {% else %}
+                    <span class="cls_002">[ ] Old Secondary Curriculum Graduate</span>
+                {% endif %}
+            {% else %}
+                <span class="cls_002">[ ] Old Secondary Curriculum Graduate</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:326.64px;top:373.74px" class="cls_002">
+            {% if form.individualProfileId.studentType == 'newStudent'%}
+                {% if form.individualProfileId.curriculumtype == 'seniorhigh'%}
+                    <span class="cls_002">[✓] Senior High School Graduate  Track:{{form.individualProfileId.track}}</span>
+                {% else %}
+                    <span class="cls_002">[ ] Senior High School Graduate  Track:</span>
+                {% endif %}
+            {% else %}
+                    <span class="cls_002">[ ] Senior High School Graduate  Track:</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:402.54px" class="cls_003"><span class="cls_003">A. PERSONAL DATA:</span></div>
+        <div style="position:absolute;left:57.60px;top:420.90px" class="cls_002"><span class="cls_002">Age:&nbsp;{{form.individualProfileId.age}}</span></div>
+        <div style="position:absolute;left:96.12px;top:420.90px" class="cls_002"><span class="cls_002">Religion:&nbsp;{{form.individualProfileId.religion}}</span></div>
+        <div style="position:absolute;left:240.12px;top:420.90px" class="cls_002"><span class="cls_002">Height:&nbsp;{{form.individualProfileId.height}}</span></div>
+        <div style="position:absolute;left:312.12px;top:420.90px" class="cls_002"><span class="cls_002">Weight:&nbsp;{{form.individualProfileId.weight}}</span></div>
+        <div style="position:absolute;left:386.64px;top:420.90px" class="cls_002"><span class="cls_002">Birth Order Among Siblings:&nbsp;&nbsp;&nbsp;{{form.individualProfileId.birthOrderAmongSiblings}}</span></div>
+        <div style="position:absolute;left:57.60px;top:437.10px" class="cls_002">
+            {% if form.individualProfileId.studentId.sex == 'M'%}
+                <span class="cls_002">Sex: Male&nbsp;&nbsp;✓</span>
+            {% else %}
+                <span class="cls_002">Sex: Male</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:134.64px;top:437.10px" class="cls_002">
+            {% if form.individualProfileId.studentId.sex == 'F'%}
+                <span class="cls_002">Female&nbsp;&nbsp;✓</span>
+            {% else %}
+                <span class="cls_002">Female</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:204.12px;top:437.10px" class="cls_002">
+            {% if form.individualProfileId.sexualOrientation == 'heterosexual'%}
+                <span class="cls_002">Sexual Orientation: Heterosexual&nbsp;&nbsp;✓</span>
+            {% else %}
+                <span class="cls_002">Sexual Orientation: Heterosexual</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:352.92px;top:437.10px" class="cls_002"><span class="cls_002">____</span></div>
+        <div style="position:absolute;left:375.48px;top:437.10px" class="cls_002">
+            {% if form.individualProfileId.sexualOrientation == 'gay'%}
+                <span class="cls_002">Gay&nbsp;&nbsp;✓</span>
+            {% else %}
+                <span class="cls_002">Gay</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:396.12px;top:437.10px" class="cls_002"><span class="cls_002">____</span></div>
+        <div style="position:absolute;left:418.68px;top:437.10px" class="cls_002">
+            {% if form.individualProfileId.sexualOrientation == 'lesbian'%}
+                <span class="cls_002">Lesbian&nbsp;&nbsp;✓</span>
+            {% else %}
+                <span class="cls_002">Lesbian</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:455.52px;top:437.10px" class="cls_002"><span class="cls_002">____</span></div>
+        <div style="position:absolute;left:478.08px;top:437.10px" class="cls_002">
+            {% if form.individualProfileId.sexualOrientation == 'others'%}
+                <span class="cls_002">Others&nbsp;&nbsp;✓</span>
+            {% else %}
+                <span class="cls_002">Others</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:453.42px" class="cls_002"><span class="cls_002">Civil Status:&nbsp;{{form.individualProfileId.civilStatus}}</span></div>
+        <div style="position:absolute;left:240.12px;top:453.42px" class="cls_002"><span class="cls_002">Citizenship:&nbsp;{{form.individualProfileId.citizenship}}</span></div>
+        <div style="position:absolute;left:57.60px;top:469.74px" class="cls_002"><span class="cls_002">Date of Birth:&nbsp;&nbsp;&nbsp;{{form.individualProfileId.dateOfBirth}}</span></div>
+        <div style="position:absolute;left:276.12px;top:469.74px" class="cls_002"><span class="cls_002">Place of Birth:&nbsp;{{form.individualProfileId.placeOfBirth}}</span></div>
+        <div style="position:absolute;left:57.60px;top:485.94px" class="cls_002"><span class="cls_002">Current Address:&nbsp;&nbsp;&nbsp;{{form.individualProfileId.currentAddress}}</span></div>
+        <div style="position:absolute;left:57.60px;top:502.26px" class="cls_002"><span class="cls_002">Permanent Address:&nbsp;&nbsp;&nbsp;{{form.individualProfileId.permanentAddress}}</span></div>
+        <div style="position:absolute;left:57.60px;top:518.58px" class="cls_002"><span class="cls_002">Landline No.:&nbsp;&nbsp;&nbsp;{{form.individualProfileId.landlineNo}}</span></div>
+        <div style="position:absolute;left:242.64px;top:518.58px" class="cls_002"><span class="cls_002">Mobile No.:&nbsp;&nbsp;&nbsp;{{form.individualProfileId.mobileNo}}</span></div>
+        <div style="position:absolute;left:422.64px;top:518.58px" class="cls_002"><span class="cls_002">Email:&nbsp;{{form.individualProfileId.email}}</span></div>
+        <div style="position:absolute;left:57.60px;top:534.90px" class="cls_002"><span class="cls_002">Languages/Dialects Spoken at Home:&nbsp;{{form.individualProfileId.languagesDialectsSpokenAtHome}}</span></div>
+        <div style="position:absolute;left:348.12px;top:534.90px" class="cls_002"><span class="cls_002">Languages/Dialects Most Fluent In:&nbsp;{{form.individualProfileId.languagesDialectsMostFluentIn}}</span></div>
+        <div style="position:absolute;left:57.60px;top:554.81px" class="cls_007"><span class="cls_007">Please put a check</span><span class="cls_008"> [</span><span class="cls_009">✓</span><span class="cls_008">]</span><span class="cls_007"> mark</span></div>
+        <div style="position:absolute;left:57.60px;top:571.98px" class="cls_002"><span class="cls_002">With whom are you living?</span></div>
+        <div style="position:absolute;left:93.60px;top:586.38px" class="cls_002">
+            {% if form.individualProfileId.livingWith == 'parents'%}
+                <span class="cls_002">[✓] Parents</span>
+            {% else %}
+                <span class="cls_002">[ ] Parents</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:201.60px;top:586.38px" class="cls_002">
+            {% if form.individualProfileId.livingWith == 'fatheronly'%}
+                <span class="cls_002">[✓] Father only</span>
+            {% else %}
+                <span class="cls_002">[ ] Father only</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:586.38px" class="cls_002">
+            {% if form.individualProfileId.livingWith == 'motheronly'%}
+                <span class="cls_002">[✓] Mother only</span>
+            {% else %}
+                <span class="cls_002">[ ] Mother only</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:453.60px;top:586.38px" class="cls_002">
+            {% if form.individualProfileId.livingWith == 'spouse'%}
+                <span class="cls_002">[✓] Spouse</span>
+            {% else %}
+                <span class="cls_002">[ ] Spouse</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:600.78px" class="cls_002">
+            {% if form.individualProfileId.livingWith == 'relative'%}
+                <span class="cls_002">[✓] Relative, please specify&nbsp;{{form.individualProfileId.livingSpecify}}</span>
+            {% else %}
+                <span class="cls_002">[ ] Relative, please specify</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:615.18px" class="cls_002">
+            {% if form.individualProfileId.livingWith == 'employer'%}
+                <span class="cls_002">[✓] Employer</span>
+            {% else %}
+                <span class="cls_002">[ ] Employer</span>
+            {% endif %} 
+        </div>
+        <div style="position:absolute;left:201.60px;top:615.18px" class="cls_002">
+            {% if form.individualProfileId.livingWith == 'others'%}
+                <span class="cls_002">[✓] Others</span><span class="cls_003">,&nbsp;{{form.individualProfileId.livingSpecify}}</span></div>
+            {% else %}
+                <span class="cls_002">[ ] Others</span><span class="cls_003">,</span></div>
+            {% endif %}
+        <div style="position:absolute;left:57.60px;top:629.70px" class="cls_002">
+            {% if form.individualProfileId.placeOfLiving == 'dormitory'%}
+                <span class="cls_002">While studying in CTU, where are you living? [✓] Dormitory</span>
+            {% else %}
+                <span class="cls_002">While studying in CTU, where are you living? [ ] Dormitory</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:335.64px;top:629.70px" class="cls_002">
+            {% if form.individualProfileId.placeOfLiving == 'boardinghouse'%}
+                <span class="cls_002">[✓] Boarding House</span>
+            {% else %}
+                <span class="cls_002">[ ] Boarding House</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:439.56px;top:629.70px" class="cls_002">
+            {% if form.individualProfileId.placeOfLiving == 'ownhouse'%}
+                <span class="cls_002">[✓] Own House</span>
+            {% else %}
+                <span class="cls_002">[ ] Own House</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:645.90px" class="cls_002">
+            {% if form.individualProfileId.placeOfLiving == 'others'%}
+                <span class="cls_002">[✓] Others :&nbsp;{{form.individualProfileId.placeOfLivingOthers}}</span>
+            {% else %}
+                <span class="cls_002">[ ] Others :</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:674.70px" class="cls_003"><span class="cls_003">B. FAMILY DATA:</span></div>
+        <div style="position:absolute;left:249.12px;top:692.94px" class="cls_002"><span class="cls_002">Father</span></div>
+        <div style="position:absolute;left:476.04px;top:692.94px" class="cls_002"><span class="cls_002">Mother</span></div>
+        <div style="position:absolute;left:209.64px;top:705.42px" class="cls_002"><span class="cls_002">(Mark with + if deceased)</span></div>
+        <div style="position:absolute;left:435.12px;top:705.42px" class="cls_002"><span class="cls_002">(Mark with + if deceased)</span></div>
+        <div style="position:absolute;left:57.60px;top:724.98px" class="cls_002"><span class="cls_002">Name:</span></div>
+        <div style="position:absolute;left:200.60px;top:724.98px" class="cls_002"><span class="cls_002">{{form.individualProfileId.fatherName}}</span></div>
+        <div style="position:absolute;left:417.60px;top:724.98px" class="cls_002"><span class="cls_002">{{form.individualProfileId.motherName}}</span></div>
+        <div style="position:absolute;left:57.60px;top:743.58px" class="cls_002"><span class="cls_002">Date of Birth:</span></div>
+        <div style="position:absolute;left:200.60px;top:744.98px" class="cls_002"><span class="cls_002">{{form.individualProfileId.fatherDateOfBirth}}</span></div>
+        <div style="position:absolute;left:417.60px;top:744.98px" class="cls_002"><span class="cls_002">{{form.individualProfileId.motherDateOfBirth}}</span></div>
+        <div style="position:absolute;left:57.60px;top:762.30px" class="cls_002"><span class="cls_002">Address:</span></div>
+        <div style="position:absolute;left:200.60px;top:762.98px" class="cls_002"><span class="cls_002">{{form.individualProfileId.fatherAddress}}</span></div>
+        <div style="position:absolute;left:417.60px;top:762.98px" class="cls_002"><span class="cls_002">{{form.individualProfileId.motherAddress}}</span></div>
+        <div style="position:absolute;left:57.60px;top:780.90px" class="cls_002"><span class="cls_002">Landline:</span></div>
+        <div style="position:absolute;left:200.60px;top:780.98px" class="cls_002"><span class="cls_002">{{form.individualProfileId.fatherLandline}}</span></div>
+        <div style="position:absolute;left:417.60px;top:780.98px" class="cls_002"><span class="cls_002">{{form.individualProfileId.motherLandLine}}</span></div>
+        <div style="position:absolute;left:57.60px;top:799.50px" class="cls_002"><span class="cls_002">Mobile Number (Cellphone No.)</span></div>
+        <div style="position:absolute;left:200.60px;top:799.50px" class="cls_002"><span class="cls_002">{{form.individualProfileId.fatherMobilePhone}}</span></div>
+        <div style="position:absolute;left:417.60px;top:799.50px" class="cls_002"><span class="cls_002">{{form.individualProfileId.motherMobilePhone}}</span></div>
+        <div style="position:absolute;left:57.60px;top:823.01px" class="cls_007"><span class="cls_007">Please put a check</span><span class="cls_008"> [</span><span class="cls_009">✓</span><span class="cls_008">]</span><span class="cls_007"> mark</span></div>
+        <div style="position:absolute;left:57.60px;top:840.18px" class="cls_002"><span class="cls_002">What is your father’s highest educational attainment?</span></div>
+        <div style="position:absolute;left:72.60px;top:852.54px" class="cls_002">
+            {% if form.individualProfileId.fatherEducationLevel == 'elementarylevel'%}
+                <span class="cls_002">[✓] Elementary Level</span>
+            {% else %}
+                <span class="cls_002">[ ] Elementary Level</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:201.60px;top:852.54px" class="cls_002">
+            {% if form.individualProfileId.fatherEducationLevel == 'highschoollevel'%}
+                <span class="cls_002">[✓] High School Level</span>
+            {% else %}
+                <span class="cls_002">[ ] High School Level</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:852.54px" class="cls_002">
+            {% if form.individualProfileId.fatherEducationLevel == 'collegelevel'%}
+                <span class="cls_002">[✓] College Level</span>
+            {% else %}
+                <span class="cls_002">[ ] College Level</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:453.60px;top:852.54px" class="cls_002">
+            {% if form.individualProfileId.fatherEducationLevel == 'postgraduate'%}
+                <span class="cls_002">[✓] Post Graduate</span>
+            {% else %}
+                <span class="cls_002">[ ] Post Graduate</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:72.60px;top:865.02px" class="cls_002">
+            {% if form.individualProfileId.fatherEducationLevel == 'elementarygraduate'%}
+                <span class="cls_002">[✓] Elementary Graduate</span>
+            {% else %}
+                <span class="cls_002">[ ] Elementary Graduate</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:201.60px;top:865.02px" class="cls_002">
+            {% if form.individualProfileId.fatherEducationLevel == 'highschoolgraduate'%}
+                <span class="cls_002">[✓] High School Graduate</span>
+            {% else %}
+                <span class="cls_002">[ ] High School Graduate</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:865.02px" class="cls_002">
+            {% if form.individualProfileId.fatherEducationLevel == 'collegegraduate'%}
+                <span class="cls_002">[✓] College Graduate</span>
+            {% else %}
+                <span class="cls_002">[ ] College Graduate</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:881.10px" class="cls_002"><span class="cls_002">What is your mother’s highest educational attainment?</span></div>
+        <div style="position:absolute;left:72.60px;top:893.58px" class="cls_002">
+            {% if form.individualProfileId.motherEducationLevel == 'elementarylevel'%}
+                <span class="cls_002">[✓] Elementary Level</span>
+            {% else %}
+                <span class="cls_002">[ ] Elementary Level</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:201.60px;top:893.58px" class="cls_002">
+            {% if form.individualProfileId.motherEducationLevel == 'highschoollevel'%}
+                <span class="cls_002">[✓] High School Level</span>
+            {% else %}
+                <span class="cls_002">[ ] High School Level</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:893.58px" class="cls_002">
+            {% if form.individualProfileId.motherEducationLevel == 'collegelevel'%}
+                <span class="cls_002">[✓] College Level</span>
+            {% else %}
+                <span class="cls_002">[ ] College Level</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:453.60px;top:893.58px" class="cls_002">
+            {% if form.individualProfileId.motherEducationLevel == 'postgraduate'%}
+                <span class="cls_002">[✓] PostGraduate</span>
+            {% else %}
+                <span class="cls_002">[ ] PostGraduate</span>
+            {% endif %}
+        </div>
+        </div>
+        <div class="pages page2" style="position:relative;left:50%;margin-left:-306px;top:946px;width:612px;height:936px;">
+        <div style="position:absolute;left:0px;top:0px">
+        <img class="backgroundimg" src="{% static 'guidance/assets/Individual-Profile-Sheet-college_files/background-2.jpg' %}" width=612 height=936></div>
+        <div style="position:absolute;left:72.60px;top:13.14px" class="cls_002">
+            {% if form.individualProfileId.motherEducationLevel == 'elementarygraduate'%}
+                <span class="cls_002">[✓] Elementary Graduate</span>
+            {% else %}
+                <span class="cls_002">[ ] Elementary Graduate</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:201.60px;top:13.14px" class="cls_002">
+            {% if form.individualProfileId.motherEducationLevel == 'highschoolgraduate'%}
+                <span class="cls_002">[✓] High School Graduate</span>
+            {% else %}
+                <span class="cls_002">[ ] High School Graduate</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:13.14px" class="cls_002">
+            {% if form.individualProfileId.motherEducationLevel == 'collegegraduate'%}
+                <span class="cls_002">[✓] College Graduate</span>
+            {% else %}
+                <span class="cls_002">[ ] College Graduate</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:485.76px;top:38.10px" class="cls_002"><span class="cls_002">Page 2 of 4 pages</span></div>
+        <div style="position:absolute;left:57.60px;top:62.94px" class="cls_002"><span class="cls_002">Is your father a graduate of CTU?</span></div>
+        
+        <div style="position:absolute;left:273.60px;top:62.94px" class="cls_002">
+            {% if form.individualProfileId.fatherCTU%}
+                <span class="cls_002">[✓] Yes</span>
+            {% else %}
+                <span class="cls_002">[ ] Yes</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:62.94px" class="cls_002">
+            {% if form.individualProfileId.fatherCTU%}
+                <span class="cls_002">[ ] No</span>
+            {% else %}
+                <span class="cls_002">[✓] No</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:79.02px" class="cls_002"><span class="cls_002">Is your mother a graduate of CTU?</span></div>
+        <div style="position:absolute;left:273.60px;top:79.02px" class="cls_002">
+            {% if form.individualProfileId.motherCTU%}
+                <span class="cls_002">[✓] Yes</span>
+            {% else %}
+                <span class="cls_002">[ ] Yes</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:79.02px" class="cls_002">
+            {% if form.individualProfileId.motherCTU%}
+                <span class="cls_002">[ ] No</span>
+            {% else %}
+                <span class="cls_002">[✓] No</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:98.94px" class="cls_002"><span class="cls_002">What is the family’s main source of income?</span></div>
+        <div style="position:absolute;left:93.60px;top:111.30px" class="cls_002">
+            {% if form.individualProfileId.sourceOfIncome == 'onlyfatherworks'%}
+                <span class="cls_002">[✓] Only father works</span>
+            {% else %}
+                <span class="cls_002">[ ] Only father works</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:237.60px;top:111.30px" class="cls_002">
+            {% if form.individualProfileId.sourceOfIncome == 'onlymotherworks'%}
+                <span class="cls_002">[✓] Only mother works</span>
+            {% else %}
+                <span class="cls_002">[ ] Only mother works</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:381.60px;top:111.30px" class="cls_002">
+            {% if form.individualProfileId.sourceOfIncome == 'bothparentswork'%}
+                <span class="cls_002">[✓] Both parents works</span>
+            {% else %}
+                <span class="cls_002">[ ] Both parents works</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:123.78px" class="cls_002">
+            {% if form.individualProfileId.sourceOfIncome == 'siblingswork'%}
+                <span class="cls_002">[✓] Siblings(s) works</span>
+            {% else %}
+                <span class="cls_002">[ ] Sibling(s) works</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:237.60px;top:123.78px" class="cls_002">
+            {% if form.individualProfileId.sourceOfIncome == 'familyownedbusiness'%}
+                <span class="cls_002">[✓] Family owned business (please specify&nbsp;{{form.individualProfileId.sourceOfIncomeSpecify}}</span>
+            {% else %}
+                <span class="cls_002">[ ] Family owned business (please specify</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:425.64px;top:123.78px" class="cls_002">
+            <span class="cls_002">_____________________________)</span>
+        </div>
+        <div style="position:absolute;left:93.60px;top:136.14px" class="cls_002">
+            {% if form.individualProfileId.sourceOfIncome == 'relatives'%}
+                <span class="cls_002">[✓] Relative(s) (please specify&nbsp;{{form.individualProfileId.sourceOfIncomeSpecify}}</span>
+            {% else %}
+                <span class="cls_002">[ ] Relative(s) (please specify</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:224.40px;top:136.14px" class="cls_002">
+            <span class="cls_002">_____________________________________)</span></div>
+        <div style="position:absolute;left:57.60px;top:154.62px" class="cls_002"><span class="cls_002">What is your father’s occupation?</span><span class="cls_010"> (If father is deceased, please do not answer )</span></div>
+        <div style="position:absolute;left:93.60px;top:167.10px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'agriculture'%}
+                <span class="cls_002">[✓] Agriculture, Food and Natural Resources (e.g. farmer, fisherman, fish/meat/vegetable vendor, food</span>
+            {% else %}
+                <span class="cls_002">[ ] Agriculture, Food and Natural Resources (e.g. farmer, fisherman, fish/meat/vegetable vendor, food</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:179.46px" class="cls_002"><span class="cls_002">preparation worker, food vendor)</span></div>
+        <div style="position:absolute;left:281.76px;top:179.46px" class="cls_002"><span class="cls_002">________</span></div>
+        <div style="position:absolute;left:93.60px;top:191.94px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'architecture'%}
+                <span class="cls_002">[✓] Architecture, Design and Construction (e.g. architect, construction worker, carpenter, furniture maker,</span>
+            {% else %}
+                <span class="cls_002">[ ] Architecture, Design and Construction (e.g. architect, construction worker, carpenter, furniture maker,</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:204.30px" class="cls_002"><span class="cls_002">welder, fabricator)</span></div>
+        <div style="position:absolute;left:214.20px;top:204.30px" class="cls_002"><span class="cls_002">_________</span></div>
+        <div style="position:absolute;left:93.60px;top:216.78px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'businessmanagement'%}
+                <span class="cls_002">[✓] Business Management, Marketing and Sales (e.g. sales agent, insurance agent, products dealer, salesman)</span>
+            {% else %}
+                <span class="cls_002">[ ] Business Management, Marketing and Sales (e.g. sales agent, insurance agent, products dealer, salesman)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:229.14px" class="cls_002"><span class="cls_002">_________</span></div>
+        <div style="position:absolute;left:93.60px;top:241.62px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'clerical'%}
+                <span class="cls_002">[✓] Clerical and Customer Service (e.g. secretary, encoder, customer/ technical service agent)</span>
+            {% else %}
+                <span class="cls_002">[ ] Clerical and Customer Service (e.g. secretary, encoder, customer/ technical service agent)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:505.56px;top:241.62px" class="cls_002"><span class="cls_002">_______</span></div>
+        <div style="position:absolute;left:93.60px;top:254.10px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'education'%}
+                <span class="cls_002">[✓] Education and Training (e.g. teacher, educator, school personnel, trainer, training specialist)</span>
+            {% else %}
+                <span class="cls_002">[ ] Education and Training (e.g. teacher, educator, school personnel, trainer, training specialist)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:516.24px;top:254.10px" class="cls_002"><span class="cls_002">_________</span></div>
+        <div style="position:absolute;left:93.60px;top:266.46px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'health'%}
+                <span class="cls_002">[✓] Health (e.g. medical doctor, nurse, midwife, health officer)</span>
+            {% else %}
+                <span class="cls_002">[ ] Health (e.g. medical doctor, nurse, midwife, health officer)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:368.88px;top:266.46px" class="cls_002"><span class="cls_002">________</span></div>
+        <div style="position:absolute;left:93.60px;top:278.94px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'law'%}
+                <span class="cls_002">[✓] Law, Public Safety, Corrections and Security (e.g. lawyer, military, enforcement officer, police officer,</span>
+            {% else %}
+                <span class="cls_002">[ ] Agriculture, Food and Natural Resources (e.g. farmer, fisherman, fish/meat/vegetable vendor, food</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:291.30px" class="cls_002"><span class="cls_002">security guard)</span></div>
+        <div style="position:absolute;left:199.80px;top:291.30px" class="cls_002"><span class="cls_002">______</span></div>
+        <div style="position:absolute;left:93.60px;top:303.78px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'manufacturing'%}
+                <span class="cls_002">[✓] Manufacturing (e.g. factory worker, production worker)</span>
+            {% else %}
+                <span class="cls_002">[ ] Manufacturing (e.g. factory worker, production worker)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:358.44px;top:303.78px" class="cls_002"><span class="cls_002">________</span></div>
+        <div style="position:absolute;left:93.60px;top:316.14px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'science'%}
+                <span class="cls_002">[✓] Science, Technology, Engineering (e.g. engineer, computer programmer)</span>
+            {% else %}
+                <span class="cls_002">[ ] Science, Technology, Engineering (e.g. engineer, computer programmer)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:430.68px;top:316.14px" class="cls_002"><span class="cls_002">________</span></div>
+        <div style="position:absolute;left:93.60px;top:328.62px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'maintenance'%}
+                <span class="cls_002">[✓] Maintenance and Services (e.g. auto-mechanic, electrician, technician, janitor, sweeper, helper,</span>
+            {% else %}
+                <span class="cls_002">[ ] Maintenance and Services (e.g. auto-mechanic, electrician, technician, janitor, sweeper, helper,</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:341.10px" class="cls_002"><span class="cls_002">manicurist, salon-spa and massage staff, tailor, dressmaker)</span></div>
+        <div style="position:absolute;left:396.00px;top:341.10px" class="cls_002"><span class="cls_002">_______</span></div>
+        <div style="position:absolute;left:93.60px;top:353.46px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'transportation'%}
+                <span class="cls_002">[✓] Transportation, Distribution and Logistics (e.g. transportation operator, driver, delivery personnel)</span>
+            {% else %}
+                <span class="cls_002">[ ] Transportation, Distribution and Logistics (e.g. transportation operator, driver, delivery personnel)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:547.68px;top:353.46px" class="cls_002"><span class="cls_002">_____</span></div>
+        <div style="position:absolute;left:93.60px;top:365.94px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'unemployed'%}
+                <span class="cls_002">[✓] Unemployed</span>
+            {% else %}
+                <span class="cls_002">[ ] Unemployed</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:378.30px" class="cls_002">
+            {% if form.individualProfileId.fatherOccupation == 'others'%}
+                <span class="cls_002">[✓] Others. </span><span class="cls_011">Please specify&nbsp;&nbsp;{{form.individualProfileId.fatherOtherOccupation}}</span>
+            {% else %}
+                <span class="cls_002">[ ] Others. </span><span class="cls_011">Please specify</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:200.04px;top:378.30px" class="cls_002"><span class="cls_002">______________________</span></div>
+        <div style="position:absolute;left:57.60px;top:398.22px" class="cls_002"><span class="cls_002">What is your mother’s occupation?</span><span class="cls_010"> (If mother is deceased, please do not answer)</span></div>
+        <div style="position:absolute;left:93.60px;top:410.70px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'agriculture'%}
+                <span class="cls_002">[✓] Agriculture, Food and Natural Resources (e.g. farmer, fisherman, fish/meat/vegetable vendor, food</span>
+            {% else %}
+                <span class="cls_002">[ ] Agriculture, Food and Natural Resources (e.g. farmer, fisherman, fish/meat/vegetable vendor, food</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:423.06px" class="cls_002"><span class="cls_002">preparation worker, food vendor)</span></div>
+        <div style="position:absolute;left:281.76px;top:423.06px" class="cls_002"><span class="cls_002">________</span></div>
+        <div style="position:absolute;left:93.60px;top:435.54px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'architecture'%}
+                <span class="cls_002">[✓] Architecture, Design and Construction (e.g. architect, construction worker, carpenter, furniture maker,</span>
+            {% else %}
+                <span class="cls_002">[ ] Architecture, Design and Construction (e.g. architect, construction worker, carpenter, furniture maker,</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:447.90px" class="cls_002"><span class="cls_002">welder, fabricator)</span></div>
+        <div style="position:absolute;left:214.20px;top:447.90px" class="cls_002"><span class="cls_002">_________</span></div>
+        <div style="position:absolute;left:93.60px;top:460.38px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'businessmanagement'%}
+                <span class="cls_002">[✓] Business Management, Marketing and Sales (e.g. sales agent, insurance agent, products dealer, salesman)</span>
+            {% else %}
+                <span class="cls_002">[ ] Business Management, Marketing and Sales (e.g. sales agent, insurance agent, products dealer, salesman)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:472.74px" class="cls_002"><span class="cls_002">_________</span></div>
+        <div style="position:absolute;left:93.60px;top:485.22px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'clerical'%}
+                <span class="cls_002">[✓] Clerical and Customer Service (e.g. secretary, encoder, customer/ technical service agent)</span>
+            {% else %}
+                <span class="cls_002">[ ] Clerical and Customer Service (e.g. secretary, encoder, customer/ technical service agent)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:505.56px;top:485.22px" class="cls_002"><span class="cls_002">_______</span></div>
+        <div style="position:absolute;left:93.60px;top:497.70px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'education'%}
+                <span class="cls_002">[✓] Education and Training (e.g. teacher, educator, school personnel, trainer, training specialist)</span>
+            {% else %}
+                <span class="cls_002">[ ] Education and Training (e.g. teacher, educator, school personnel, trainer, training specialist)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:516.24px;top:497.70px" class="cls_002"><span class="cls_002">_________</span></div>
+        <div style="position:absolute;left:93.60px;top:510.06px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'health'%}
+                <span class="cls_002">[✓] Health (e.g. medical doctor, nurse, midwife, health officer)</span>
+            {% else %}
+                <span class="cls_002">[ ] Health (e.g. medical doctor, nurse, midwife, health officer)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:368.88px;top:510.06px" class="cls_002"><span class="cls_002">________</span></div>
+        <div style="position:absolute;left:93.60px;top:522.54px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'law'%}
+                <span class="cls_002">[✓] Law, Public Safety, Corrections and Security (e.g. lawyer, military, enforcement officer, police officer,</span>
+            {% else %}
+                <span class="cls_002">[ ] Law, Public Safety, Corrections and Security (e.g. lawyer, military, enforcement officer, police officer,</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:534.90px" class="cls_002"><span class="cls_002">security guard)</span></div>
+        <div style="position:absolute;left:199.80px;top:534.90px" class="cls_002"><span class="cls_002">_______</span></div>
+        <div style="position:absolute;left:93.60px;top:547.38px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'manufacturing'%}
+                <span class="cls_002">[✓] Manufacturing (e.g. factory worker, production worker)</span>
+            {% else %}
+                <span class="cls_002">[ ] Manufacturing (e.g. factory worker, production worker)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:358.44px;top:547.38px" class="cls_002"><span class="cls_002">________</span></div>
+        <div style="position:absolute;left:93.60px;top:559.74px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'science'%}
+                <span class="cls_002">[✓] Science, Technology, Engineering (e.g. engineer, computer programmer)</span>
+            {% else %}
+                <span class="cls_002">[ ] Science, Technology, Engineering (e.g. engineer, computer programmer)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:430.68px;top:559.74px" class="cls_002"><span class="cls_002">________</span></div>
+        <div style="position:absolute;left:93.60px;top:572.22px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'maintenance'%}
+                <span class="cls_002">[✓] Maintenance and Services (e.g. auto-mechanic, electrician, technician, janitor, sweeper, helper,</span>
+            {% else %}
+                <span class="cls_002">[ ] Maintenance and Services (e.g. auto-mechanic, electrician, technician, janitor, sweeper, helper,</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:584.58px" class="cls_002"><span class="cls_002">manicurist, salon-spa and massage staff, tailor, dressmaker)</span></div>
+        <div style="position:absolute;left:396.00px;top:584.58px" class="cls_002"><span class="cls_002">_______</span></div>
+        <div style="position:absolute;left:93.60px;top:597.06px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'transportation'%}
+                <span class="cls_002">[✓] Transportation, Distribution and Logistics (e.g. transportation operator, driver, delivery personnel)</span>
+            {% else %}
+                <span class="cls_002">[ ] Transportation, Distribution and Logistics (e.g. transportation operator, driver, delivery personnel)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:547.68px;top:597.06px" class="cls_002"><span class="cls_002">_____</span></div>
+        <div style="position:absolute;left:93.60px;top:609.42px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'unemployed'%}
+                <span class="cls_002">[✓] Unemployed</span>
+            {% else %}
+                <span class="cls_002">[ ] Unemployed</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:621.90px" class="cls_002">
+            {% if form.individualProfileId.motherOccupation == 'others'%}
+                <span class="cls_002">[✓] Others. </span><span class="cls_011">Please specify&nbsp;&nbsp;{{form.individualProfileId.fatherOtherOccupation}}</span>
+            {% else %}
+                <span class="cls_002">[ ] Others. </span><span class="cls_011">Please specify</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:200.04px;top:621.90px" class="cls_002"><span class="cls_002">______________________</span></div>
+        <div style="position:absolute;left:57.60px;top:641.82px" class="cls_002"><span class="cls_002">8. How much is your family earning in a month?</span></div>  
+        <div style="position:absolute;left:57.60px;top:654.18px" class="cls_002">
+            {% if form.individualProfileId.familyEarningInaMonth == 'below1000'%}
+                <span class="cls_002">[✓] below P 1,000</span>
+            {% else %}
+                <span class="cls_002">[ ] below P 1,000</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:142.32px;top:654.18px" class="cls_002">
+            {% if form.individualProfileId.familyEarningInaMonth == '1000-5000'%}
+                <span class="cls_002">[✓] P 1,000 - P 5,000</span>
+            {% else %}
+                <span class="cls_002">[ ] P 1,000 - P 5,000</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:237.60px;top:654.18px" class="cls_002">
+            {% if form.individualProfileId.familyEarningInaMonth == '6000-10000'%}
+                <span class="cls_002">[✓] P 6,000 - P 10,000</span>
+            {% else %}
+                <span class="cls_002">[ ] P 6,000 - P 10,000</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:654.18px" class="cls_002">
+            {% if form.individualProfileId.familyEarningInaMonth == '11000-15000'%}
+                <span class="cls_002">[✓] P 11,000 - P 15,000</span>
+            {% else %}
+                <span class="cls_002">[ ] P 11,000 - P 15,000</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:449.28px;top:654.18px" class="cls_002">
+            {% if form.individualProfileId.familyEarningInaMonth == '16000-20000'%}
+                <span class="cls_002">[✓] P 16,000 - P 20,000</span>
+            {% else %}
+                <span class="cls_002">[ ] P 16,000 - P 20,000</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:666.66px" class="cls_002">
+            {% if form.individualProfileId.familyEarningInaMonth == '21000-25000'%}
+                <span class="cls_002">[✓] P 21,000 - P 25,000</span>
+            {% else %}
+                <span class="cls_002">[ ] P 21,000 - P 25,000</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:201.60px;top:666.66px" class="cls_002">
+            {% if form.individualProfileId.familyEarningInaMonth == '26000-30000'%}
+                <span class="cls_002">[✓] P 26,000 - P 30,000</span>
+            {% else %}
+                <span class="cls_002">[ ] P 26,000 - P 30,000</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:309.60px;top:666.66px" class="cls_002">
+            {% if form.individualProfileId.familyEarningInaMonth == '31000-40000'%}
+                <span class="cls_002">[✓] P 31,000 - P 40,000</span>
+            {% else %}
+                <span class="cls_002">[ ] P 31,000 - P 40,000</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:417.60px;top:666.66px" class="cls_002">
+            {% if form.individualProfileId.familyEarningInaMonth == '41000andabove'%}
+                <span class="cls_002">[✓] P 41,000 and above</span>
+            {% else %}
+                <span class="cls_002">[ ] P 41,000 and above</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:690.29px" class="cls_002"><span class="cls_002">Parents are:</span><span class="cls_007"> Please put a check</span><span class="cls_008"> [</span><span class="cls_009">✓</span><span class="cls_008">]</span><span class="cls_007"> mark</span></div>
+        <div style="position:absolute;left:93.60px;top:710.46px" class="cls_002"><span class="cls_002">Living together and legally married</span></div>
+        <div style="position:absolute;left:273.60px;top:710.46px" class="cls_002">
+            {% if form.individualProfileId.parentStatus == 'together&married'%}
+                <span class="cls_002">[✓]</span>
+            {% else %}
+                <span class="cls_002">[&nbsp;&nbsp;]</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:710.46px" class="cls_002"><span class="cls_002">Mother is OFW</span></div>
+        <div style="position:absolute;left:489.60px;top:710.46px" class="cls_002">
+            {% if form.individualProfileId.parentStatus == 'motherofw'%}
+                <span class="cls_002">[✓]</span>
+            {% else %}
+                <span class="cls_002">[&nbsp;&nbsp;]</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:724.74px" class="cls_002"><span class="cls_002">Living together and not legally married</span></div>
+        <div style="position:absolute;left:273.60px;top:724.74px" class="cls_002">
+            {% if form.individualProfileId.parentStatus == 'together&notmarried'%}
+                <span class="cls_002">[✓]</span>
+            {% else %}
+                <span class="cls_002">[&nbsp;&nbsp;]</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:724.74px" class="cls_002"><span class="cls_002">Father is OFW</span></div>
+        <div style="position:absolute;left:489.60px;top:724.74px" class="cls_002">
+            {% if form.individualProfileId.parentStatus == 'fatherofw'%}
+                <span class="cls_002">[✓]</span>
+            {% else %}
+                <span class="cls_002">[&nbsp;&nbsp;]</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:739.14px" class="cls_002"><span class="cls_002">Legally married but living separately</span></div>
+        <div style="position:absolute;left:273.60px;top:739.14px" class="cls_002">
+            {% if form.individualProfileId.parentStatus == 'marriedbutseparate'%}
+                <span class="cls_002">[✓]</span>
+            {% else %}
+                <span class="cls_002">[&nbsp;&nbsp;]</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:739.14px" class="cls_002"><span class="cls_002">Father w/Another Partner</span></div>
+        <div style="position:absolute;left:489.60px;top:739.14px" class="cls_002">
+            {% if form.individualProfileId.parentStatus == 'fatherwanother'%}
+                <span class="cls_002">[✓]</span>
+            {% else %}
+                <span class="cls_002">[&nbsp;&nbsp;]</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:753.42px" class="cls_002"><span class="cls_002">Marriage Annulled/Legally Separated</span></div>
+        <div style="position:absolute;left:273.60px;top:753.42px" class="cls_002">
+            {% if form.individualProfileId.parentStatus == 'anulled'%}
+                <span class="cls_002">[✓]</span>
+            {% else %}
+                <span class="cls_002">[&nbsp;&nbsp;]</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:345.60px;top:753.42px" class="cls_002"><span class="cls_002">Mother w/ Another Partner</span></div>
+        <div style="position:absolute;left:489.60px;top:753.42px" class="cls_002">
+            {% if form.individualProfileId.parentStatus == 'motherwanother'%}
+                <span class="cls_002">[✓]</span>
+            {% else %}
+                <span class="cls_002">[&nbsp;&nbsp;]</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:773.22px" class="cls_002"><span class="cls_002">Please name below siblings from eldest to youngest. Include yourself.</span><span class="cls_010"> (Please use another sheet if necessary.)</span></div>
+        <div style="position:absolute;left:140.04px;top:791.70px" class="cls_013"><span class="cls_013">Name</span></div>
+        <div id="siblings_name" style="position:absolute;left:60.04px;top:800.70px; width: 200px; height: 120px;"></div>
+        <div style="position:absolute;left:318.60px;top:791.70px" class="cls_013"><span class="cls_013">Age</span></div>
+        <div id="siblings_age" style="position:absolute;left:310.60px;top:800.70px; width: 40px; height: 120px;"></div>
+        <div style="position:absolute;left:447.60px;top:791.70px" class="cls_013"><span class="cls_013">School/Place of Work</span></div>
+        <div id="siblings_work" style="position:absolute;left:380.60px;top:800.70px; width: 180px; height: 120px;"></div>
+        </div>
+        <div class="pages page3" style="position:relative;left:50%;margin-left:-306px;top:1892px;width:612px;height:936px;">
+        <div style="position:absolute;left:0px;top:0px">
+        <img  class="backgroundimg" src="{% static 'guidance/assets/Individual-Profile-Sheet-college_files/background-3.jpg' %}" width=612 height=936></div>
+        <div style="position:absolute;left:485.76px;top:41.70px" class="cls_002"><span class="cls_002">Page 3 of 4 pages</span></div>
+        <div style="position:absolute;left:57.60px;top:65.82px" class="cls_003"><span class="cls_003">C. CONTACT PERSONS:</span></div>
+        <div style="position:absolute;left:57.60px;top:79.86px" class="cls_002">
+            <span class="cls_002">Person to be Notified in Case of Emergency:&nbsp;{{form.individualProfileId.personInCaseofEmergency}}</span>
+        </div>
+        <div style="position:absolute;left:384.12px;top:79.86px" class="cls_002"><span class="cls_002">Relationship:&nbsp;{{form.individualProfileId.personInCaseofEmergencyRelationship}}</span></div>
+        <div style="position:absolute;left:57.60px;top:94.14px" class="cls_002"><span class="cls_002">Address:&nbsp;{{form.individualProfileId.personInCaseofEmergencyAddress}}</span></div>
+        <div style="position:absolute;left:57.60px;top:108.54px" class="cls_002"><span class="cls_002">Landline:&nbsp;&nbsp;{{form.individualProfileId.personInCaseofEmergencyLandline}}</span></div>
+        <div style="position:absolute;left:242.64px;top:108.54px" class="cls_002"><span class="cls_002">Mobile Number (Cellphone No.):&nbsp;&nbsp;&nbsp;{{form.individualProfileId.personInCaseofEmergencyMobileNo}}</span></div>
+        <div style="position:absolute;left:57.60px;top:129.42px" class="cls_003"><span class="cls_003">D.  HEALTH DATA:</span></div>
+        <div style="position:absolute;left:57.60px;top:143.58px" class="cls_002"><span class="cls_002">Disabilities/Impairments:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.disabilies}}</span></div>
+        <div style="position:absolute;left:57.60px;top:157.86px" class="cls_002"><span class="cls_002">Allergies:&nbsp;{{form.individualProfileId.allergies}}</span></div>
+        <div style="position:absolute;left:350.64px;top:157.86px" class="cls_002"><span class="cls_002">Blood Type:&nbsp;{{form.individualProfileId.bloodType}}</span></div>
+        <div style="position:absolute;left:57.60px;top:181.62px" class="cls_003"><span class="cls_003">E. EDUCATIONAL BACKGROUND:</span></div>
+        <div style="position:absolute;left:275.64px;top:193.98px" class="cls_014"><span class="cls_014">Name of School/</span></div>
+        <div style="position:absolute;left:414.24px;top:193.98px" class="cls_014"><span class="cls_014">Awards/Honors</span></div>
+        <div style="position:absolute;left:531.36px;top:193.98px" class="cls_014"><span class="cls_014">Year</span></div>
+        <div style="position:absolute;left:293.64px;top:206.34px" class="cls_014"><span class="cls_014">Address</span></div>
+        <div style="position:absolute;left:430.80px;top:206.34px" class="cls_014"><span class="cls_014">Received</span></div>
+        <div style="position:absolute;left:517.08px;top:206.34px" class="cls_014"><span class="cls_014">Graduated</span></div>
+        <div style="position:absolute;left:57.60px;top:227.34px" class="cls_002">
+            {% if form.individualProfileId.elementaryType%}
+                <span class="cls_002">Elementary: [✓] Private [ ] Public:&nbsp;{{form.individualProfileId.elementaryName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.elementaryAwardsRecieved}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.elementaryYearGraduated}}</span>
+            {% else %}
+                <span class="cls_002">Elementary: [ ] Private [✓] Public:&nbsp;{{form.individualProfileId.elementaryName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.elementaryAwardsRecieved}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.elementaryYearGraduated}}</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:243.66px" class="cls_002">
+            {% if form.individualProfileId.seniorHighSchoolType%}
+                <span class="cls_002">Senior High School: [✓] Private [ ] Public:{{form.individualProfileId.seniorHighSchoolName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.seniorHighSchoolAwardsRecieved}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.seniorHighSchoolYearGraduated}}</span>
+            {% else %}
+                <span class="cls_002">Senior High School: [ ] Private [✓] Public:{{form.individualProfileId.seniorHighSchoolName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.seniorHighSchoolAwardsRecieved}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.seniorHighSchoolYearGraduated}}</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:259.98px" class="cls_002">
+            {% if form.individualProfileId.collegeYearGraduated == 0%}
+                <span class="cls_002">College (If Transferee):</span>
+            {% else %}
+                <span class="cls_002">College (If Transferee):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.collegelName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.collegeAwardsRecieved}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.individualProfileId.collegeYearGraduated}}</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:57.60px;top:276.30px" class="cls_002">
+            {% if form.individualProfileId.schoolLeaver%}
+                <span class="cls_002">Were you a school leaver?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✓ Yes</span>
+            {% else %}
+                <span class="cls_002">Were you a school leaver?     Yes</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:250.08px;top:276.30px" class="cls_002">
+            {% if form.individualProfileId.schoolLeaver %}
+                <span class="cls_002">No</span>
+            {% else %}
+                <span class="cls_002">No&nbsp;&nbsp;&nbsp;✓</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:317.04px;top:276.30px" class="cls_002"><span class="cls_002">If yes, why?&nbsp;&nbsp;{{form.individualProfileId.schoolLeaverWhy}}</span></div>
+        <div style="position:absolute;left:57.60px;top:292.50px" class="cls_002"><span class="cls_002">What was your last educational attainment when you stopped studying?</span></div>
+        <div style="position:absolute;left:57.60px;top:308.82px" class="cls_002">
+            {% if form.individualProfileId.finaciallySupporting == 'parents' %}
+                <span class="cls_002">Who is financially supporting your studies?  [✓] Parents</span>
+            {% else %}
+                <span class="cls_002">Who is financially supporting your studies?  [  ] Parents</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:322.08px;top:308.82px" class="cls_002">
+            {% if form.individualProfileId.finaciallySupporting == 'spouse' %}
+                <span class="cls_002">[✓] Spouse</span>
+            {% else %}
+                <span class="cls_002">[ ] Spouse</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:381.60px;top:308.82px" class="cls_002">
+            {% if form.individualProfileId.finaciallySupporting == 'relatives' %}
+                <span class="cls_002">[✓] Relatives</span>
+            {% else %}
+                <span class="cls_002">[ ] Relatives</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:456.00px;top:308.82px" class="cls_002">
+            {% if form.individualProfileId.finaciallySupporting == 'selfsupporting' %}
+                <span class="cls_002">[✓] Self - supporting</span>
+            {% else %}
+                <span class="cls_002">[ ] Self - supporting</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:325.14px" class="cls_002">
+            {% if form.individualProfileId.finaciallySupporting == 'scholarship' %}
+                <span class="cls_002">[✓] Scholarship:</span>
+            {% else %}
+                <span class="cls_002">[ ] Scholarship:</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:129.60px;top:339.42px" class="cls_002">
+            {% if form.individualProfileId.typeOfScholarship == 'private' %}
+                <span class="cls_002">[✓] Scholarship by private institution, please specify:&nbsp;&nbsp;{{form.individualProfileId.specifyScholarship}}</span>
+            {% else %}
+                <span class="cls_002">[ ] Scholarship by private institution, please specify:</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:363.12px;top:339.42px" class="cls_002"><span class="cls_002">____________________________</span></div>
+        <div style="position:absolute;left:129.60px;top:353.70px" class="cls_002">
+            {% if form.individualProfileId.typeOfScholarship == 'government' %}
+                <span class="cls_002">[✓] Government Scholarship, please specify:&nbsp;&nbsp;{{form.individualProfileId.specifyScholarship}}</span>
+            {% else %}
+                <span class="cls_002">[ ] Government Scholarship, please specify:</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:325.56px;top:353.70px" class="cls_002"><span class="cls_002">____________________________________</span></div>
+        <div style="position:absolute;left:129.60px;top:367.98px" class="cls_002">
+            {% if form.individualProfileId.typeOfScholarship == 'organizations' %}
+                <span class="cls_002">[✓] Scholarships granted by organizations within CTU, please specify:&nbsp;&nbsp;{{form.individualProfileId.specifyScholarship}}</span>
+            {% else %}
+                <span class="cls_002">[ ] Scholarships granted by organizations within CTU, please specify:</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:439.80px;top:367.98px" class="cls_002"><span class="cls_002">______________________</span></div>
+        <div style="position:absolute;left:57.60px;top:397.86px" class="cls_003"><span class="cls_003">F.  MEMBERSHIP IN ORGANIZATION/S:</span></div>
+        <div style="position:absolute;left:93.60px;top:413.94px" class="cls_014"><span class="cls_014">Name of Organization</span></div>
+        <div style="position:absolute;left:247.56px;top:413.94px" class="cls_014"><span class="cls_014">In School</span><span class="cls_002">   </span><span class="cls_014">OutsideSchool</span></div>
+        <div style="position:absolute;left:390.84px;top:413.94px" class="cls_014"><span class="cls_014">Position/ Title</span></div>
+        <div style="position:absolute;left:509.64px;top:413.94px" class="cls_014"><span class="cls_014">InclusiveYears</span></div>
+        <div style="position:absolute;left:63.60px;top:430.26px" class="cls_002"><span class="cls_002" id="orgname1">Test</span></div>
+        <div style="position:absolute;left:63.60px;top:446.58px" class="cls_002"><span class="cls_002" id="orgname2">test</span></div>
+        <div style="position:absolute;left:260.04px;top:430.26px" class="cls_002"><span class="cls_002" id="inschool1">[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</span></div>
+        <div style="position:absolute;left:311.76px;top:430.26px" class="cls_002"><span class="cls_002" id="outschool1">[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</span></div>
+        <div style="position:absolute;left:350.84px;top:430.26px" class="cls_002"><span class="cls_002" id="position1"></span></div>
+        <div style="position:absolute;left:509.64px;top:430.26px" class="cls_002"><span class="cls_002" id="inclusive1"></span></div>
+        <div style="position:absolute;left:509.64px;top:430.26px" class="cls_002"><span class="cls_002">___________</span></div>
+        <div style="position:absolute;left:260.04px;top:446.58px" class="cls_002"><span class="cls_002" id="inschool2">[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</span></div>
+        <div style="position:absolute;left:311.76px;top:446.58px" class="cls_002"><span class="cls_002" id="outschool2">[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</span></div>
+        <div style="position:absolute;left:350.84px;top:446.58px" class="cls_002"><span class="cls_002" id="position2"></span></div>
+        <div style="position:absolute;left:509.64px;top:446.58px" class="cls_002"><span class="cls_002" id="inclusive2"></span></div>
+        <div style="position:absolute;left:509.64px;top:446.58px" class="cls_002"><span class="cls_002">___________</span></div>
+        <div style="position:absolute;left:57.60px;top:468.78px" class="cls_003"><span class="cls_003">G.  UNIQUE FEATURES:</span></div>
+        <div style="position:absolute;left:57.60px;top:484.86px" class="cls_002"><span class="cls_002">Special Skills/Talents:&nbsp;&nbsp;{{form.individualProfileId.specialSkill}}</span></div>
+        <div style="position:absolute;left:57.60px;top:501.18px" class="cls_002"><span class="cls_002">Ambitions/Goals:&nbsp;&nbsp;{{form.individualProfileId.goals}}</span></div>
+        <div style="position:absolute;left:57.60px;top:517.50px" class="cls_002"><span class="cls_002">Present Concerns/Problems:&nbsp;{{form.individualProfileId.presentConcerns}}</span></div>
+        <div style="position:absolute;left:57.60px;top:541.74px" class="cls_003"><span class="cls_003">H. STUDENT’S GENERAL PERSONALITY MAKE-UP</span></div>
+        <div style="position:absolute;left:57.60px;top:559.73px" class="cls_002"><span class="cls_002">Check</span><span class="cls_008"> [</span><span class="cls_009">✓</span><span class="cls_008">]</span><span class="cls_002"> any of the following items that describe you best.</span></div>
+        <div style="position:absolute;left:70.08px;top:578.82px" class="cls_002">
+            <span id="Friendly" class="cls_002">[ ] Friendly</span>
+        </div>
+        <div style="position:absolute;left:165.60px;top:578.82px" class="cls_002">
+            <span id="Self-Confident" class="cls_002">[ ] Self-Confident</span>
+        </div>
+        <div style="position:absolute;left:273.60px;top:578.82px" class="cls_002">
+            <span id="Calm" class="cls_002">[ ] Calm</span>
+        </div>
+        <div style="position:absolute;left:358.08px;top:578.82px" class="cls_002">
+            <span id="Quick-Tempered" class="cls_002">[ ] Quick-Tempered</span>
+        </div>
+        <div style="position:absolute;left:489.60px;top:578.82px" class="cls_002">
+            <span id="Feels Inferior" class="cls_002">[ ] Feels Inferior</span>
+        </div>
+        <div style="position:absolute;left:70.08px;top:591.18px" class="cls_002">
+            <span id="Unhappy" class="cls_002">[ ] Unhappy</span>
+        </div>
+        <div style="position:absolute;left:165.60px;top:591.18px" class="cls_002">
+            <span id="Easily Bored" class="cls_002">[ ] Easily Bored</span>
+        </div>
+        <div style="position:absolute;left:273.60px;top:591.18px" class="cls_002">
+            <span id="Talented" class="cls_002">[ ] Talented</span>
+        </div>
+        <div style="position:absolute;left:358.08px;top:591.18px" class="cls_002">
+            <span id="Withdrawn" class="cls_002">[ ] Withdrawn</span>
+        </div>
+        <div style="position:absolute;left:489.60px;top:591.18px" class="cls_002">
+            <span id="Conscientious" class="cls_002">[ ] Conscientious</span>
+        </div>
+        <div style="position:absolute;left:70.08px;top:603.66px" class="cls_002">
+            <span id="Talkative" class="cls_002">[ ] Talkative</span>
+        </div>
+        <div style="position:absolute;left:165.60px;top:603.66px" class="cls_002">
+            <span id="Cheerful" class="cls_002">[ ] Cheerful</span>
+        </div>
+        <div style="position:absolute;left:273.60px;top:603.66px" class="cls_002">
+            <span id="Moody" class="cls_002">[ ] Moody</span>
+        </div>
+        <div style="position:absolute;left:358.08px;top:603.66px" class="cls_002">
+            <span id="Easily Exhausted" class="cls_002">[ ] Easily Exhausted</span>
+        </div>
+        <div style="position:absolute;left:489.60px;top:603.66px" class="cls_002">
+            <span id="Lazy" class="cls_002">[ ] Lazy</span>
+        </div>
+        <div style="position:absolute;left:70.08px;top:616.02px" class="cls_002">
+            <span id="Sensitive" class="cls_002">[ ] Sensitive</span>
+        </div>
+        <div style="position:absolute;left:165.60px;top:616.02px" class="cls_002">
+            <span id="Poor health" class="cls_002">[ ] Poor health</span>
+        </div>
+        <div style="position:absolute;left:273.60px;top:616.02px" class="cls_002">
+            <span id="Reserved" class="cls_002">[ ] Reserved</span>
+        </div>
+        <div style="position:absolute;left:358.08px;top:616.02px" class="cls_002">
+            <span id="Quiet" class="cls_002">[ ] Quiet</span>
+        </div>
+        <div style="position:absolute;left:489.60px;top:616.02px" class="cls_002">
+            <span id="Independent" class="cls_002">[ ] Independent</span>
+        </div>
+        <div style="position:absolute;left:70.08px;top:628.50px" class="cls_002">
+            <span id="Depressed" class="cls_002">[ ] Depressed</span>
+        </div>
+        <div style="position:absolute;left:165.60px;top:628.50px" class="cls_002">
+            <span id="Suspicious" class="cls_002">[ ] Suspicious</span>
+        </div>
+        <div style="position:absolute;left:273.60px;top:628.50px" class="cls_002">
+            <span id="Irritable" class="cls_002">[ ] Irritable</span>
+        </div>
+        <div style="position:absolute;left:358.08px;top:628.50px" class="cls_002">
+            <span id="Stubborn" class="cls_002">[ ] Stubborn</span>
+        </div>
+        <div style="position:absolute;left:489.60px;top:628.50px" class="cls_002">
+            <span id="Thoughtful" class="cls_002">[ ] Thoughtful</span>
+        </div>
+        <div style="position:absolute;left:70.08px;top:640.86px" class="cls_002">
+            <span id="Lovable" class="cls_002">[ ] Lovable</span>
+        </div>
+        <div style="position:absolute;left:165.60px;top:640.86px" class="cls_002">
+            <span id="Jealous" class="cls_002">[ ] Jealous</span>
+        </div>
+        <div style="position:absolute;left:273.60px;top:640.86px" class="cls_002">
+            <span id="Shy" class="cls_002">[ ] Shy</span>
+        </div>
+        <div style="position:absolute;left:358.08px;top:640.86px" class="cls_002">
+            <span id="Sarcastic" class="cls_002">[ ] Sarcastic</span>
+        </div>
+        <div style="position:absolute;left:489.60px;top:640.86px" class="cls_002">
+            <span id="Tactful" class="cls_002">[ ] Tactful</span>
+        </div>
+        <div style="position:absolute;left:70.08px;top:653.34px" class="cls_002">
+            <span id="Pessimistic" class="cls_002">[ ] Pessimistic</span>
+        </div>
+        <div style="position:absolute;left:165.60px;top:653.34px" class="cls_002">
+            <span id="Submissive" class="cls_002">[ ] Submissive</span>
+        </div>
+        <div style="position:absolute;left:273.60px;top:653.34px" class="cls_002">
+            <span id="Optimistic" class="cls_002">[ ] Optimistic</span>
+        </div>
+        <div style="position:absolute;left:358.08px;top:653.34px" class="cls_002">
+            <span id="Happy-go-lucky" class="cls_002">[ ] Happy-go-lucky</span>
+        </div>
+        <div style="position:absolute;left:489.60px;top:653.34px" class="cls_002">
+            <span id="Goal-oriented" class="cls_002">[ ] Goal-oriented</span>
+        </div>
+        
+        <div style="position:absolute;left:72.60px;top:665.70px" class="cls_002"><span class="cls_002">Others (please specify)&nbsp;&nbsp;{{form.individualProfileId.describeYouBestOther}}</span></div>
+        <div style="position:absolute;left:175.68px;top:665.70px" class="cls_002"><span class="cls_002">____________________</span></div>
+        <div style="position:absolute;left:57.60px;top:687.42px" class="cls_003"><span class="cls_003">I. SCHOOL/ CAREER-RELATED:</span></div>
+        <div style="position:absolute;left:57.60px;top:705.29px" class="cls_007"><span class="cls_007">Please put a check</span><span class="cls_008"> [</span><span class="cls_009">✓</span><span class="cls_008">]</span><span class="cls_007"> mark</span></div>
+        <div style="position:absolute;left:57.60px;top:725.58px" class="cls_002"><span class="cls_002">Whose decision was it to take this college course?</span></div>
+        <div style="position:absolute;left:93.60px;top:739.86px" class="cls_002">
+            {% if form.individualProfileId.decisionForTheCourse == 'self' %}
+                <span class="cls_002">[✓] Self</span>
+            {% else %}
+                <span class="cls_002">[ ] Self</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:201.60px;top:739.86px" class="cls_002">
+            {% if form.individualProfileId.decisionForTheCourse == 'parents' %}
+                <span class="cls_002">[✓] Parent(s)</span>
+            {% else %}
+                <span class="cls_002">[ ] Parent(s)</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:309.60px;top:739.86px" class="cls_002">
+            {% if form.individualProfileId.decisionForTheCourse == 'brothersister' %}
+                <span class="cls_002">[✓] Brother/Sister</span>
+            {% else %}
+                <span class="cls_002">[ ] Brother/Sister</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:417.60px;top:739.86px" class="cls_002">
+            {% if form.individualProfileId.decisionForTheCourse == 'sponsorsscholarship' %}
+                <span class="cls_002">[✓] Sponsors/Scholarship</span>
+            {% else %}
+                <span class="cls_002">[ ] Sponsors/Scholarship</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:754.26px" class="cls_002">
+            {% if form.individualProfileId.decisionForTheCourse == 'relatives' %}
+                <span class="cls_002">[✓] Relatives</span>
+            {% else %}
+                <span class="cls_002">[ ] Relatives</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:201.60px;top:754.26px" class="cls_002">
+            {% if form.individualProfileId.decisionForTheCourse == 'friends' %}
+                <span class="cls_002">[✓] Friends</span>
+            {% else %}
+                <span class="cls_002">[ ] Friends</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:768.66px" class="cls_002"><span class="cls_002">If you did not choose your current course, which course do you prefer?&nbsp;&nbsp;{{form.individualProfileId.specifyTheDecision}}</span></div>
+        <div style="position:absolute;left:410.40px;top:768.66px" class="cls_002"><span class="cls_002">________________________________</span></div>
+        <div style="position:absolute;left:57.60px;top:783.18px" class="cls_002"><span class="cls_002">Do you plan to work on your specialization after graduation?</span></div>
+        <div style="position:absolute;left:381.60px;top:783.18px" class="cls_002">
+            {% if form.individualProfileId.doYouPlanToWork%}
+                <span class="cls_002">[✓] Yes</span>
+            {% else %}
+                <span class="cls_002">[ ] Yes</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:453.60px;top:783.18px" class="cls_002">
+            {% if form.individualProfileId.doYouPlanToWork%}
+                <span class="cls_002">[ ] No</span>
+            {% else %}
+                <span class="cls_002">[✓] No</span>
+            {% endif %}
+        </div>
+        <div style="position:absolute;left:93.60px;top:797.58px" class="cls_002"><span class="cls_002">If no, please specify why&nbsp;&nbsp;{{form.individualProfileId.specifyIfNo}}</span></div>
+        <div style="position:absolute;left:205.32px;top:797.58px" class="cls_002"><span class="cls_002">________________________________________________</span></div>
+        <div style="position:absolute;left:57.60px;top:811.98px" class="cls_002"><span class="cls_002">What possible factors will hinder you to continue your college education?&nbsp;&nbsp;{{form.individualProfileId.possibleFactors}}</span></div>
+        <div style="position:absolute;left:385.80px;top:811.98px" class="cls_002"><span class="cls_002">____________________________________</span></div>
+        <div style="position:absolute;left:57.60px;top:838.14px" class="cls_011"><span class="cls_011">I hereby confirm and affirm that all information supplied herein is complete and accurate.  I promise to abide by the policies,</span></div>
+        <div style="position:absolute;left:57.60px;top:850.14px" class="cls_011"><span class="cls_011">rules and regulations of CTU - Main Campus.  I agree that the Guidance Office may collect data for educational and research</span></div>
+        <div style="position:absolute;left:57.60px;top:862.14px" class="cls_011"><span class="cls_011">purposes.</span></div>
+        <div style="position:absolute;left:400.60px;top:875.10px" class="cls_002"><span class="cls_002" style="display: flex; justify-content: center; width: 160px;">{{form.individualProfileId.studentId.firstname|toTitle}} &nbsp;{{form.individualProfileId.studentId.lastname|toTitle}}</span></div>
+        <div style="position:absolute;left:420.60px;top:887.10px" class="cls_002"><span class="cls_002">Signature over Printed Name</span></div>
+        </div>
+        <div  class="pages page4" style="position:relative;left:50%;margin-left:-306px;top:2838px;width:612px;height:936px;">
+        <div style="position:absolute;left:0px;top:0px">
+        <img class="backgroundimg" src="{% static 'guidance/assets/Individual-Profile-Sheet-college_files/background-4.jpg' %}" width=612 height=936></div>
+        <div style="position:absolute;left:485.76px;top:56.10px" class="cls_002"><span class="cls_002">Page 4 of 4 pages</span></div>
+        <div style="position:absolute;left:88.32px;top:79.96px" class="cls_012"><span class="cls_012">------------------------------ DO NOT FILL-UP (For Counselor’s Use Only) ------------------------------</span></div>
+        <div style="position:absolute;left:57.60px;top:106.62px" class="cls_003"><span class="cls_003">I. INDIVIDUAL INVENTORY SERVICE</span></div>
+        <div style="position:absolute;left:138.84px;top:119.10px" class="cls_003"><span class="cls_003">Activity/ Form</span></div>
+        <div style="position:absolute;left:70.84px;top:132.10px" class="cls_003"><span class="cls_002 individualActivity"></span></div>
+        <div style="position:absolute;left:70.84px;top:145.10px" class="cls_003"><span class="cls_002 individualActivity"></span></div>
+        <div style="position:absolute;left:70.84px;top:157.10px" class="cls_003"><span class="cls_002 individualActivity"></span></div>
+        <div style="position:absolute;left:70.84px;top:171.10px" class="cls_003"><span class="cls_002 individualActivity"></span></div>
+        <div style="position:absolute;left:70.84px;top:184.10px" class="cls_003"><span class="cls_002 individualActivity"></span></div>
+        <div style="position:absolute;left:70.84px;top:197.10px" class="cls_003"><span class="cls_002 individualActivity"></span></div>
+        <div style="position:absolute;left:314.28px;top:119.10px" class="cls_003"><span class="cls_003">Date Accomplished</span></div>
+        <div style="position:absolute;left:314.28px;top:132.10px" class="cls_003"><span class="cls_002 individualDateAccomplished"></span></div>
+        <div style="position:absolute;left:314.28px;top:145.10px" class="cls_003"><span class="cls_002 individualDateAccomplished"></span></div>
+        <div style="position:absolute;left:314.28px;top:157.10px" class="cls_003"><span class="cls_002 individualDateAccomplished"></span></div>
+        <div style="position:absolute;left:314.28px;top:171.10px" class="cls_003"><span class="cls_002 individualDateAccomplished"></span></div>
+        <div style="position:absolute;left:314.28px;top:184.10px" class="cls_003"><span class="cls_002 individualDateAccomplished"></span></div>
+        <div style="position:absolute;left:314.28px;top:197.10px" class="cls_003"><span class="cls_002 individualDateAccomplished"></span></div>
+        <div style="position:absolute;left:478.32px;top:119.10px" class="cls_003"><span class="cls_003">Remarks</span></div>
+        <div style="position:absolute;left:428.32px;top:132.10px" class="cls_003"><span class="cls_002 individualRemarks"></span></div>
+        <div style="position:absolute;left:428.32px;top:145.10px" class="cls_003"><span class="cls_002 individualRemarks"></span></div>
+        <div style="position:absolute;left:428.32px;top:157.10px" class="cls_003"><span class="cls_002 individualRemarks"></span></div>
+        <div style="position:absolute;left:428.32px;top:171.10px" class="cls_003"><span class="cls_002 individualRemarks"></span></div>
+        <div style="position:absolute;left:428.32px;top:184.10px" class="cls_003"><span class="cls_002 individualRemarks"></span></div>
+        <div style="position:absolute;left:428.32px;top:197.10px" class="cls_003"><span class="cls_002 individualRemarks"></span></div>
+        <div style="position:absolute;left:57.60px;top:215.46px" class="cls_003"><span class="cls_003">II. APPRAISAL SERVICE</span></div>
+        <div style="position:absolute;left:70.68px;top:228.06px" class="cls_003"><span class="cls_003">Test</span></div>
+        <div style="position:absolute;left:70.68px;top:242.10px" class="cls_003"><span class="cls_002 appraisalTest"></span></div>
+        <div style="position:absolute;left:70.68px;top:255.10px" class="cls_003"><span class="cls_002 appraisalTest"></span></div>
+        <div style="position:absolute;left:70.68px;top:267.10px" class="cls_003"><span class="cls_002 appraisalTest"></span></div>
+        <div style="position:absolute;left:70.68px;top:281.10px" class="cls_003"><span class="cls_002 appraisalTest"></span></div>
+        <div style="position:absolute;left:70.68px;top:292.10px" class="cls_003"><span class="cls_002 appraisalTest"></span></div>
+        <div style="position:absolute;left:70.68px;top:306.10px" class="cls_003"><span class="cls_002 appraisalTest"></span></div>
+        <div style="position:absolute;left:278.52px;top:228.06px" class="cls_003"><span class="cls_003">Date Taken</span></div>
+        <div style="position:absolute;left:278.52px;top:242.10px" class="cls_003"><span class="cls_002 appraisalDateTaken"></span></div>
+        <div style="position:absolute;left:278.52px;top:255.10px" class="cls_003"><span class="cls_002 appraisalDateTaken"></span></div>
+        <div style="position:absolute;left:278.52px;top:267.10px" class="cls_003"><span class="cls_002 appraisalDateTaken"></span></div>
+        <div style="position:absolute;left:278.52px;top:281.10px" class="cls_003"><span class="cls_002 appraisalDateTaken"></span></div>
+        <div style="position:absolute;left:278.52px;top:292.10px" class="cls_003"><span class="cls_002 appraisalDateTaken"></span></div>
+        <div style="position:absolute;left:278.52px;top:306.10px" class="cls_003"><span class="cls_002 appraisalDateTaken"></span></div>
+        <div style="position:absolute;left:379.68px;top:228.06px" class="cls_003"><span class="cls_003">Date Interpreted</span></div>
+        <div style="position:absolute;left:379.68px;top:242.10px" class="cls_003"><span class="cls_002 appraisalDateInterpreted"></span></div>
+        <div style="position:absolute;left:379.68px;top:255.10px" class="cls_003"><span class="cls_002 appraisalDateInterpreted"></span></div>
+        <div style="position:absolute;left:379.68px;top:267.10px" class="cls_003"><span class="cls_002 appraisalDateInterpreted"></span></div>
+        <div style="position:absolute;left:379.68px;top:281.10px" class="cls_003"><span class="cls_002 appraisalDateInterpreted"></span></div>
+        <div style="position:absolute;left:379.68px;top:292.10px" class="cls_003"><span class="cls_002 appraisalDateInterpreted"></span></div>
+        <div style="position:absolute;left:379.68px;top:306.10px" class="cls_003"><span class="cls_002 appraisalDateInterpreted"></span></div>
+        <div style="position:absolute;left:500.76px;top:228.06px" class="cls_003"><span class="cls_003">Remarks</span></div>
+        <div style="position:absolute;left:480.68px;top:242.10px" class="cls_003"><span class="cls_003 appraisalRemarks"></span></div>
+        <div style="position:absolute;left:480.68px;top:255.10px" class="cls_003"><span class="cls_002 appraisalRemarks"></span></div>
+        <div style="position:absolute;left:480.68px;top:267.10px" class="cls_003"><span class="cls_002 appraisalRemarks"></span></div>
+        <div style="position:absolute;left:480.68px;top:281.10px" class="cls_003"><span class="cls_002 appraisalRemarks"></span></div>
+        <div style="position:absolute;left:480.68px;top:292.10px" class="cls_003"><span class="cls_002 appraisalRemarks"></span></div>
+        <div style="position:absolute;left:480.68px;top:306.10px" class="cls_003"><span class="cls_002 appraisalRemarks"></span></div>
+        <div style="position:absolute;left:57.60px;top:324.42px" class="cls_003"><span class="cls_003">III. COUNSELING SERVICE</span></div>
+        
+        <div style="position:absolute;left:67.80px;top:336.90px" class="cls_003"><span class="cls_003">Walk-in</span></div>
+        
+        <div style="position:absolute;left:77.80px;top:350.10px" class="cls_003"><span class="cls_002 counselingType"></span></div>
+        <div style="position:absolute;left:77.80px;top:362.10px" class="cls_003"><span class="cls_002 counselingType"></span></div>
+        <div style="position:absolute;left:77.80px;top:375.10px" class="cls_003"><span class="cls_002 counselingType"></span></div>
+        <div style="position:absolute;left:77.80px;top:388.10px" class="cls_003"><span class="cls_002 counselingType"></span></div>
+        <div style="position:absolute;left:77.80px;top:399.10px" class="cls_003"><span class="cls_002 counselingType"></span></div>
+        <div style="position:absolute;left:77.80px;top:410.10px" class="cls_003"><span class="cls_002 counselingType"></span></div>
+        <div style="position:absolute;left:77.80px;top:424.10px" class="cls_003"><span class="cls_002 counselingType"></span></div>
+        <div style="position:absolute;left:77.80px;top:437.10px" class="cls_003"><span class="cls_002 counselingType"></span></div>
+        <div style="position:absolute;left:77.80px;top:448.10px" class="cls_003"><span class="cls_002 counselingType"></span></div>
+        <div style="position:absolute;left:77.80px;top:461.10px" class="cls_003"><span class="cls_002 counselingType"></span></div>
+
+        <div style="position:absolute;left:135.72px;top:336.90px" class="cls_003"><span class="cls_003">Referral</span></div>
+
+        <div style="position:absolute;left:145.72px;top:350.10px" class="cls_003"><span class="cls_002 counselingType2"></span></div>
+        <div style="position:absolute;left:145.72px;top:362.10px" class="cls_003"><span class="cls_002 counselingType2"></span></div>
+        <div style="position:absolute;left:145.72px;top:375.10px" class="cls_003"><span class="cls_002 counselingType2"></span></div>
+        <div style="position:absolute;left:145.72px;top:388.10px" class="cls_003"><span class="cls_002 counselingType2"></span></div>
+        <div style="position:absolute;left:145.72px;top:399.10px" class="cls_003"><span class="cls_002 counselingType2"></span></div>
+        <div style="position:absolute;left:145.72px;top:410.10px" class="cls_003"><span class="cls_002 counselingType2"></span></div>
+        <div style="position:absolute;left:145.72px;top:424.10px" class="cls_003"><span class="cls_002 counselingType2"></span></div>
+        <div style="position:absolute;left:145.72px;top:437.10px" class="cls_003"><span class="cls_002 counselingType2"></span></div>
+        <div style="position:absolute;left:145.72px;top:448.10px" class="cls_003"><span class="cls_002 counselingType2"></span></div>
+        <div style="position:absolute;left:145.72px;top:461.10px" class="cls_003"><span class="cls_002 counselingType2"></span></div>
+
+        <div style="position:absolute;left:237.00px;top:336.90px" class="cls_003"><span class="cls_003">Date</span></div>
+
+        <div style="position:absolute;left:217.00px;top:350.10px" class="cls_003"><span class="cls_002 counselingDate"></span></div>
+        <div style="position:absolute;left:217.00px;top:362.10px" class="cls_003"><span class="cls_002 counselingDate"></span></div>
+        <div style="position:absolute;left:217.00px;top:375.10px" class="cls_003"><span class="cls_002 counselingDate"></span></div>
+        <div style="position:absolute;left:217.00px;top:388.10px" class="cls_003"><span class="cls_002 counselingDate"></span></div>
+        <div style="position:absolute;left:217.00px;top:400.10px" class="cls_003"><span class="cls_002 counselingDate"></span></div>
+        <div style="position:absolute;left:217.00px;top:413.10px" class="cls_003"><span class="cls_002 counselingDate"></span></div>
+        <div style="position:absolute;left:217.00px;top:425.10px" class="cls_003"><span class="cls_002 counselingDate"></span></div>
+        <div style="position:absolute;left:217.00px;top:437.10px" class="cls_003"><span class="cls_002 counselingDate"></span></div>
+        <div style="position:absolute;left:217.00px;top:450.10px" class="cls_003"><span class="cls_002 counselingDate"></span></div>
+        <div style="position:absolute;left:217.00px;top:464.10px" class="cls_003"><span class="cls_002 counselingDate"></span></div>
+
+        <div style="position:absolute;left:369.12px;top:336.90px" class="cls_003"><span class="cls_003">Concern</span></div>
+
+        <div style="position:absolute;left:309.00px;top:350.10px" class="cls_003"><span class="cls_002 counselingConcern"></span></div>
+        <div style="position:absolute;left:309.00px;top:362.10px" class="cls_003"><span class="cls_002 counselingConcern"></span></div>
+        <div style="position:absolute;left:309.00px;top:375.10px" class="cls_003"><span class="cls_002 counselingConcern"></span></div>
+        <div style="position:absolute;left:309.00px;top:388.10px" class="cls_003"><span class="cls_002 counselingConcern"></span></div>
+        <div style="position:absolute;left:309.00px;top:400.10px" class="cls_003"><span class="cls_002 counselingConcern"></span></div>
+        <div style="position:absolute;left:309.00px;top:413.10px" class="cls_003"><span class="cls_002 counselingConcern"></span></div>
+        <div style="position:absolute;left:309.00px;top:425.10px" class="cls_003"><span class="cls_002 counselingConcern"></span></div>
+        <div style="position:absolute;left:309.00px;top:437.10px" class="cls_003"><span class="cls_002 counselingConcern"></span></div>
+        <div style="position:absolute;left:309.00px;top:450.10px" class="cls_003"><span class="cls_002 counselingConcern"></span></div>
+        <div style="position:absolute;left:309.00px;top:464.10px" class="cls_003"><span class="cls_002 counselingConcern"></span></div>
+
+        <div style="position:absolute;left:500.76px;top:336.90px" class="cls_003"><span class="cls_003">Remarks</span></div>
+
+        <div style="position:absolute;left:479.00px;top:350.10px" class="cls_003"><span class="cls_002 counselingRemarks"></span></div>
+        <div style="position:absolute;left:479.00px;top:362.10px" class="cls_003"><span class="cls_002 counselingRemarks"></span></div>
+        <div style="position:absolute;left:479.00px;top:375.10px" class="cls_003"><span class="cls_002 counselingRemarks"></span></div>
+        <div style="position:absolute;left:479.00px;top:388.10px" class="cls_003"><span class="cls_002 counselingRemarks"></span></div>
+        <div style="position:absolute;left:479.00px;top:400.10px" class="cls_003"><span class="cls_002 counselingRemarks"></span></div>
+        <div style="position:absolute;left:479.00px;top:413.10px" class="cls_003"><span class="cls_002 counselingRemarks"></span></div>
+        <div style="position:absolute;left:479.00px;top:425.10px" class="cls_003"><span class="cls_002 counselingRemarks"></span></div>
+        <div style="position:absolute;left:479.00px;top:437.10px" class="cls_003"><span class="cls_002 counselingRemarks"></span></div>
+        <div style="position:absolute;left:479.00px;top:450.10px" class="cls_003"><span class="cls_002 counselingRemarks"></span></div>
+        <div style="position:absolute;left:479.00px;top:464.10px" class="cls_003"><span class="cls_002 counselingRemarks"></span></div>
+        
+        <div style="position:absolute;left:57.60px;top:483.54px" class="cls_003"><span class="cls_003">IV. FOLLOW-UP SERVICE</span></div>
+        <div style="position:absolute;left:138.84px;top:496.02px" class="cls_003"><span class="cls_003">Activity/ Form</span></div>
+
+        <div style="position:absolute;left:60.00px;top:510.10px" class="cls_003"><span class="cls_002 followActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:522.10px" class="cls_003"><span class="cls_002 followActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:535.10px" class="cls_003"><span class="cls_002 followActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:548.10px" class="cls_003"><span class="cls_002 followActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:560.10px" class="cls_003"><span class="cls_002 followActivity"></span></div>
+
+        <div style="position:absolute;left:348.24px;top:496.02px" class="cls_003"><span class="cls_003">Date</span></div>
+
+        <div style="position:absolute;left:330.00px;top:510.10px" class="cls_003"><span class="cls_002 followDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:522.10px" class="cls_003"><span class="cls_002 followDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:535.10px" class="cls_003"><span class="cls_002 followDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:548.10px" class="cls_003"><span class="cls_002 followDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:560.10px" class="cls_003"><span class="cls_002 followDate"></span></div>
+
+        <div style="position:absolute;left:478.32px;top:496.02px" class="cls_003"><span class="cls_003">Remarks</span></div>
+
+        <div style="position:absolute;left:429.00px;top:510.10px" class="cls_003"><span class="cls_002 followRemarks"></span></div>
+        <div style="position:absolute;left:429.00px;top:522.10px" class="cls_003"><span class="cls_002 followRemarks"></span></div>
+        <div style="position:absolute;left:429.00px;top:535.10px" class="cls_003"><span class="cls_002 followRemarks"></span></div>
+        <div style="position:absolute;left:429.00px;top:548.10px" class="cls_003"><span class="cls_002 followRemarks"></span></div>
+        <div style="position:absolute;left:429.00px;top:560.10px" class="cls_003"><span class="cls_002 followRemarks"></span></div>
+
+        <div style="position:absolute;left:57.60px;top:579.78px" class="cls_003"><span class="cls_003">V. INFORMATION SERVICE</span></div>
+        <div style="position:absolute;left:153.60px;top:592.38px" class="cls_003"><span class="cls_003">Activity</span></div>
+
+        <div style="position:absolute;left:60.00px;top:608.10px" class="cls_003"><span class="cls_002 informationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:621.10px" class="cls_003"><span class="cls_002 informationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:632.10px" class="cls_003"><span class="cls_002 informationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:645.10px" class="cls_003"><span class="cls_002 informationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:657.10px" class="cls_003"><span class="cls_002 informationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:670.10px" class="cls_003"><span class="cls_002 informationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:682.10px" class="cls_003"><span class="cls_002 informationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:695.10px" class="cls_003"><span class="cls_002 informationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:708.10px" class="cls_003"><span class="cls_002 informationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:710.10px" class="cls_003"><span class="cls_002 informationActivity"></span></div>
+        
+        <div style="position:absolute;left:348.24px;top:592.38px" class="cls_003"><span class="cls_003">Date</span></div>
+
+        <div style="position:absolute;left:330.00px;top:608.10px" class="cls_003"><span class="cls_002 informationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:621.10px" class="cls_003"><span class="cls_002 informationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:632.10px" class="cls_003"><span class="cls_002 informationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:645.10px" class="cls_003"><span class="cls_002 informationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:657.10px" class="cls_003"><span class="cls_002 informationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:670.10px" class="cls_003"><span class="cls_002 informationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:682.10px" class="cls_003"><span class="cls_002 informationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:695.10px" class="cls_003"><span class="cls_002 informationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:708.10px" class="cls_003"><span class="cls_002 informationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:710.10px" class="cls_003"><span class="cls_002 informationDate"></span></div>
+
+        <div style="position:absolute;left:478.32px;top:592.38px" class="cls_003"><span class="cls_003">Remarks</span></div>
+
+        <div style="position:absolute;left:430.00px;top:608.10px" class="cls_003"><span class="cls_002 informationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:621.10px" class="cls_003"><span class="cls_002 informationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:632.10px" class="cls_003"><span class="cls_002 informationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:645.10px" class="cls_003"><span class="cls_002 informationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:657.10px" class="cls_003"><span class="cls_002 informationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:670.10px" class="cls_003"><span class="cls_002 informationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:682.10px" class="cls_003"><span class="cls_002 informationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:695.10px" class="cls_003"><span class="cls_002 informationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:708.10px" class="cls_003"><span class="cls_002 informationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:710.10px" class="cls_003"><span class="cls_002 informationRemarks"></span></div>
+
+        <div style="position:absolute;left:57.60px;top:726.30px" class="cls_003"><span class="cls_003">VI. CONSULTATION SERVICE</span></div>
+        <div style="position:absolute;left:152.64px;top:738.90px" class="cls_003"><span class="cls_003">Concern</span></div>
+
+        <div style="position:absolute;left:60.00px;top:753.10px" class="cls_003"><span class="cls_002 counsultationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:765.10px" class="cls_003"><span class="cls_002 counsultationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:778.10px" class="cls_003"><span class="cls_002 counsultationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:791.10px" class="cls_003"><span class="cls_002 counsultationActivity"></span></div>
+        <div style="position:absolute;left:60.00px;top:803.10px" class="cls_003"><span class="cls_002 counsultationActivity"></span></div>
+
+        <div style="position:absolute;left:348.24px;top:738.90px" class="cls_003"><span class="cls_003">Date</span></div>
+
+        <div style="position:absolute;left:330.00px;top:753.10px" class="cls_003"><span class="cls_002 counsultationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:765.10px" class="cls_003"><span class="cls_002 counsultationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:778.10px" class="cls_003"><span class="cls_002 counsultationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:791.10px" class="cls_003"><span class="cls_002 counsultationDate"></span></div>
+        <div style="position:absolute;left:330.00px;top:803.10px" class="cls_003"><span class="cls_002 counsultationDate"></span></div>
+
+        <div style="position:absolute;left:478.32px;top:738.90px" class="cls_003"><span class="cls_003">Remarks</span></div>
+
+        <div style="position:absolute;left:430.00px;top:765.10px" class="cls_003"><span class="cls_002 counsultationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:753.10px" class="cls_003"><span class="cls_002 counsultationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:778.10px" class="cls_003"><span class="cls_002 counsultationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:791.10px" class="cls_003"><span class="cls_002 counsultationRemarks"></span></div>
+        <div style="position:absolute;left:430.00px;top:803.10px" class="cls_003"><span class="cls_002 counsultationRemarks"></span></div>
+
+        </div>
+        <div class="pages page5" style="position:relative;left:50%;margin-left:-306px;top:3784px;width:612px;height:936px;">
+        <div style="position:absolute;left:0px;top:0px">
+        <img class="backgroundimg" src="{% static 'guidance/assets/Individual-Profile-Sheet-college_files/background-5.jpg' %}" width=612 height=936></div>
+        <div style="position:absolute;left:268.44px;top:148.14px" class="cls_002"><span class="cls_002">Student Affairs Office</span></div>
+        <div style="position:absolute;left:239.40px;top:160.38px" class="cls_003"><span class="cls_003">GUIDANCE SERVICES CENTER</span></div>
+        <div style="position:absolute;left:140.28px;top:208.62px" class="cls_003"><span class="cls_003">INFORMED CONSENT TO FILL-OUT THE INDIVIDUAL PROFILE SHEET</span></div>
+        <div style="position:absolute;left:57.60px;top:232.98px" class="cls_002"><span class="cls_002">I,&nbsp;&nbsp;{{form.individualProfileId.studentId.firstname|toTitle}}&nbsp;&nbsp;{{form.individualProfileId.studentId.lastname|toTitle}}</span></div>
+        <div style="position:absolute;left:66.00px;top:232.98px" class="cls_002"><span class="cls_002">___________________________________________, agree to fill-out the Individual Profile Sheet form of the Guidance</span></div>
+        <div style="position:absolute;left:57.60px;top:245.34px" class="cls_002"><span class="cls_002">Office.  I commit to be honest in giving my personal information and fill-in all the blanks.  I trust that the Guidance</span></div>
+        <div style="position:absolute;left:57.60px;top:257.82px" class="cls_002"><span class="cls_002">Staff will treat my personal data with utmost confidentiality.</span></div>
+        <div style="position:absolute;left:57.60px;top:306.18px" class="cls_003"><span class="cls_003">Signed:</span></div>
+        <div style="position:absolute;left:57.60px;top:338.26px" class="cls_002"><span class="cls_002" style="display: flex; justify-content: center; align-items: center; text-align: center; height:  20px; width: 200px;">{{form.individualProfileId.studentId.firstname|toTitle}}&nbsp;&nbsp;{{form.individualProfileId.studentId.lastname|toTitle}}</span></div>
+        <div style="position:absolute;left:57.60px;top:343.26px" class="cls_002"><span class="cls_002">____________________________________</span></div>
+        <div style="position:absolute;left:273.60px;top:343.26px" class="cls_002"><span class="cls_002">Date:&nbsp;&nbsp;{{form.individualProfileId.dateFilled}}</span></div>
+        <div style="position:absolute;left:301.80px;top:343.26px" class="cls_002"><span class="cls_002">________________________________</span></div>
+        <div style="position:absolute;left:57.60px;top:355.74px" class="cls_002"><span class="cls_002">Signature over Printed Name of Student</span></div>
+        <div style="position:absolute;left:268.44px;top:603.90px" class="cls_002"><span class="cls_002">Student Affairs Office</span></div>
+        <div style="position:absolute;left:239.40px;top:616.14px" class="cls_003"><span class="cls_003">GUIDANCE SERVICES CENTER</span></div>
+        <div style="position:absolute;left:140.28px;top:664.26px" class="cls_003"><span class="cls_003">INFORMED CONSENT TO FILL-OUT THE INDIVIDUAL PROFILE SHEET</span></div>
+        <div style="position:absolute;left:57.60px;top:688.62px" class="cls_002"><span class="cls_002">I,&nbsp;&nbsp;{{form.individualProfileId.studentId.firstname|toTitle}}&nbsp;&nbsp;{{form.individualProfileId.studentId.lastname|toTitle}}</span></div>
+        <div style="position:absolute;left:66.00px;top:688.62px" class="cls_002"><span class="cls_002">___________________________________________, agree to fill-out the Individual Profile Sheet form of the Guidance</span></div>
+        <div style="position:absolute;left:57.60px;top:701.10px" class="cls_002"><span class="cls_002">Office.  I commit to be honest in giving my personal information and fill-in all the blanks.  I trust that the Guidance</span></div>
+        <div style="position:absolute;left:57.60px;top:713.46px" class="cls_002"><span class="cls_002">Staff will treat my personal data with utmost confidentiality.</span></div>
+        <div style="position:absolute;left:57.60px;top:761.82px" class="cls_003"><span class="cls_003">Signed:</span></div>
+        <div style="position:absolute;left:57.60px;top:795.02px" class="cls_002"><span class="cls_002" style="display: flex; justify-content: center; align-items: center; text-align: center; height:  20px; width: 200px;">{{form.individualProfileId.studentId.firstname|toTitle}}&nbsp;&nbsp;{{form.individualProfileId.studentId.lastname|toTitle}}</span></div>
+        <div style="position:absolute;left:57.60px;top:799.02px" class="cls_002"><span class="cls_002">____________________________________</span></div>
+        <div style="position:absolute;left:273.60px;top:799.02px" class="cls_002"><span class="cls_002">Date:&nbsp;&nbsp;{{form.individualProfileId.dateFilled}}</span></div>
+        <div style="position:absolute;left:301.80px;top:799.02px" class="cls_002"><span class="cls_002">________________________________</span></div>
+        <div style="position:absolute;left:57.60px;top:811.50px" class="cls_002"><span class="cls_002">Signature over Printed Name of Student</span></div>
+        </div>
+</div>
+<div class="center_object">
+    <button class="OrangeButton" id="goback">Go Back To Intake Interview</button>
+    <button class="OrangeButton" id="printBtn">Print</button>
+</div>
+<script type="text/javascript">
+    $('#goback').click((event)=>{
+        event.preventDefault()
+        window.location.href = "{% url 'studentLife_system:Intake Interview' %}";
+
+    });
+    $('#printBtn').click(function(event){
+        const pages = $('.pages')
+        print()
+    });
+    let siblingsname = "{{ form.individualProfileId.siblingsName|escapejs }}";
+    siblingsname =  siblingsname.replace(/'/g, '"');
+    siblingsname = JSON.parse(siblingsname);
+
+    let siblingsage = "{{ form.individualProfileId.siblingsAge|escapejs }}";
+    siblingsage =  siblingsage.replace(/'/g, '"');
+    siblingsage = JSON.parse(siblingsage);
+
+    let siblingsSchoolWork = "{{ form.individualProfileId.siblingsSchoolWork|escapejs }}";
+    siblingsSchoolWork =  siblingsSchoolWork.replace(/'/g, '"');
+    siblingsSchoolWork = JSON.parse(siblingsSchoolWork);
+
+
+    let lengthcounter = 0;
+    if(siblingsname.length <= 6){
+        lengthcounter = 8;
+    }
+    else if(siblingsname.length <=12){
+        lengthcounter = 0;
+    }
+    siblingsname.forEach(function(item){
+        if(siblingsname.length <= 6){
+            let siblingElement = `<div style="position:absolute;left:0;top:${lengthcounter}px" class="cls_013"><span class="cls_013">${item}</span></div>`;
+            $('#siblings_name').append(siblingElement);
+            lengthcounter+=19;
+        }
+        else if(siblingsname.length <=12){
+            let siblingElement = `<div style="position:absolute;left:0;top:${lengthcounter}px" class="cls_013"><span class="cls_013">${item}</span></div>`;
+            $('#siblings_name').append(siblingElement);
+            lengthcounter+=9.5;
+        }
+        else{
+            let siblingElement = `<div style="position:absolute;left:0;top:${lengthcounter}px; font-size: 8px;" class="cls_013"><span class="cls_013">${item}</span></div>`;
+            $('#siblings_name').append(siblingElement);
+            lengthcounter+=6.2;
+        }
+    });
+    lengthcounter = 0;
+    if(siblingsname.length <= 6){
+        lengthcounter = 8;
+    }
+    else if(siblingsname.length <=12){
+        lengthcounter = 0;
+    }
+    siblingsage.forEach(function(item){
+        if(siblingsname.length <= 6){
+            let siblingElement = `<div style="position:absolute;left:0;top:${lengthcounter}px" class="cls_013"><span class="cls_013">${item}</span></div>`;
+            $('#siblings_age').append(siblingElement);
+            lengthcounter+=19;
+        }
+        else if(siblingsname.length <=12){
+            let siblingElement = `<div style="position:absolute;left:0;top:${lengthcounter}px" class="cls_013"><span class="cls_013">${item}</span></div>`;
+            $('#siblings_age').append(siblingElement);
+            lengthcounter+=9.5;
+        }
+        else{
+            let siblingElement = `<div style="position:absolute;left:0;top:${lengthcounter}px; font-size: 8px;" class="cls_013"><span class="cls_013">${item}</span></div>`;
+            $('#siblings_age').append(siblingElement);
+            lengthcounter+=6.2;
+        }
+    });
+    lengthcounter = 0;
+    if(siblingsname.length <= 6){
+        lengthcounter = 8;
+    }
+    else if(siblingsname.length <=12){
+        lengthcounter = 0;
+    }
+    siblingsSchoolWork.forEach(function(item){
+        if(siblingsname.length <= 6){
+            let siblingElement = `<div style="position:absolute;left:0;top:${lengthcounter}px" class="cls_013"><span class="cls_013">${item}</span></div>`;
+            $('#siblings_work').append(siblingElement);
+            lengthcounter+=19;
+        }
+        else if(siblingsname.length <=12){
+            let siblingElement = `<div style="position:absolute;left:0;top:${lengthcounter}px" class="cls_013"><span class="cls_013">${item}</span></div>`;
+            $('#siblings_work').append(siblingElement);
+            lengthcounter+=9.5;
+        }
+        else{
+            let siblingElement = `<div style="position:absolute;left:0;top:${lengthcounter}px; font-size: 8px;" class="cls_013"><span class="cls_013">${item}</span></div>`;
+            $('#siblings_work').append(siblingElement);
+            lengthcounter+=6.2;
+        }
+    });
+    let describeYouBest = "{{ form.individualProfileId.describeYouBest|escapejs }}";
+    describeYouBest = describeYouBest.replace(/'/g, '"').replace(/False/g, 'false').replace(/True/g, 'true');
+    describeYouBest = JSON.parse(describeYouBest);
+    const describeBestFields = [
+        "Friendly",
+        "Self-Confident",
+        "Calm",
+        "Quick-Tempered",
+        "Feels Inferior",
+        "Unhappy",
+        "Easily Bored",
+        "Talented",
+        "Withdrawn",
+        "Conscientious",
+        "Talkative",
+        "Cheerful",
+        "Moody",
+        "Easily Exhausted",
+        "Lazy",
+        "Sensitive",
+        "Poor health",
+        "Reserved",
+        "Quiet",
+        "Independent",
+        "Depressed",
+        "Suspicious",
+        "Irritable",
+        "Stubborn",
+        "Thoughtful",
+        "Lovable",
+        "Jealous",
+        "Shy",
+        "Sarcastic",
+        "Tactful",
+        "Pessimistic",
+        "Submissive",
+        "Optimistic",
+        "Happy-go-lucky",
+        "Goal-oriented"
+    ];
+    describeBestFields.forEach(function(item){
+        if(describeYouBest[item]){
+            $(`#${item}`).text(`[✓] ${item}`);
+        }
+    })
+    let inoutSchool = "{{ form.individualProfileId.inOutSchool|escapejs }}";
+    inoutSchool = inoutSchool.replace(/'/g, '"').replace(/False/g, 'false').replace(/True/g, 'true');
+    inoutSchool = JSON.parse(inoutSchool)
+    if(inoutSchool[0] == 'true'){
+        $('#inschool1').text('[  ✓  ]')
+    }
+    else{
+        $('#outschool1').text('[  ✓  ]')
+    }
+    if(inoutSchool[1] == 'true'){
+        $('#inschool2').text('[  ✓  ]')
+    }
+    else{
+        $('#outschool2').text('[  ✓  ]')
+    }
+    let orgname = "{{ form.individualProfileId.nameOfOrganization|escapejs }}";
+    orgname = orgname.replace(/'/g, '"');
+    orgname = JSON.parse(orgname);
+
+    $('#orgname1').text(orgname[0])
+    $('#orgname2').text(orgname[1])
+    let position = "{{ form.individualProfileId.positionTitle|escapejs }}";
+    position = position.replace(/'/g, '"');
+    position = JSON.parse(position);
+    $('#position1').text(position[0])
+    $('#position2').text(position[1])
+    let inclusive = "{{ form.individualProfileId.inclusiveYears|escapejs }}";
+    inclusive = inclusive.replace(/'/g, '"');
+    inclusive = JSON.parse(inclusive);
+    $('#inclusive1').text(inclusive[0])
+    $('#inclusive2').text(inclusive[1])
+
+
+    let individualActivity = "{{ form.individualActivity|escapejs }}";
+    
+    individualActivity = individualActivity.replace(/'/g, '"');
+    individualActivity = JSON.parse(individualActivity);
+    const individual = $('.individualActivity');
+
+    individual.each(function(index) {
+        if (index < individualActivity.length) {
+            $(this).text(individualActivity[index]);
+        }
+    });
+    let individualDateAccomplished = "{{ form.individualDateAccomplished|escapejs }}";
+    
+    individualDateAccomplished = individualDateAccomplished.replace(/'/g, '"');
+    individualDateAccomplished = JSON.parse(individualDateAccomplished);
+    const individualDateAccomplishedclass = $('.individualDateAccomplished');
+    individualDateAccomplishedclass.each(function(index) {
+        if (index < individualDateAccomplished.length) {
+            $(this).text(individualDateAccomplished[index]);
+        }
+    });
+    let individualRemarks = "{{ form.individualRemarks|escapejs }}";
+    
+    individualRemarks = individualRemarks.replace(/'/g, '"');
+    individualRemarks = JSON.parse(individualRemarks);
+    const individualRemarksclass = $('.individualRemarks');
+    individualRemarksclass.each(function(index) {
+        if (index < individualRemarks.length) {
+            $(this).text(individualRemarks[index]);
+        }
+    });
+
+    let appraisalTest = "{{ form.appraisalTest|escapejs }}";
+    appraisalTest = appraisalTest.replace(/'/g, '"');
+    appraisalTest = JSON.parse(appraisalTest);
+    const appraisalTestclass = $('.appraisalTest');
+    appraisalTestclass.each(function(index) {
+        if (index < appraisalTest.length) {
+            $(this).text(appraisalTest[index]);
+        }
+    });
+
+    let appraisalDateTaken = "{{ form.appraisalDateTaken|escapejs }}";
+    appraisalDateTaken = appraisalDateTaken.replace(/'/g, '"');
+    appraisalDateTaken = JSON.parse(appraisalDateTaken);
+    const appraisalDateTakenclass = $('.appraisalDateTaken');
+    appraisalDateTakenclass.each(function(index) {
+        if (index < appraisalDateTaken.length) {
+            $(this).text(appraisalDateTaken[index]);
+        }
+    });
+
+    let appraisalDateInterpreted = "{{ form.appraisalDateInterpreted|escapejs }}";
+    appraisalDateInterpreted = appraisalDateInterpreted.replace(/'/g, '"');
+    appraisalDateInterpreted = JSON.parse(appraisalDateInterpreted);
+    const appraisalDateInterpretedclass = $('.appraisalDateInterpreted');
+    appraisalDateInterpretedclass.each(function(index) {
+        if (index < appraisalDateInterpreted.length) {
+            $(this).text(appraisalDateInterpreted[index]);
+        }
+    });
+
+    let appraisalRemarks = "{{ form.appraisalRemarks|escapejs }}";
+    
+    appraisalRemarks = appraisalRemarks.replace(/'/g, '"');
+    appraisalRemarks = JSON.parse(appraisalRemarks);
+    const appraisalRemarksclass = $('.appraisalRemarks');
+    appraisalRemarksclass.each(function(index) {
+        if (index < appraisalRemarks.length) {
+            $(this).text(appraisalRemarks[index]);
+        }
+    });
+
+    let counselingType = "{{ form.counselingType|escapejs }}";
+    counselingType = counselingType.replace(/'/g, '"').replace(/False/g, 'false').replace(/True/g, 'true');;
+    counselingType = JSON.parse(counselingType);
+    const counselingTypeclass = $('.counselingType');
+    counselingTypeclass.each(function(index) {
+        if (index < counselingType.length) {
+            if(counselingType[index]=='true'){
+                $(this).text('✓');
+            }
+        }
+    });
+    const counselingType2class = $('.counselingType2');
+    counselingType2class.each(function(index) {
+        if (index < counselingType.length) {
+            if(counselingType[index]=='false'){
+                $(this).text('✓');
+            }
+        }
+    });
+    
+    let counselingDate = "{{ form.counselingDate|escapejs }}";
+    counselingDate = counselingDate.replace(/'/g, '"');
+    counselingDate = JSON.parse(counselingDate);
+    const counselingDateclass = $('.counselingDate');
+    counselingDateclass.each(function(index) {
+        if (index < counselingDate.length) {
+            $(this).text(counselingDate[index]);
+            
+        }
+    });
+    
+    let counselingConcern = "{{ form.counselingConcern|escapejs }}";
+    counselingConcern = counselingConcern.replace(/'/g, '"');
+    counselingConcern = JSON.parse(counselingConcern);
+    const counselingConcernclass = $('.counselingConcern');
+    counselingConcernclass.each(function(index) {
+        if (index < counselingConcern.length) {
+            $(this).text(counselingConcern[index]);
+            
+        }
+    });
+
+
+    let counselingRemarks = "{{ form.counselingRemarks|escapejs }}";
+    counselingRemarks = counselingRemarks.replace(/'/g, '"');
+    counselingRemarks = JSON.parse(counselingRemarks);
+    const counselingRemarksclass = $('.counselingRemarks');
+    counselingRemarksclass.each(function(index) {
+        if (index < counselingRemarks.length) {
+            $(this).text(counselingRemarks[index]);
+            
+        }
+    });
+
+    let followActivity = "{{ form.followActivity|escapejs }}";
+    followActivity = followActivity.replace(/'/g, '"');
+    followActivity = JSON.parse(followActivity);
+    const followActivityclass = $('.followActivity');
+    followActivityclass.each(function(index) {
+        if (index < followActivity.length) {
+            $(this).text(followActivity[index]);
+            
+        }
+    });
+    
+    let followDate = "{{ form.followDate|escapejs }}";
+    followDate = followDate.replace(/'/g, '"');
+    followDate = JSON.parse(followDate);
+    const followDateclass = $('.followDate');
+    followDateclass.each(function(index) {
+        if (index < followDate.length) {
+            $(this).text(followDate[index]);
+            
+        }
+    });
+
+    let followRemarks = "{{ form.followRemarks|escapejs }}";
+    followRemarks = followRemarks.replace(/'/g, '"');
+    followRemarks = JSON.parse(followRemarks);
+    const followRemarksclass = $('.followRemarks');
+    followRemarksclass.each(function(index) {
+        if (index < followRemarks.length) {
+            $(this).text(followRemarks[index]);
+            
+        }
+    });
+
+    let informationActivity = "{{ form.informationActivity|escapejs }}";
+    informationActivity = informationActivity.replace(/'/g, '"');
+    informationActivity = JSON.parse(informationActivity);
+    const informationActivityclass = $('.informationActivity');
+    informationActivityclass.each(function(index) {
+        if (index < informationActivity.length) {
+            $(this).text(informationActivity[index]);
+            
+        }
+    });
+
+    let informationDate = "{{ form.informationDate|escapejs }}";
+    informationDate = informationDate.replace(/'/g, '"');
+    informationDate = JSON.parse(informationDate);
+    const informationDateclass = $('.informationDate');
+    informationDateclass.each(function(index) {
+        if (index < informationDate.length) {
+            $(this).text(informationDate[index]);
+            
+        }
+    });
+
+    let informationRemarks = "{{ form.informationRemarks|escapejs }}";
+    informationRemarks = informationRemarks.replace(/'/g, '"');
+    informationRemarks = JSON.parse(informationRemarks);
+    const informationRemarksclass = $('.informationRemarks');
+    informationRemarksclass.each(function(index) {
+        if (index < informationRemarks.length) {
+            $(this).text(informationRemarks[index]);
+            
+        }
+    });
+
+    let counsultationActivity = "{{ form.counsultationActivity|escapejs }}";
+    counsultationActivity = counsultationActivity.replace(/'/g, '"');
+    counsultationActivity = JSON.parse(counsultationActivity);
+    const counsultationActivityclass = $('.counsultationActivity');
+    counsultationActivityclass.each(function(index) {
+        if (index < counsultationActivity.length) {
+            $(this).text(counsultationActivity[index]);
+            
+        }
+    });
+
+    let counsultationDate = "{{ form.counsultationDate|escapejs }}";
+    counsultationDate = counsultationDate.replace(/'/g, '"');
+    counsultationDate = JSON.parse(counsultationDate);
+    const counsultationDateclass = $('.counsultationDate');
+    counsultationDateclass.each(function(index) {
+        if (index < counsultationDate.length) {
+            $(this).text(counsultationDate[index]);
+            
+        }
+    });
+
+    let counsultationRemarks = "{{ form.counsultationRemarks|escapejs }}";
+    counsultationRemarks = counsultationRemarks.replace(/'/g, '"');
+    counsultationRemarks = JSON.parse(counsultationRemarks);
+    const counsultationRemarksclass = $('.counsultationRemarks');
+    counsultationRemarksclass.each(function(index) {
+        if (index < counsultationRemarks.length) {
+            $(this).text(counsultationRemarks[index]);
+            
+        }
+    });
+</script>
+{% endblock %}

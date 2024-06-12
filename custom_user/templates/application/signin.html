@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+	<link rel="shortcut icon" type="x-icon" href="{% static 'studentlife/images/CTU_logo.png' %}">
+    <title>STUDENT LIFE INFORMATION SYSTEM</title>
+	<link rel="stylesheet" href="{% static 'application/styles/fonts/material-icon/css/material-design-iconic-font.min.css'%}">
+    <link rel="stylesheet" href="{% static 'application/styles/signin.css'%}">
+</head>
+<body>
+    <div class="background-container">
+		<img src="{% static 'application/images/signinBackground.jpg'%}" id="libraryPicture">
+		<img src="{% static 'application/images/CTU_Logo.png'%}" id="CtuLogo">
+		<span id="welcome_msg">WELCOME</span>
+	</div>
+	<div id="diagonal-border"></div>
+	<div class="form-container">
+		{% if error_message %}
+			<script>
+				alert("{{ error_message }}");
+			</script>
+		{% endif %}
+		<form class="login-form-container" method="post" action="{% url "custom_user:login" %}">
+			{% csrf_token %}
+			<table>
+				<!--<tr>
+					<td><label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label><input type="text" id="username" name="username" placeholder="Login as" required></td>
+				</tr>-->
+				<tr>
+					<td><label for="email"><i class="zmdi zmdi-email"></i></label>{{ form2.username }}</td>
+				</tr>
+				<tr>
+					<td><label for="pass"><i class="zmdi zmdi-lock"></i></label>{{ form2.password }}</td>
+				</tr>
+				<tr>
+					<td>Don't have an account? <a href="{% url "custom_user:register" %}" id="sign-up">Sign up</a></td>
+				</tr>
+				<tr>
+					<td>Sign in As <a href="{% url "custom_user:login_admin" %}" id="sign-up"> Admin </a></td>
+				</tr>
+				<tr>
+					<td align="center">
+						{% if messages %}
+						{% for message in messages %}
+							<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+							{{ message }}
+							</div>
+						{% endfor %}
+						{% endif %}
+						
+					</td>
+				</tr> 
+				<tr>
+					<td><button>Login</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	{% comment %} <script>
+		document.addEventListener("DOMContentLoaded", function() {
+			const signUpButton = document.getElementById("sign-up");
+			const signInButton = document.getElementById("sign-in");
+			const loginForm = document.querySelector(".login-form-container");
+			const signUpForm = document.querySelector(".signup-form-container");
+		
+			signUpButton.addEventListener("click", function() {
+				loginForm.classList.remove("fade-in");
+				loginForm.classList.add("fade-out");
+		
+				signUpForm.classList.remove("fade-out");
+				signUpForm.classList.add("fade-in");
+			});
+		
+			signInButton.addEventListener("click", function() {
+				signUpForm.classList.remove("fade-in");
+				signUpForm.classList.add("fade-out");
+		
+				loginForm.classList.remove("fade-out");
+				loginForm.classList.add("fade-in");
+			});
+		});
+		
+	</script> {% endcomment %}
+</body>
+</html>
